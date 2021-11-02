@@ -1,0 +1,1766 @@
+App Name	Visual C++ 6.0 Standard Edition	
+App Version	6.0.0.0.0626 (1033)	
+Setup Version	3.0.0.1210	
+Frame Bitmap		
+Frame Caption	Visual C++ 6.0 Standard Setup	
+Dialog Caption Base	Visual C++ 6.0 Standard	
+Usage String		
+About Box String	Microsoft Visual C++ 6.0 Setup\n\nCopyright (C) 1998 Microsoft Corporation.	
+Check Modules	"ThunderRT5Main,Microsoft Visual Basic,ThunderRTMain,Microsoft VB Runtime,RaidClass,Microsoft Raid,MSVCED50,Microsoft Developer Studio,wndclass_desked_gsk,Microsoft Development Environment"	
+Source Directory	D:\	
+MSAPPS Mode	local	
+MSAPPS Connect	server	
+Inf File Name	VC98Lrn.INF	
+Help File Name	ACMSETUP.HLP	
+Setup Status	"S/Ò""Þ)l$ºr°k¼.h0áü¶’:¼‰Òò­¼êk‡Âú5åÁ@”I(þ£®ºµ¥1ÍâVõþÕ4^wd2¹¾˜6ã¾<† T°Ýœ^]ÇÌ¦ûŒª¢ªÆ‡‚…Zº_Øf¹V""©ûgl…‚Q¤ƒ»;©‡×Cld¬¨{”cÍ€ßþâ„ÝÇBË2£àDÁq^!lç9î0zýÔ30b–ê}´ëì]N7Š„«aÏ­%ù°È"	
+Setup Status2	0	
+Maximum Object ID	2970	
+Admin Mode Root Object ID		
+Floppy Mode Root Object ID	3 : 1 2	
+Network Mode Root Object ID		
+Maintenance Mode Root Object ID	4 : 1 2	
+Network Maintenance Mode Root Object ID		
+Batch Mode Root Object ID	3 : 1 2	
+Install Date	2021.11.03.06.31.58	
+Check Modules2	"Fox_4000001,Microsoft Visual FoxPro, graph, MS Graph, ed, MS Draw, msinfo, MS Info,odbcad32,ODBC administrator,odbcjt32, ODBC Driver, !Microsoft Exchange!, Microsoft Exchange"	
+Check Modules3	"OMain,Microsoft Access, msaccess,MS Access,msarn110,MS Access Runtime,msarn200,MS Access Runtime,MS:SCC:REFRESH,Microsoft Visual SourceSafe,MSOfficeWClass,Microsoft Office Manager"	
+Check Modules4	"VFP66400000,Microsoft Visual FoxPro,valecstart,Visual Studio Analyzer Server"	
+
+
+ObjID	Checkbox State	Title	Description	Object Type	Object Data	Bitmap Id	Vital Attribute	Shared Attribute	Configurable Directory	Destination Directory	Check Directory	Installed By	Install Data	Install Directory
+1				CustomAction	"""COMMON98.DLL"", ""SetDefaultDir"", ""VC98;HKEY_LOCAL_MACHINE,Software\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual C++,ProductDir"" "					C:\Program Files\Microsoft Visual Studio\VC98\		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2		Microsoft Visual C++ 6.0 Standard Edition		AppSearch	"%1,,,128,yes,no"					C:\Program Files\Microsoft Visual Studio\VC98\		us		C:\Program Files\Microsoft Visual Studio\VC98\
+3	yes	Floppy Install		AppMainDlg	291 292  : 41 21 5 2361					C:\Program Files\Microsoft Visual Studio\VC98\		us		C:\Program Files\Microsoft Visual Studio\VC98\
+4	yes	C&ustom	Setup will allow you to customize which components to install	CustomDlg	296 298 306 317 1801 2372  293 : 1511 1521 294  41 21 5	"VC98Lrn.DLL,103"			yes	C:\Program Files\Microsoft Visual Studio\VC98\				
+5				Group	6 7 8 9							us		C:\Program Files\Microsoft Visual Studio\VC98\
+6				CustomAction	"""COMMON98.DLL"", ""GetPathFromReg"", ""HKEY_LOCAL_MACHINE,Software\Microsoft\VisualStudio\6.0\Setup,VSCommonDir"" "					%p\Microsoft Visual Studio\Common		us		C:\Program Files\Microsoft Visual Studio\Common\
+7				CustomAction	"""COMMON98.DLL"", ""GetPathFromReg"", ""HKEY_LOCAL_MACHINE,Software\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual SourceSafe,ProductDir"" "					%6\VSS		us		C:\Program Files\Microsoft Visual Studio\Common\VSS\
+8				CustomAction	"""COMMON98.DLL"", ""GetPathFromReg"", ""HKEY_LOCAL_MACHINE,SOFTWARE\Microsoft\Windows\CurrentVersion,CommonFilesDir"" "					%p\Common Files		us		C:\Program Files\Common Files\
+9				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""10"""					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+10				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\VisualStudio\6.0\Setup,VSCommonDir,%s"					%6		us		C:\Program Files\Microsoft Visual Studio\Common\
+21				Group	22 23							us		C:\Program Files\Microsoft Visual Studio\VC98\
+22				CustomAction	"COMMON98.DLL,DetectWzRegKey,Microsoft Visual C++"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+23				Group	33 27 28 29 30 26  25							us		C:\Program Files\Microsoft Visual Studio\VC98\
+24				CustomAction	"COMMON98.DLL,LicenseDlg,Setup;eula_txt"									
+25				CustomAction	"PHOLDER.DLL,SPPlaceHolderCAH"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+26				CustomAction	"COMMON98.DLL,CheckRegKey,""LOCAL,Software\Microsoft\Internet Explorer,Version"""							us		C:\Program Files\Microsoft Visual Studio\VC98\
+27				CustomAction	"COMMON98.DLL,GetWindowsPathFromReg,""Programs, True"""							us		C:\Documents and Settings\All Users\Start Menu\Programs\
+28		IsWin95		CustomAction	"COMMON98.DLL,DetectOS,Win95 "							us		C:\Program Files\Microsoft Visual Studio\VC98\
+29		IsWinnt3x		CustomAction	"COMMON98.DLL, DetectOS, winnt3x"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+30		IsWinNT40		CustomAction	"COMMON98.DLL, DetectOS, winnt40"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+31		Is40Shell		CustomAction	"COMMON98.DLL, DetectOS, 40shell"									
+32		IsWinNT50		CustomAction	"COMMON98.DLL, DetectOS, winnt50"									
+33		Check Adminstrator		CustomAction	"COMMON98.DLL,DetectAdminPrivileges"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+41				Group	51 61 1661 151 201 161 2721 2671 71 141 131 121 101 111					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+51				InstallSysFile	"vc MSVCRT40 DLL,msvcrt40_dll"		vital			%M		nyi		
+61				Group	62							nyi		
+62		msvcirt.dll		InstallSysFile	"Sys Files - CRT (IO) Dlls,msvcirt_dll"					%m		nyi		
+71				Group	72 73 75 76 78 79 81 82 84 85 87 88 90 91 93 94 96 97					%M		us		C:\WINDOWS\system32\
+72				InstallSysFile	"vc MFC Os Retail, mfc42_dll"					%M		nyi		
+73				Depend	72 ? 74							us	No	C:\WINDOWS\system32\
+74		mfc42.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc MFC Os Retail,mfc42_dll,1"""					%72		nyi		
+75				CustomAction	"COMMON98.DLL,LangCheckCAH,CHS"							us		C:\WINDOWS\system32\
+76				Depend	75 ? 77							us	No	C:\WINDOWS\system32\
+77				InstallSysFile	"vc MFC Os Retail, mfc42chs_dll"					%M		nyi		
+78				CustomAction	"COMMON98.DLL,LangCheckCAH,CHT"							us		C:\WINDOWS\system32\
+79				Depend	78 ? 80							us	No	C:\WINDOWS\system32\
+80				InstallSysFile	"vc MFC Os Retail, mfc42cht_dll"					%M		nyi		
+81				CustomAction	"COMMON98.DLL,LangCheckCAH,KOR"							us		C:\WINDOWS\system32\
+82				Depend	81 ? 83							us	No	C:\WINDOWS\system32\
+83				InstallSysFile	"vc MFC Os Retail, mfc42kor_dll"					%M		nyi		
+84				CustomAction	"COMMON98.DLL,LangCheckCAH,JPN"							us		C:\WINDOWS\system32\
+85				Depend	84 ? 86							us	No	C:\WINDOWS\system32\
+86				InstallSysFile	"vc MFC Os Retail, mfc42jpn_dll"					%M		nyi		
+87				CustomAction	"COMMON98.DLL,LangCheckCAH,DEU"							us		C:\WINDOWS\system32\
+88				Depend	87 ? 89							us	No	C:\WINDOWS\system32\
+89				InstallSysFile	"vc MFC Os Retail, mfc42deu_dll"					%M		nyi		
+90				CustomAction	"COMMON98.DLL,LangCheckCAH,FRA"							us		C:\WINDOWS\system32\
+91				Depend	90 ? 92							us	No	C:\WINDOWS\system32\
+92				InstallSysFile	"vc MFC Os Retail, mfc42fra_dll"					%M		nyi		
+93				CustomAction	"COMMON98.DLL,LangCheckCAH,ESP"							us		C:\WINDOWS\system32\
+94				Depend	93 ? 95							us	No	C:\WINDOWS\system32\
+95				InstallSysFile	"vc MFC Os Retail, mfc42esp_dll"					%M		nyi		
+96				CustomAction	"COMMON98.DLL,LangCheckCAH,ITA"							us		C:\WINDOWS\system32\
+97				Depend	96 ? 98							us	No	C:\WINDOWS\system32\
+98				InstallSysFile	"vc MFC Os Retail, mfc42ita_dll"					%M		nyi		
+101				Group	102							nyi		
+102		regsvr32.exe		InstallSysFile	"Sys Files - Regsrv32, regsvr32_exe_3"					%m		nyi		
+111				Group	112 113							us		C:\Program Files\Microsoft Visual Studio\VC98\
+112				InstallShared	"VB Binding Manager,msbind_dll,msbind.dll,,2723"					%M		us		C:\WINDOWS\system32\
+113				Depend	112?114 115							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+114				CopyFile	"VB Binding Manager,msbind_dep"					%112		us		C:\WINDOWS\system32\
+115		msbind.dll		SelfReg	"VB Binding Manager,msbind_dll,,, "					%112		us		C:\WINDOWS\system32\
+121				Group	122 123							us		C:\Program Files\Microsoft Visual Studio\VC98\
+122				InstallShared	"VB STDFMT,msstdfmt_dll,msstdfmt.dll,,2723"					%M		se		
+123				Depend	122?124 125							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+124				CopyFile	"VB STDFMT,msstdfmt_dep"					%122		nyi		
+125		msstdfmt.dll		CustomAction	"COMMON98.DLL,RegisterFile,""VB STDFMT,msstdfmt_dll,3"""					%122		nyi		
+131				Group	132					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+132				Depend	30? 133							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+133				InstallShared	"Debugger NT4 psapi,psapi2_dll,psapi.dll,,2723"					%M		se		
+141				Group	142 143 144 145 146							nyi		
+142				InstallSysFile	"VB Oleaut Files,oleaut32_dll"					%M		nyi		
+143				InstallSysFile	"VB Oleaut Files,stdole2_tlb"					%M		nyi		
+144				InstallSysFile	"VB Oleaut Files,olepro32_dll_2"					%M		nyi		
+145				InstallSysFile	"VB Oleaut Files,asycflt_dll"					%M		nyi		
+146				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""147 148 149"""							nyi		
+147		olepro32.dll		SelfReg	"VB Oleaut Files,olepro32_dll_2,,,"					%144		nyi		
+148		oleaut32.dll		CustomAction	"COMMON98.DLL,RegisterFile,""VB Oleaut Files,oleaut32_dll,1"""					%142		nyi		
+149				CustomAction	"COMMON98.DLL,RegisterTypeLibrary,""VB Oleaut Files;stdole2_tlb"""					%143		nyi		
+151				Group	152							nyi		
+152		msvcrt.dll		InstallSysFile	"Sys Files - CRT Dlls,msvcrt_dll"					%m		nyi		
+161				Group	162 163 165 166 167 168 170 171 172 173 191					%M		us		C:\WINDOWS\system32\
+162				InstallSysFile	"dag Jet, msjet35_dll"					%M		us		C:\WINDOWS\system32\
+163				Depend	162 ? 164							us	Yes	C:\WINDOWS\system32\
+164		msjet35.dll		SelfReg	"dag Jet, msjet35_dll"					%M		us		C:\WINDOWS\system32\
+165				InstallSysFile	"dag Jet, msjint35_dll"					%M		us		C:\WINDOWS\system32\
+166				InstallSysFile	"dag Jet, msjter35_dll"					%M		us		C:\WINDOWS\system32\
+167				InstallSysFile	"dag Jet, msrd2x35_dll"					%M		us		C:\WINDOWS\system32\
+168				Depend	167 ? 169							us	Yes	C:\WINDOWS\system32\
+169		msrd2x35.dll		SelfReg	"dag Jet, msrd2x35_dll"					%167		us		C:\WINDOWS\system32\
+170				InstallSysFile	"dag Jet, msrepl35_dll"					%M		us		C:\WINDOWS\system32\
+171				InstallSysFile	"dag Jet, vbar332_dll_1"					%M		us		C:\WINDOWS\system32\
+172				CopySection	dag Jet Help					%W\Help		us		C:\WINDOWS\Help\
+173				Group	174 175 176 177 178 179 180 181 182					%W\Help		us		C:\WINDOWS\Help\
+174				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetdef35_fts"							us		C:\WINDOWS\Help\
+175				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetdef35_ftg"							us		C:\WINDOWS\Help\
+176				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetdef35_gid"							us		C:\WINDOWS\Help\
+177				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetsql35_fts"							us		C:\WINDOWS\Help\
+178				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetsql35_ftg"							us		C:\WINDOWS\Help\
+179				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jetsql35_gid"							us		C:\WINDOWS\Help\
+180				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jeterr35_fts"							us		C:\WINDOWS\Help\
+181				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jeterr35_ftg"							us		C:\WINDOWS\Help\
+182				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag Jet Help Remove;jeterr35_gid"							us		C:\WINDOWS\Help\
+191				Group	192 193 194							us		C:\WINDOWS\system32\
+192				InstallSysFile	"VBA Additional Files,expsrv_dll"					%M		nyi		
+193				InstallSysFile	"VBA Additional Files,vbajet32_dll"					%M		nyi		
+194				InstallSysFile	"VBA Additional Files,vba332me_dll"					%M		us		C:\WINDOWS\system32\
+201				Group	202 261 251 241					%M		us		C:\WINDOWS\system32\
+202			ODBC Driver Manager	Group	203 204							us		C:\WINDOWS\system32\
+203				CustomAction	"odbcstf.dll,AcmeInstallDriverManager,odbckey.inf"							us		C:\WINDOWS\system32\
+204				Group	205 215 224 234 229							us		C:\WINDOWS\system32\
+205			Installs the ODBC Driver Manager	Group	219 206 207 208 209 210 211 212 213 214							nyi		
+206				InstallSysFile	"dag ODBC Core Components,odbc32_dll"		vital			%201		nyi		
+207				InstallSysFile	"dag ODBC Core Components,odbcad32_exe"		vital			%201		nyi		
+208				InstallSysFile	"dag ODBC Core Components,odbccp32_cpl"		vital			%201		nyi		
+209				InstallSysFile	"dag ODBC Core Components,odbccp32_dll"		vital			%201		nyi		
+210				InstallSysFile	"dag ODBC Core Components,odbccr32_dll"		vital			%201		nyi		
+211				InstallSysFile	"dag ODBC Core Components,odbcint_dll"		vital			%201		nyi		
+212				InstallSysFile	"dag ODBC Core Components,odbctrac_dll"		vital			%201		nyi		
+213				InstallSysFile	"dag ODBC Core Components,mtxdm_dll"		vital			%201		nyi		
+214				InstallSysFile	"dag ODBC Core Components,odbccu32_dll"					%201		nyi		
+215			Installs the ODBC Brazos Files	Group	216 217 218							us		C:\WINDOWS\system32\
+216				InstallSysFile	"dag ODBC Brazos Components,odbcji32_dll_1"					%201		nyi		
+217				InstallSysFile	"dag ODBC Brazos Components,odbcjt32_dll_1"					%201		nyi		
+218				InstallSysFile	"dag ODBC Brazos Components,odbctl32_dll_1"					%201		us		C:\WINDOWS\system32\
+219			Installs ODBC Thunking Layer	Group	220 221 222 223					%201		nyi		
+220				InstallSysFile	"dag ODBC Core Components,odbc16gt_dll"		vital			%201		nyi		
+221				InstallSysFile	"dag ODBC Core Components,odbc32gt_dll"		vital			%201		nyi		
+222				InstallSysFile	"dag ODBC Core Components,ds16gt_dll"		vital			%201		nyi		
+223				InstallSysFile	"dag ODBC Core Components,ds32gt_dll"		vital			%201		nyi		
+224			ODBC Code Page Translators	Group	225 226 227 228							us		C:\WINDOWS\system32\
+225				InstallSysFile	"dag ODBC CodePage Trans,mscpxl32_dll"		vital			%201		nyi		
+226				InstallSysFile	"dag ODBC CodePage Trans,12520437_cpx"		vital			%201		us		C:\WINDOWS\system32\
+227				InstallSysFile	"dag ODBC CodePage Trans,12520850_cpx"		vital			%201		us		C:\WINDOWS\system32\
+228				CustomAction	"odbcstf.dll,AcmeInstallTranslator,odbckey.inf:Translators"					%201		us		C:\WINDOWS\system32\
+229			ODBC Help Files	Group	230 231 232 233							us		C:\WINDOWS\system32\
+230				InstallSysFile	"dag ODBC Help Files,odbcinst_cnt_1"					%201		us		C:\WINDOWS\system32\
+231				InstallSysFile	"dag ODBC Help Files,odbcinst_hlp_1"					%201		us		C:\WINDOWS\system32\
+232				InstallSysFile	"dag ODBC Help Files,odbcjet_cnt_1"					%201		us		C:\WINDOWS\system32\
+233				InstallSysFile	"dag ODBC Help Files,odbcjet_hlp_1"					%201		us		C:\WINDOWS\system32\
+234			ODBC SQL Net Libs	Group	235 236 237							us		C:\WINDOWS\system32\
+235				InstallSysFile	"dag ODBC SQL Net Libs,dbnmpntw_dll"					%M		nyi		
+236				InstallSysFile	"dag ODBC SQL Net Libs,dbmssocn_dll"					%M		us		C:\WINDOWS\system32\
+237				InstallSysFile	"dag ODBC SQL Net Libs,instcat_sql"					%M		us		C:\WINDOWS\system32\
+241				Group	242							us		C:\WINDOWS\system32\
+242				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""243 244 245 246 247"""					%8\system\ole db		us		C:\Program Files\Common Files\system\ole db\
+243				CopyFile	"dag OLEDB DataSourceLocator,msdasc_dll"					%242		se		
+244		msdasc.dll		SelfReg	"dag OLEDB DataSourceLocator, msdasc_dll"					%243		us		C:\Program Files\Common Files\system\ole db\
+245				CopyFile	"dag OLEDB DataSourceLocator,msdasc_chm"					%242		us		C:\Program Files\Common Files\system\ole db\
+246				CopyFile	"dag OLEDB DataSourceLocator,msdasc_cnt"					%242		us		C:\Program Files\Common Files\system\ole db\
+247				CopyFile	"dag OLEDB DataSourceLocator,msdasc_txt"					%242		us		C:\Program Files\Common Files\system\ole db\
+251				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""252 253 254 255"""					%8\system\ole db		us		C:\Program Files\Common Files\system\ole db\
+252				CopyFile	"dag Chinook,msdasql_dll"					%251		se		
+253		msdasql.dll		SelfReg	"dag Chinook,msdasql_dll"					%252		us		C:\Program Files\Common Files\system\ole db\
+254				CopyFile	"dag Chinook,msdasqlr_dll"					%251		se		
+255				CopyFile	"dag Chinook,oledb_me_txt"					%251		us		C:\Program Files\Common Files\system\ole db\
+261				Group	262 263					%8\system\ole db		us		C:\Program Files\Common Files\system\ole db\
+262				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""264 265 266 267 268 269 270"""					%261		us		C:\Program Files\Common Files\system\ole db\
+263				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""271 272 273 274 275 276 277 278 279 280 281"""					%261		us		C:\Program Files\Common Files\system\ole db\
+264				CopyFile	"dag OLEDB Core,msdadc_dll"					%261		se		
+265		msdadc.dll		SelfReg	"dag OLEDB Core,msdadc_dll"					%264		us		C:\Program Files\Common Files\system\ole db\
+266				CopyFile	"dag OLEDB Core,msdaer_dll"					%261		se		
+267		msdaer.dll		SelfReg	"dag OLEDB Core,msdaer_dll"					%266		us		C:\Program Files\Common Files\system\ole db\
+268				CopyFile	"dag OLEDB Core,msdaerr_dll"					%261		us		C:\Program Files\Common Files\system\ole db\
+269				CopyFile	"dag OLEDB Core,msdaps_dll"					%261		se		
+270		MSDAPS.DLL		SelfReg	"dag OLEDB Core,msdaps_dll"					%269		us		C:\Program Files\Common Files\system\ole db\
+271				CopyFile	"dag OLEDB Core,msdatt_dll"					%261		se		
+272		msdatt.dll		SelfReg	"dag OLEDB Core,msdatt_dll"					%271		us		C:\Program Files\Common Files\system\ole db\
+273				CopyFile	"dag OLEDB Core,msdaenum_dll"					%261		se		
+274		msdaenum.dll		SelfReg	"dag OLEDB Core,msdaenum_dll"					%273		us		C:\Program Files\Common Files\system\ole db\
+275				CopyFile	"dag OLEDB Core,msdatl2_dll"					%261		us		C:\Program Files\Common Files\system\ole db\
+276				CopyFile	"dag OLEDB Core,oledb32x_dll"					%261		us		C:\Program Files\Common Files\system\ole db\
+277		oledb32x.dll		SelfReg	"dag OLEDB Core,oledb32x_dll"					%276		us		C:\Program Files\Common Files\system\ole db\
+278				CopyFile	"dag OLEDB Core,oledb32_dll"					%261		se		
+279		oledb32.dll		SelfReg	"dag OLEDB Core,oledb32_dll"					%278		us		C:\Program Files\Common Files\system\ole db\
+280				CopyFile	"dag OLEDB Core,oledb32r_dll"					%261		se		
+281		oledb32r.dll		SelfReg	"dag OLEDB Core,oledb32r_dll"					%280		us		C:\Program Files\Common Files\system\ole db\
+291	yes	&Typical		Group	296 317 302 304 305 312 308 319 2371  294  293  1791	"VC98Lrn.DLL,102"				%3		us		C:\Program Files\Microsoft Visual Studio\VC98\
+292	yes	C&ustom	Setup will allow you to customize which components to install	CustomDlg	296 317 298 306 1801 2372  293  : 294 1791	"VC98Lrn.DLL,103"			yes	%3		us		C:\Program Files\Microsoft Visual Studio\VC98\
+293	yes	ActiveX Controls	Installs various ActiveX Controls	Group	1861 2091 1811					%M		us		C:\WINDOWS\system32\
+294	yes			Group	1101 1091 1051 861 320 321 1581 331  2771 295 1601 1641 1491 1591 1531 351 2681 751 1781					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+295				CustomAction	"COMMON98.DLL,CarryOver"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+296	yes	VC++ Developer Studio	"Installs Development Environment, Wizards and Debugger."	Group	421 441 481 501 491 701 631 611 601 571 561 551 461 471 451 1361 1521 1511  1671 297					%6\MSDev98		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+297				CustomAction	"COMMON98.DLL, NopCAH"					%6\MSDev98		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+298	yes	VC++ Runtime Libraries	Installs VC++ Runtime Library Files	OptionDlg	305 302 300 304 : 299					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+299				CustomAction	"COMMON98.DLL, NopCAH"					%D\Lib		nyi		
+300		CRT Source Code	Installs VC++ CRT Source Code Files	Group	301 1071 1021 971 961 951 941 931 921 911					%D		nyi		
+301				CustomAction	"COMMON98.DLL, NopCAH"					%D\CRT\SRC		nyi		
+302	yes	Shared CRT Libraries	Installs VC++ Shared CRT Library Files	Group	1081 1061 1041 1011 881 303					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+303				CustomAction	"COMMON98.DLL, NopCAH"					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+304	yes	Single Threaded CRT Libraries	Installs VC++ Single Threaded CRT Libraries Files	Group	1081 1061 1041 891 871					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+305	yes	Static CRT Libraries	Installs VC++ Static CRT Libraries Files	Group	1061 1041 1031 901					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+306	yes	VC++ MFC and Template Libraries	"Installs the headers, libraries, sources and browser database for MFC and ATL."	OptionDlg	310 308 : 307					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+307				CustomAction	"COMMON98.DLL, NopCAH"					%D\MFC		nyi		
+308	yes	MS Active Template Libraries	"Installs the headers, libraries, and sources for ATL"	Group	1481 1471 1461 1451 1441 309					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+309				CustomAction	"COMMON98.DLL, NopCAH"					%D\ATL		us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\
+310	yes	MS Foundation Class Libraries	"Installs the headers, libraries, sources, debug symbols, and browser database for MFC"	OptionDlg	314  315 313 316 : 1351 1341 1381 1331 1321 1311 1301 1291 1281 1111 311					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+311				CustomAction	"COMMON98.DLL, NopCAH"					%D\MFC		nyi		
+312				Group	1351 1341 1381 1331 1321 1311 1301 1291 1281  314 316 1111					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+313		Browser Database	"Installs the MFC.BSC Browser database, which allows for easy browsing of the MFC source files"	Group	1401							nyi		
+314	yes	Shared Libraries	"Installs the headers, libraries, and debug symbols  for dynamic linkage to the Shared MFC DLLs"	Group	1481 1411 1161 1181 1391 1131 1121 1451							us		C:\Program Files\Microsoft Visual Studio\VC98\
+315		Shared Libraries for Unicode	"Installs the headers, libraries, and debug symbols for dynamic linkage to the Shared Unicode MFC DLLs"	Group	1481 1191 1411 1391 1141 1121 1451 1171 1151							nyi		
+316	yes	Source Code	"Installs the Sources to the Static, Shared, and Unicode MFC Libraries"	Group	1421 1371 1271 1261 1231 1251 1241 1211 1201 1221							us		C:\Program Files\Microsoft Visual Studio\VC98\
+317	yes	VC++ Build Tools	"Installs Compiler, Linker, NMAKE, MIDL, Dumpbin, Bscmake, etc."	Group	491  411 851 831 821 811 791 781 771 761 318							us		C:\Program Files\Microsoft Visual Studio\VC98\
+318				CustomAction	"COMMON98.DLL, NopCAH"					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+319				Group	1802 1803 1804 1805 1806 1807							us		C:\Program Files\Microsoft Visual Studio\VC98\
+320	yes			AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual C++,ProductDir,%s"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+321				Depend	26 ? 322							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+322				AddRegData	"LOCAL,""Software\Microsoft\IE4\DependentComponents"",""VC98"","""""							us		C:\Program Files\Microsoft Visual Studio\VC98\
+331				Group	332 338 339					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+332				Depend	317 ? 333:336							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+333				Depend	28? 334:335							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+334				CustomAction	"COMMON98.DLL,VCVARS95"							nyi		
+335				CustomAction	"COMMON98.DLL,VCVARSNT"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+336				Depend	296 ? 337							nyi		
+337				CustomAction	"COMMON98.DLL,AskSetEnv"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+338	yes			AddRegData	"LOCAL,Software\Microsoft\DevStudio\6.0\Products\Microsoft Visual C++,ProductDir,%s"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+339				Depend	30? 340							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+340				Depend	335? 342 343:341							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+341				Depend	337 ? 342 343							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+342				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;path;%s\bin"							nyi		
+343				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;path;%s"					%6\Tools		nyi		
+351				Group	401 391 381 371 361					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+361				Group	362					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+362				CopySection	da svc lib					%d\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+371				Group	372					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+372				CopySection	da svc header					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+381				Group	382					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+382				CopySection	oledb header					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+391				Group	392					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+392				CopySection	oledb libs					%d\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+401				Group	402					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+402				CopySection	ado header					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+411				Group	412					%6\MSDev98\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+412				CopySection	vc Only Common IDE and Tools					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+421				Group	422 423 425 426 428 429 431  432					%d\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+422				CustomAction	"COMMON98.DLL,LangCheckCAH,CHS"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+423				Depend	422 ? 424							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+424				CopyFile	"VC - AppWiz Resources Dbyte,appwzchs_dll"					%d		nyi		
+425				CustomAction	"COMMON98.DLL,LangCheckCAH,CHT"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+426				Depend	425 ? 427							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+427				CopyFile	"VC - AppWiz Resources Dbyte,appwzcht_dll"					%d		nyi		
+428				CustomAction	"COMMON98.DLL,LangCheckCAH,JPN"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+429				Depend	428 ? 430							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+430				CopyFile	"VC - AppWiz Resources Dbyte,appwzjpn_dll"					%d		nyi		
+431				CustomAction	"COMMON98.DLL,LangCheckCAH,KOR"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+432				Depend	431 ? 433							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+433				CopyFile	"VC - AppWiz Resources Dbyte,appwzkor_dll"					%d		nyi		
+441				Group	442					%d		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+442				CopySection	VC - AppWiz Resources Sbyte					%d\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+451				Group	452					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+452				CopySection	VC - MSDEV ObjMod Header					%d\Include\ObjModel		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\ObjModel\
+461				Group	462 463 464 465 466 467 468 469					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+462				CopyFile	"VC - Native Debugger,autoexp_dat"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+463				CopyFile	"VC - Native Debugger,dm_dll"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+464				CopyFile	"VC - Native Debugger,eecxx_dll"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+465				CopyFile	"VC - Native Debugger,em_dll"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+466				CopyFile	"VC - Native Debugger,msvcmon_exe"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+467				CopyFile	"VC - Native Debugger,tlloc_dll"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+468				CopyFile	"VC - Native Debugger,tln0t_dll"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+469				InstallShared	"VC - Native Debugger, shcv_dll,shcv.dll,,2723"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+471				Group	472					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+472				Depend	30? 473 474 475 476							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+473				CopyFile	"vc NT DBG Setup, setupdbg_exe"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+474				CopyFile	"vc NT DBG Setup, setupdbg_inf"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+475				InstallShortcut	"%473\%F473,Windows NT Symbols Setup,%473 , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+476				CustomAction	"COMMON98.DLL,ShowDialog,""23;24"""							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+481				Group	482 483 484 486 487 488 489							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+482				CopyFile	"VC - ATL Wiz, atlwiz_awx"					%d\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+483				CopyFile	"VC - ATL Wiz, atlobj_dll"					%d\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+484				Depend	483 ? 485							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+485		atlobj.dll		CustomAction	"COMMON98.DLL,RegisterFile,""VC - ATL Wiz,atlobj_dll,3"""					%483		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+486				CopySection	VC - ATL WizTemplates 1					%d\Template\ATL		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\ATL\
+487				CopySection	VC - ATL WizTemplates 2					%d\Template\ATL		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\ATL\
+488				CopySection	VC - ATL WizTemplates 3					%d\Template\ATL		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\ATL\
+489				CopySection	VC - ATL WizTemplates 4					%d\Template\ATL		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\ATL\
+491				Group	492					%6\MSDev98\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+492				Group	493 494							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+493				InstallShared	"vc IDE and Tools, msdis100_dll, msdis110.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+494				InstallShared	"vc IDE and Tools, mspdb50_dll, mspdb60.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+501				Group	502 515					%D\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+502				Group	503 504 505 506 507 508 509 510  512 513 514 511 541 543							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+503				InstallShared	"vc Core IDE, msdevs_exe, msdev.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+504				InstallShared	"vc Core IDE, autolayt_dll, autolayt.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+505				InstallShared	"vc Core IDE, devedit_pkg,devedit_pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+506				InstallShared	"vc Core IDE, devprj_pkg,devprj_pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+507				InstallShared	"vc Core IDE, devshl_dll,devshl_dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+508				InstallShared	"vc Core IDE, langext_dat, langext.dat,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+509				InstallShared	"vc Core IDE, macrocpp_dat, macrocpp.dat,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+510				InstallShared	"vc Core IDE, mfcclwz_dll, mfcclwz.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+511				InstallShared	"vc Core IDE,feacp_dll, feacp.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+512				InstallShared	"vc Core IDE, sysincl_dat, sysincl.dat,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+513				InstallShared	"vc Core IDE, vcspawn_exe, vcspawn.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+514				InstallShortcut	"%503\%F503,Microsoft Visual C++ 6.0,,,,,"					%27\Microsoft Visual C++ 6.0		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\
+515				Group	516 521 527 517 518 519 528 530 520 532					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+516				InstallShared	"vc Core IDE, devtldc_dll, devtldc.dll,,2723"					%M		us		C:\WINDOWS\system32\
+517				InstallShared	"vc Core IDE, crt_ncb,crt.ncb,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+518				InstallShared	"vc Core IDE, mfcatl_ncb,mfcatl.ncb,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+519				InstallShared	"vc Core IDE, win32_ncb,win32.ncb,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+520				InstallShared	"vc Core IDE, msdev_com,msdev.com,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+521				Depend	503 ? 522 544							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+522				Depend	30? 523 526							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+523				Depend	337 ? 524 525							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+524				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;MSDevDir;%s"					%6\MSDev98		nyi		
+525				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;path;%s"					%6\MSDev98\Bin		nyi		
+526				CustomAction	"COMMON98.DLL,DeleteRegValue,HKCU;Environment;MSDevDir"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+527				CustomAction	"COMMON98.DLL,JIT,""%s\msdev.exe;Software\Microsoft\VisualStudio\6.0\"""					%6\MSDev98\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+528				Depend	503 ? 529							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+529				Group	1541							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+530				Depend	503 ? 531							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+531				StampCDInfo	"503,20001, 20000"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+532				Depend	503 ? 533 534 535 536 537 538							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+533				CustomAction	"COMMON98.DLL,DeleteRegKey,HKCU;software\microsoft\devstudio\6.0"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+534				CustomAction	"COMMON98.DLL,DeleteRegKey,HKLM;software\microsoft\devstudio\6.0"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+535				CustomAction	"COMMON98.DLL,DetectAnyKey,HKLM;software\microsoft\devstudio"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+536				CustomAction	"COMMON98.DLL,DetectAnyKey,HKCU;software\microsoft\devstudio"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+537				Depend	535?:539							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+538				Depend	536?:540							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+539				CustomAction	"COMMON98.DLL,DeleteRegKey,HKLM;software\microsoft\devstudio"							nyi		
+540				CustomAction	"COMMON98.DLL,DeleteRegKey,HKCU;software\microsoft\devstudio"							nyi		
+541				Depend	503 ? 542							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+542				CustomAction	"COMMON98.DLL,LaunchExeCAH,""""""%s\msdev.exe"""" /unregister"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+543				CustomAction	"COMMON98.DLL,AddTool,0;0;/v ""$(TargetPath)"";Re&gister Control;1;$(TargetDir);Re&gister Control;0;%s\regsvr32.exe;0;"					%M		us		C:\WINDOWS\system32\
+544				AddRegData	"LOCAL,Software\Microsoft\Windows\CurrentVersion\App Paths\msdev.exe,"""",%s\msdev.exe,"""""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+551				InstallShared	"vc IDE Wizards, appwzenu_dll, appwzenu.dll,,2723"					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+561				InstallShared	"vc IDE Templates, mfc_rct, mfc.rct,,2723"					%D\Template		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\
+571				Group	572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 588 589 590 591 592 593 594 595					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+572				InstallShared	"vc IDE Packages, addinwz_awx, addinwz.awx,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+573				InstallShared	"vc IDE Packages, devaut1_pkg, devaut1.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+574				InstallShared	"vc IDE Packages, devbied_pkg, devbied.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+575				InstallShared	"vc IDE Packages, devbld_pkg, devbld.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+576				InstallShared	"vc IDE Packages, devclvw_pkg, devclvw.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+577				InstallShared	"vc IDE Packages, devcpp_pkg, devcpp.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+578				InstallShared	"vc IDE Packages, devdbg_pkg, devdbg.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+579				InstallShared	"vc IDE Packages, devgal_pkg, devgal.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+580				InstallShared	"vc IDE Packages, devhtmx_pkg, devhtmx.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+581				InstallShared	"vc IDE Packages, devncb_pkg, devncb.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+582				InstallShared	"vc IDE Packages, devodl_pkg, devodl.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+583				InstallShared	"vc IDE Packages, devres_pkg, devres.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+584				InstallShared	"vc IDE Packages, devtool_pkg, devtool.pkg,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+585				InstallShared	"vc IDE Packages, devxpgl_dll, devxpgl.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+586				Depend	585 ? 587							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+587		devxpgl.dll		SelfReg	"vc IDE Packages, devxpgl_dll,,,"					%585		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+588				InstallShared	"vc IDE Packages, inetawz_awx, inetawz.awx,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+589				InstallShared	"vc IDE Packages, mfcapwz_dll, mfcapwz.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+590				InstallShared	"vc IDE Packages, mfctlwz_awx, mfctlwz.awx,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+591				InstallShared	"vc IDE Packages, msdev_tip, msdev.tip,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+592				InstallShared	"vc IDE Packages, tools_tip, tools.tip,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+593				InstallShared	"vc IDE Packages, vcxx_tip, vcxx.tip,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+594				CopySection	VC IDE Packages2							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+595				Depend	577 ? 596							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+596				StampCDInfo	"577,20001, 20000"							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+601				Group	602 603					%D\Macros		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Macros\
+602				InstallShared	"vc IDE Macros, sample_dsm, sample.dsm,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Macros\
+603				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""sample.dsm"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Macros\
+611				Group	612 613					%D\Help		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+612				Group	614 615 616					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+613				Group	617 618 619 623 622 620 621					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+614				InstallShared	"vc IDE Help, exthelp_cnt, exthelp.cnt,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+615				InstallShared	"vc IDE Help, exthelp_hlp, exthelp.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+616				InstallShared	"vc IDE Help, msdev_hlp, msdev.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+617				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""exthelp.cnt"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+618				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""exthelp.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+619				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""msdev.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+620				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Help;msdev_gid"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+621				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Help;exthelp_gid"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+622				CustomAction	"COMMON98.DLL,CheckRegKey,""LOCAL,Software\Microsoft\DevStudio\6.0\Help\Extension"""							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+623				Depend	622 ? : 624							us	No	C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+624				Group	625 626 627					%615		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+625				AddRegData	"""LOCAL"",""Software\Microsoft\DevStudio\6.0\Help\Extension"",""Enable"",""1"",""DWORD"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+626				AddRegData	"""LOCAL"",""Software\Microsoft\DevStudio\6.0\Help\Extension"",""Filename"",""%s\exthelp.hlp"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+627				AddRegData	"""LOCAL"",""Software\Microsoft\DevStudio\6.0\Help\Extension"",""State"",""0"",""DWORD"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Help\
+631				Group	632 633 634					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+632				Group	635 636 637 638 639 640 641  642 643 644 645 646 647 648 649 650 651 652 653 654 655					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+633				Group	656 657 658 659 660 661 662  663 664 665 666 667 668 669 670 671 672 673 674 675 676					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+634				Group	677 678 679 680 681 682 683 684 685 686 687 688 689 690 691 692 693 694 695 696 697					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+635				InstallShared	"vc IDE Gallery Help, cawutil_hlp, cawutil.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+636				InstallShared	"vc IDE Gallery Help, clipasst_hlp, clipasst.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+637				InstallShared	"vc IDE Gallery Help, ctip_hlp, ctip.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+638				InstallShared	"vc IDE Gallery Help, dlgbar_hlp, dlgbar.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+639				InstallShared	"vc IDE Gallery Help, docreg_hlp, docreg.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+640				InstallShared	"vc IDE Gallery Help, guidgen_hlp, guidgen.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+641				InstallShared	"vc IDE Gallery Help, idle_hlp, idle.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+642				InstallShared	"vc IDE Gallery Help, mapicomp_hlp, mapicomp.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+643				InstallShared	"vc IDE Gallery Help, media_hlp, media.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+644				InstallShared	"vc IDE Gallery Help, occ_hlp, occ.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+645				InstallShared	"vc IDE Gallery Help, owndraw_hlp, owndraw.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+646				InstallShared	"vc IDE Gallery Help, palette_hlp, palette.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+647				InstallShared	"vc IDE Gallery Help, popup_hlp, popup.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+648				InstallShared	"vc IDE Gallery Help, progdlg_hlp, progdlg.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+649				InstallShared	"vc IDE Gallery Help, propsht_hlp, propsht.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+650				InstallShared	"vc IDE Gallery Help, sockets_hlp, sockets.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+651				InstallShared	"vc IDE Gallery Help, splash_hlp, splash.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+652				InstallShared	"vc IDE Gallery Help, splitter_hlp, splitter.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+653				InstallShared	"vc IDE Gallery Help, statbar_hlp, statbar.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+654				InstallShared	"vc IDE Gallery Help, sysinfo_hlp, sysinfo.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+655				InstallShared	"vc IDE Gallery Help, tooltips_hlp, tooltips.hlp,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+656				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""cawutil.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+657				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""clipasst.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+658				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""ctip.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+659				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""dlgbar.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+660				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""docreg.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+661				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""guidgen.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+662				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""idle.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+663				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""mapicomp.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+664				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""media.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+665				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""occ.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+666				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""owndraw.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+667				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""palette.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+668				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""popup.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+669				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""progdlg.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+670				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""propsht.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+671				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""sockets.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+672				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""splash.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+673				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""splitter.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+674				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""statbar.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+675				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""sysinfo.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+676				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""tooltips.hlp"", ""%s"""					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+677				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;cawutil_gid"					%635		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+678				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;clipasst_gid"					%657		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+679				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;ctip_gid"					%637		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+680				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;dlgbar_gid"					%638		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+681				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;docreg_gid"					%639		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+682				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;guidgen_gid"					%640		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+683				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;idle_gid"					%641		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+684				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;mapicomp_gid"					%642		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+685				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;media_gid"					%643		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+686				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;occ_gid"					%644		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+687				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;owndraw_gid"					%645		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+688				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;palette_gid"					%646		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+689				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;popup_gid"					%647		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+690				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;progdlg_gid"					%648		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+691				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;propsht_gid"					%649		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+692				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;sockets_gid"					%650		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+693				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;splash_gid"					%651		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+694				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;splitter_gid"					%652		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+695				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;statbar_gid"					%653		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+696				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;sysinfo_gid"					%654		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+697				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc IDE Gallery Help RemoveOnly;tooltips_gid"					%655		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+701				Group	702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722 723 745					%D\Bin\IDE		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+702				InstallShared	"vc IDE Gallery, cawutil_dll, cawutil.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+703				InstallShared	"vc IDE Gallery, clipasst_dll, clipasst.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+704				InstallShared	"vc IDE Gallery, ctip_dll, ctip.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+705				InstallShared	"vc IDE Gallery, dlgbar_dll, dlgbar.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+706				InstallShared	"vc IDE Gallery, docreg_dll, docreg.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+707				InstallShared	"vc IDE Gallery, guidgen_dll, guidgen.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+708				InstallShared	"vc IDE Gallery, idle_dll, idle.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+709				InstallShared	"vc IDE Gallery, mapicomp_dll, mapicomp.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+710				InstallShared	"vc IDE Gallery, media_dll, media.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+711				InstallShared	"vc IDE Gallery, occ_dll, occ.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+712				InstallShared	"vc IDE Gallery, owndraw_dll, owndraw.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+713				InstallShared	"vc IDE Gallery, palette_dll, palette.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+714				InstallShared	"vc IDE Gallery, popup_dll, popup.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+715				InstallShared	"vc IDE Gallery, progdlg_dll, progdlg.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+716				InstallShared	"vc IDE Gallery, propsht_dll, propsht.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+717				InstallShared	"vc IDE Gallery, sockets_dll, sockets.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+718				InstallShared	"vc IDE Gallery, splash_dll, splash.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+719				InstallShared	"vc IDE Gallery, splitter_dll, splitter.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+720				InstallShared	"vc IDE Gallery, statbar_dll, statbar.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+721				InstallShared	"vc IDE Gallery, sysinfo_dll, sysinfo.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+722				InstallShared	"vc IDE Gallery, tooltips_dll, tooltips.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+723				Group	724 725 726 727 728 729 730 731 732 733 734 735 736 737 738 739 740 741 742 743 744							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+724		cawutil.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,cawutil_dll,3"""					%702		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+725		clipasst.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,clipasst_dll,3"""					%703		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+726		ctip.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,ctip_dll,3"""					%704		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+727		dlgbar.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,dlgbar_dll,3"""					%705		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+728		docreg.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,docreg_dll,3"""					%706		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+729		guidgen.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,guidgen_dll,3"""					%707		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+730		idle.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,idle_dll,3"""					%708		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+731		mapicomp.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,mapicomp_dll,3"""					%709		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+732		media.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,media_dll,3"""					%710		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+733		occ.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,occ_dll,3"""					%711		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+734		owndraw.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,owndraw_dll,3"""					%712		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+735		palette.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,palette_dll,3"""					%713		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+736		popup.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,popup_dll,3"""					%714		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+737		progdlg.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,progdlg_dll,3"""					%715		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+738		propsht.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,propsht_dll,3"""					%716		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+739		sockets.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,sockets_dll,3"""					%717		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+740		splash.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,splash_dll,3"""					%718		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+741		splitter.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,splitter_dll,3"""					%719		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+742		statbar.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,statbar_dll,3"""					%720		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+743		sysinfo.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,sysinfo_dll,3"""					%721		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+744		tooltips.dll		CustomAction	"COMMON98.DLL,RegisterFile,""vc IDE Gallery,tooltips_dll,3"""					%722		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+745				CreateDir	Gallery					%6\MSDev98		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+751				Group	752 753					%6\MSDev98\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+752				CopyFile	"VC SQL debugger Self Reg,nsodbc_dll"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+753		nsodbc.dll		SelfReg	"VC SQL debugger Self Reg,nsodbc_dll,,,"					%752		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+761				CopyFile	"Delay Imp Lib Section,delayimp_lib_1"					%294\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+771				CopySection	Delay Imp Includes Section					%294\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+781				Group	782					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+782				Depend	30? 783							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+783				Depend	335 ? 784 785							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+784				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;include;%s\include"					%D		nyi		
+785				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;lib;%s\lib"					%D		nyi		
+791				Group	792 793 794 801					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+792				CopySection	win32sdk build tools					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+793				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""mc.hlp"", ""%s"", """" "					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+794				CustomAction	"COMMON98.DLL,RemoveAuxFile,win32sdk build tools RemoveOnly;mc_gid"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+801				Group	802					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+802				InstallShared	"win32sdk general build tools,guidgen_exe,guidgen.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+811				Group	812					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+812				CopySection	VC - Utilities					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+821				Group	822 823 824  825					%294\Bin		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+822				CopySection	VC - Compiler Back End Lrn							us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+823				CopySection	VC - Compiler Front End							us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+824				AddRegData	"LOCAL,SOFTWARE\Microsoft\VisualStudio\6.0\Setup,VSCommonDir,%s,"					%6		us		C:\Program Files\Microsoft Visual Studio\Common\
+825				CustomAction	"COMMON98.DLL,MakeSetVarBat,%s\vcvars32.bat"					%294\Bin		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+831				Group	832 833 834 835 836 837 838 839 840 841 842 843 846 844 845					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+832				InstallShared	"VC - Help Tools, hcrtf_exe,hcrtf.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+833				InstallShared	"VC - Help Tools, hcw_cnt,hcw.cnt,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+834				InstallShared	"VC - Help Tools, hcw_exe,hcw.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+835				InstallShared	"VC - Help Tools, hcw_hlp,hcw.hlp,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+836				InstallShared	"VC - Help Tools, hwdll_dll,hwdll.dll,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+837				InstallShared	"VC - Help Tools, makehm_exe,makehm.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+838				InstallShared	"VC - Help Tools, mrbc_exe,mrbc.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+839				InstallShared	"VC - Help Tools, shed_exe,shed.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+840				InstallShared	"VC - Help Tools, shed_hlp,shed.hlp,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+841				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""hcw.cnt"", ""%s"", """" "					%833		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+842				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""hcw.hlp"", ""%s"", """" "					%835		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+843				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""shed.hlp"", ""%s"", """" "					%840		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+844				CustomAction	"COMMON98.DLL,RemoveAuxFile,VC - Help Tools;hcw_gid_1"					%835		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+845				CustomAction	"COMMON98.DLL,RemoveAuxFile,VC - Help Tools;shed_gid_1"					%840		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+846				Depend	834 ? 847							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+847				InstallShortcut	"%834\%F834, helpwrks<Help Workshop>, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+851				Group	852 853 854					%6\MSDev98		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+852				CopySection	VC - Resource Compiler					%d\Bin		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+853				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""rc.hlp"", ""%s"", """" "					%852		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+854				CustomAction	"COMMON98.DLL,RemoveAuxFile,VC - Resource Compiler RemoveOnly;rc_gid"					%852		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+861				Group	862 863 864							us		C:\Program Files\Microsoft Visual Studio\VC98\
+862				CopyFile	"Vc Crt OS Debug,msvcirtd_dll"					%M		us		C:\WINDOWS\system32\
+863				CopyFile	"Vc Crt OS Debug,msvcrtd_dll"					%M		us		C:\WINDOWS\system32\
+864				CopyFile	"Vc Crt OS Debug,msvcp50d_dll"					%M		us		C:\WINDOWS\system32\
+871				Group	872							us		C:\Program Files\Microsoft Visual Studio\VC98\
+872				CopySection	CRT Stat Sin Thrd Sym					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+881				Group	882							us		C:\Program Files\Microsoft Visual Studio\VC98\
+882				CopySection	CRT Shr Sym					%M		us		C:\WINDOWS\system32\
+891				Group	892							us		C:\Program Files\Microsoft Visual Studio\VC98\
+892				CopySection	CRT Stat Sin Trd Lib					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+901				Group	902							us		C:\Program Files\Microsoft Visual Studio\VC98\
+902				CopySection	CRT Stat Lib					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+911				Group	912 913 914							nyi		
+912				CopySection	CRT Src Int xst_lib1					%D\CRT\SRC\Intel\XSt_lib		nyi		
+913				CopySection	CRT Src Int xst_lib2					%D\CRT\SRC\Intel\XSt_lib		nyi		
+914				CopySection	CRT Src Int xst_lib3					%D\CRT\SRC\Intel\XSt_lib		nyi		
+921				Group	922 923 924							nyi		
+922				CopySection	CRT Src Int xmt_lib1					%D\CRT\SRC\Intel\XMt_lib		nyi		
+923				CopySection	CRT Src Int xmt_lib2					%D\CRT\SRC\Intel\XMt_lib		nyi		
+924				CopySection	CRT Src Int xmt_lib3					%D\CRT\SRC\Intel\XMt_lib		nyi		
+931				Group	932 933 934							nyi		
+932				CopySection	CRT Src Int xdll_lib1					%D\CRT\SRC\Intel\XDll_lib		nyi		
+933				CopySection	CRT Src Int xdll_lib2					%D\CRT\SRC\Intel\XDll_lib		nyi		
+934				CopySection	CRT Src Int xdll_lib3					%D\CRT\SRC\Intel\XDll_lib		nyi		
+941				Group	942 943 944							nyi		
+942				CopySection	CRT Src Int st_lib1					%D\CRT\SRC\Intel\St_lib		nyi		
+943				CopySection	CRT Src Int st_lib2					%D\CRT\SRC\Intel\St_lib		nyi		
+944				CopySection	CRT Src Int st_lib3					%D\CRT\SRC\Intel\St_lib		nyi		
+951				Group	952 953 954							nyi		
+952				CopySection	Src Int MT Lib1					%D\CRT\SRC\Intel\Mt_lib		nyi		
+953				CopySection	Src Int MT Lib2					%D\CRT\SRC\Intel\Mt_lib		nyi		
+954				CopySection	Src Int MT Lib3					%D\CRT\SRC\Intel\Mt_lib		nyi		
+961				Group	962 963 964 965							nyi		
+962				CopySection	Src Int Dll Lib1					%D\CRT\SRC\Intel\Dll_lib		nyi		
+963				CopySection	Src Int Dll Lib2					%D\CRT\SRC\Intel\Dll_lib		nyi		
+964				CopySection	Src Int Dll Lib3					%D\CRT\SRC\Intel\Dll_lib		nyi		
+965				CopySection	Src Int Dll Lib4					%D\CRT\SRC\Intel\Dll_lib		nyi		
+971				Group	972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009							nyi		
+972				CopySection	VC CRT SRC Common1					%D\CRT\SRC		nyi		
+973				CopySection	VC CRT SRC Common2					%D\CRT\SRC		nyi		
+974				CopySection	VC CRT SRC Common3					%D\CRT\SRC		nyi		
+975				CopySection	VC CRT SRC Common4					%D\CRT\SRC		nyi		
+976				CopySection	VC CRT SRC Common5					%D\CRT\SRC		nyi		
+977				CopySection	VC CRT SRC Common6					%D\CRT\SRC		nyi		
+978				CopySection	VC CRT SRC Common7					%D\CRT\SRC		nyi		
+979				CopySection	VC CRT SRC Common8					%D\CRT\SRC		nyi		
+980				CopySection	VC CRT SRC Common9					%D\CRT\SRC		nyi		
+981				CopySection	VC CRT SRC Common10					%D\CRT\SRC		nyi		
+982				CopySection	VC CRT SRC Common11					%D\CRT\SRC		nyi		
+983				CopySection	VC CRT SRC Common12					%D\CRT\SRC		nyi		
+984				CopySection	VC CRT SRC Common13					%D\CRT\SRC		nyi		
+985				CopySection	VC CRT SRC Common14					%D\CRT\SRC		nyi		
+986				CopySection	VC CRT SRC Common15					%D\CRT\SRC		nyi		
+987				CopySection	VC CRT SRC Common16					%D\CRT\SRC		nyi		
+988				CopySection	VC CRT SRC Common17					%D\CRT\SRC		nyi		
+989				CopySection	VC CRT SRC Common18					%D\CRT\SRC		nyi		
+990				CopySection	VC CRT SRC Common19					%D\CRT\SRC		nyi		
+991				CopySection	VC CRT SRC Common20					%D\CRT\SRC		nyi		
+992				CopySection	VC CRT SRC Common21					%D\CRT\SRC		nyi		
+993				CopySection	VC CRT SRC Common22					%D\CRT\SRC		nyi		
+994				CopySection	VC CRT SRC Common23					%D\CRT\SRC		nyi		
+995				CopySection	VC CRT SRC Common24					%D\CRT\SRC		nyi		
+996				CopySection	VC CRT SRC Common25					%D\CRT\SRC		nyi		
+997				CopySection	VC CRT SRC Common26					%D\CRT\SRC		nyi		
+998				CopySection	VC CRT SRC Common27					%D\CRT\SRC		nyi		
+999				CopySection	VC CRT SRC Common28					%D\CRT\SRC		nyi		
+1000				CopySection	VC CRT SRC Common29					%D\CRT\SRC		nyi		
+1001				CopySection	VC CRT SRC Common30					%D\CRT\SRC		nyi		
+1002				CopySection	VC CRT SRC Common31					%D\CRT\SRC		nyi		
+1003				CopySection	VC CRT SRC Common32					%D\CRT\SRC		nyi		
+1004				CopySection	VC CRT SRC Common33					%D\CRT\SRC		nyi		
+1005				CopySection	VC CRT SRC Common34					%D\CRT\SRC		nyi		
+1006				CopySection	VC CRT SRC Common35					%D\CRT\SRC		nyi		
+1007				CopySection	VC CRT SRC Common36					%D\CRT\SRC		nyi		
+1008				CopySection	VC CRT SRC Common37					%D\CRT\SRC		nyi		
+1009				CopySection	VC CRT SRC Common38					%D\CRT\SRC		nyi		
+1011				Group	1012							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1012				CopySection	Shr Lib Copy					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1021				Group	1022					%D\CRT\SRC\SYS		nyi		
+1022				CopySection	crt sourc system							nyi		
+1031				Group	1032							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1032				CopySection	CRT Stat Sym					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1041				Group	1042							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1042				CopySection	CRT Sys Head					%D\Include\SYS		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\SYS\
+1051				Group	1052							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1052				InstallShared	"MSVCP60 DLL SYS,msvcp60_dll,msvcp60.dll,,2723"					%M		se		
+1061				Group	1062 1063 1064 1065 1066 1067							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1062				CopySection	vc crt header1					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1063				CopySection	vc crt header2					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1064				CopySection	vc crt header3					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1065				CopySection	vc crt header4					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1066				CopySection	vc crt header5					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1067				CopySection	vc crt header6					%d\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1071				Group	1072 1073					%d\CRT\SRC\Intel		nyi		
+1072				CopySection	Vc CRT Sources Intel 1							nyi		
+1073				CopySection	Vc CRT Sources Intel 2							nyi		
+1081				Group	1082							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1082				CopySection	VC Crt Obj					%d\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1091				CopySection	vc Headers Section					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1101				CopySection	vc Libraries Section					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1111				Group	1112					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1112				Depend	30? 1113							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+1113				Depend	335 ? 1114 1115							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+1114				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;include;%s\mfc\include"					%D		nyi		
+1115				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;lib;%s\mfc\lib"					%D		nyi		
+1121				Group	1122					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1122				CopySection	vc MFC IIS Shr Lib					%D\MFC\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Lib\
+1131				Group	1132					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1132				CopySection	vc MFC Ansi Shared Libs					%D\MFC\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Lib\
+1141				Group	1142					%D		nyi		
+1142				CopySection	vc MFC Unicode Shared Libs					%D\MFC\Lib		nyi		
+1151				Group	1152							nyi		
+1152				InstallSysFile	"VC MFC OS Unicode Retail,mfc42u_dll"							nyi		
+1161				Group	1162					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1162				CopySection	VC - MFC OS Ansi Shared Lib Symbols					%M		us		C:\WINDOWS\system32\
+1171				Group	1172					%M		nyi		
+1172				CopySection	VC MFC OS Uni Shr Lib Symbol							nyi		
+1181				Group	1182 1183					%M		us		C:\WINDOWS\system32\
+1182				CopySection	VC - MFC - Ansi - Debug					%M		us		C:\WINDOWS\system32\
+1183				InstallShared	"VC MFC Ansi Debug Shared,mfc42d_dll, mfc42d.dll,,2723"					%M		us		C:\WINDOWS\system32\
+1191				Group	1192 1193 1194 1195					%M		nyi		
+1192				CopyFile	"VC - MFC - Unicode - Debug, mfc42ud_dll"					%M		nyi		
+1193				CopyFile	"VC - MFC - Unicode - Debug, mfcd42ud_dll"					%M		nyi		
+1194				CopyFile	"VC - MFC - Unicode - Debug, mfcn42ud_dll"					%M		nyi		
+1195				CopyFile	"VC - MFC - Unicode - Debug, mfco42ud_dll"					%M		nyi		
+1201				Group	1202					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1202				CopySection	VC-MFC-SRC-KOR					%D\MFC\SRC\l.kor		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.kor\
+1211				Group	1212					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1212				CopySection	VC-MFC-SRC-JPN					%D\MFC\SRC\l.jpn		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.jpn\
+1221				Group	1222					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1222				CopySection	VC-MFC-SRC-ITA					%D\MFC\SRC\l.ita		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.ita\
+1231				Group	1232					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1232				CopySection	VC-MFC-SRC-FRA					%D\MFC\SRC\l.fra		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.fra\
+1241				Group	1242					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1242				CopySection	VC-MFC-SRC-ESP					%D\MFC\SRC\l.esp		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.esp\
+1251				Group	1252					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1252				CopySection	VC-MFC-SRC-DEU					%D\MFC\SRC\l.deu		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.deu\
+1261				Group	1262					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1262				CopySection	VC-MFC-SRC-CHT					%D\MFC\SRC\l.cht		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.cht\
+1271				Group	1272					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1272				CopySection	VC-MFC-SRC-CHS					%D\MFC\SRC\l.chs		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\l.chs\
+1281				Group	1282					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1282				CopySection	VC-MFC-RESKOR					%D\MFC\Include\l.kor		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.kor\
+1291				Group	1292					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1292				CopySection	VC-MFC-RESJPN					%D\MFC\Include\l.jpn		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.jpn\
+1301				Group	1302					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1302				CopySection	VC-MFC-RESITA					%D\MFC\Include\l.ita		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.ita\
+1311				Group	1312					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1312				CopySection	VC-MFC-RESFRA					%D\MFC\Include\l.fra		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.fra\
+1321				Group	1322					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1322				CopySection	VC-MFC-RESESP					%D\MFC\Include\l.esp		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.esp\
+1331				Group	1332					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1332				CopySection	VC-MFC-RESDEU					%D\MFC\Include\l.deu		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.deu\
+1341				Group	1342					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1342				CopySection	VC-MFC-RESCHT					%D\MFC\Include\l.cht		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.cht\
+1351				Group	1352					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1352				CopySection	VC-MFC-RESCHS-CHS					%D\MFC\Include\l.chs		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\l.chs\
+1361				Group	1362					%d		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+1362				CopyFile	"VC - MFC Micros ReadMe , readme_txt_1"					%d\Macros		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Macros\
+1371				Group	1372					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1372				CopySection	VC - MFC Source Intel					%d\MFC\SRC\Intel		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\Intel\
+1381				Group	1382					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1382				CopySection	VC - MFC Source Alpha					%d\MFC\SRC\Alpha		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\Alpha\
+1391				Group	1392 1393 1394 1395					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1392				CopySection	VC-MFC-Header1					%D\MFC\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\
+1393				CopySection	VC-MFC-Header2					%D\MFC\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\
+1394				CopySection	VC-MFC-Header3					%D\MFC\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\
+1395				CopySection	VC-MFC-Header4					%D\MFC\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\
+1401				Group	1402					%D		nyi		
+1402				CopyFile	"VC-MFC-Browser,mfc_bsc"					%D\MFC\SRC		nyi		
+1411				Group	1412					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1412				CopySection	VC - MFC Include Resource					%d\MFC\Include\Res		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\Include\Res\
+1421				Group	1422 1423 1424 1425 1426 1427 1428 1429 1430 1431 1432 1433 1434 1435					%d\MFC\SRC		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1422				CopySection	VC - MFC Sources 1					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1423				CopySection	VC - MFC Sources 2					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1424				CopySection	VC - MFC Sources 3					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1425				CopySection	VC - MFC Sources 4					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1426				CopySection	VC - MFC Sources 5					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1427				CopySection	VC - MFC Sources 6					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1428				CopySection	VC - MFC Sources 7					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1429				CopySection	VC - MFC Sources 8					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1430				CopySection	VC - MFC Sources 9					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1431				CopySection	VC - MFC Sources 10					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1432				CopySection	VC - MFC Sources 11					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1433				CopySection	VC - MFC Sources 12					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1434				CopySection	VC - MFC Sources 13					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1435				CopySection	VC - MFC Sources 14					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\MFC\SRC\
+1441				Group	1442					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1442				Depend	30? 1443							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+1443				Depend	335 ? 1444							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+1444				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;include;%s\atl\include"					%D		nyi		
+1451				Group	1452					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1452				CopySection	VC-ATL-COMMON-HDR					%D\ATL\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\Include\
+1461				Group	1462							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1462				CopyFile	"VC - ATL LIB, atl_lib"					%d\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1471				Group	1472					%d\ATL\SRC		us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\SRC\
+1472				CopySection	VC - ATL source							us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\SRC\
+1481				Group	1482					%d\ATL\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\Include\
+1482				CopySection	VC - ATL Header							us		C:\Program Files\Microsoft Visual Studio\VC98\ATL\Include\
+1491				Group	1492 1493 1494							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1492				InstallShared	"DAO,dao350_dll,dao350.dll,,2723"					%H\DAO		us		C:\Program Files\Common Files\Microsoft Shared\DAO\
+1493				InstallShared	"DAO,dao2535_tlb,dao2535.tlb,,2723"					%1492		us		C:\Program Files\Common Files\Microsoft Shared\DAO\
+1494				Depend	1492?1495 1496 1497 1498 1499 1500 1501 1502 1503							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+1495		dao350.dll		SelfReg	"DAO,dao350_dll,,, "					%1492		us		C:\Program Files\Common Files\Microsoft Shared\DAO\
+1496				AddRegData	"""CLASSES"",""Licenses\F4FC596D-DFFE-11CF-9551-00AA00A3DC45"","""",""mbmabptebkjcdlgtjmskjwtsdhjbmkmwtrak"","""""							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1497				CopyFile	"DAO,dao35_hlp"					%W\Help		us		C:\WINDOWS\Help\
+1498				CopyFile	"DAO,dao35_cnt"					%W\Help		us		C:\WINDOWS\Help\
+1499				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,dao35.hlp,%s,"					%1497		us		C:\WINDOWS\Help\
+1500				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,dao35.cnt,%s,"					%1498		us		C:\WINDOWS\Help\
+1501				CustomAction	"COMMON98.DLL, RemoveAuxFile, DAO;dao35_ftg"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1502				CustomAction	"COMMON98.DLL, RemoveAuxFile, DAO;dao35_fts"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1503				CustomAction	"COMMON98.DLL, RemoveAuxFile, DAO;dao35_gid"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1511				Group	1512					%d		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+1512				CopyFile	"VC - Template - Readme, readme_txt_3"					%D\Template		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Template\
+1521				Group	1522					%d		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\
+1522				CopyFile	"VC - Addins - Readme, readme_txt"					%D\AddIns		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\AddIns\
+1531				Group	1532 1533					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1532				CopySection	vc SDK Fixes Section					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1533				CopySection	vc SDK Fixes Section Lib					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1541				Group	1542 1565 1558							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1542				Group	1543 1544 1545 1546 1547 1548 1549 1550 1551 1552 1553 1554 1555					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1543				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".odl;odlfile;YES;ALWAYS;&Open with MSDev;-20213;msdev;system;Object Definition Language file;""""%s\msdev.exe,<"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1544				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".idl;idlfile;YES;ALWAYS;&Open with MSDev;-20213;msdev;system;IDL file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1545				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".mdp;mdpfile;YES;ALWAYS;&Open with MSDev;-20213;msdev;system;MDP file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1546				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".dsw;dswfile;YES;ALWAYS;&Open with MSDev;-20214;msdev;system;Project Workspace;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1547				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".dsp;dspfile;YES;ALWAYS;&Open with MSDev;-20214;msdev;system;Project File;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1548				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".rc;rcfile;YES;ALWAYS;&Open with MSDev;-20212;msdev;system;Resource Template;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1549				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".rct;rctfile;YES;ALWAYS;&Open with MSDev;-20212;msdev;system;Resource Template;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1550				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".bsc;bscfile;YES;ALWAYS;&Open with MSDev;-20212;msdev;system;BSC File;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1551				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".dsm;dsmfile;YES;ALWAYS;&Open with MSDev;-20212;msdev;system;DSM File;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1552				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".res;resfile;YES;ALWAYS;&Open with MSDev;-20215;msdev;system;RES File;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1553				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".tlh;tlhfile;YES;ALWAYS;&Open with MSDev;-20215;msdev;system;TLH file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1554				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".tli;tlifile;YES;ALWAYS;&Open with MSDev;-20215;msdev;system;TLI file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1555				Group	1556 1557							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1556				AddRegData	"HKEY_CLASSES_ROOT,"".plg"","""",""htmlfile"""							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1557				AddRegData	"HKEY_CLASSES_ROOT,"".plg"",""Content Type"",""text/html"""							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1558				Group	1559 1560 1561 1562 1563 1564							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1559				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".h;hfile;YES;CONDITIONAL;&Open with MSDev;-20211;msdev;system;C Header file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1560				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".hxx;hxxfile;YES;CONDITIONAL;&Open with MSDev;-20211;msdev;system;HXX file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1561				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".hpp;hppfile;YES;CONDITIONAL;&Open with MSDev;-20208;msdev;system;HPP file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1562				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".c;cfile;YES;CONDITIONAL;&Open with MSDev;-20210;msdev;system;C Source file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1563				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".cxx;cxxfile;YES;CONDITIONAL;&Open with MSDev;-20210;msdev;system;CXX File;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1564				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".cpp;cppfile;YES;CONDITIONAL;&Open with MSDev;-20209;msdev;system;C++ Source file;""""%s\msdev.exe"""";%s\msdev.exe;&Open with MSDEV"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1565				Group	1566 1567  1568 1569 1570 1571 1572							us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1566				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".pdb;pdbfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1567				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".idb;idbfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1568				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".sbr;sbrfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1569				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".obj;objfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1570				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".pch;pchfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1571				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".ilk;ilkfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Intermediate file;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1572				CustomAction	"COMMON98.DLL,FileAssociateCAH,"".tlb;tlbfile;YES;NOL;&Open with MSDev;-20215;msdev;system;Type Library;""""%s\msdev.exe"""";%s\msdev.exe;NOTHING"""					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+1581				InstallSysFile	"NT Image Help Section,imagehlp_dll"					%M		nyi		
+1591				Group	1592					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1592				CopySection	win32sdk Headers OpenGL Section					%D\Include\GL		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\GL\
+1601				Group	1602 1617							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1602				Group	1603 1604 1605 1606 1607 1608 1609 1610 1611 1612 1613 1614 1615 1616					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1603				CopySection	WIN32 SDK Headers1					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1604				CopySection	WIN32 SDK Headers2					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1605				CopySection	WIN32 SDK Headers3					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1606				CopySection	WIN32 SDK Headers4					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1607				CopySection	WIN32 SDK Headers5					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1608				CopySection	WIN32 SDK Headers6					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1609				CopySection	WIN32 SDK Headers7					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1610				CopySection	WIN32 SDK Headers8					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1611				CopySection	WIN32 SDK Headers9					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1612				CopySection	WIN32 SDK Headers10					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1613				CopySection	WIN32 SDK Headers11					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1614				CopySection	WIN32 SDK Headers12					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1615				CopySection	WIN32 SDK Headers13					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1616				CopySection	WIN32 SDK Headers14					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1617				Group	1618 1619 1620 1621 1622 1623 1624 1625 1626 1627 1628 1629 1630 1631 1632 1633 1634 1635 1636 1637					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1618				CopySection	WIN32 SDK Headers15					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1619				CopySection	WIN32 SDK Headers16					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1620				CopySection	WIN32 SDK Headers17					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1621				CopySection	WIN32 SDK Headers18					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1622				CopySection	WIN32 SDK Headers19					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1623				CopySection	WIN32 SDK Headers20					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1624				CopySection	WIN32 SDK Headers21					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1625				CopySection	WIN32 SDK Headers22					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1626				CopySection	WIN32 SDK Headers23					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1627				CopySection	WIN32 SDK Headers24					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1628				CopySection	WIN32 SDK Headers25					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1629				CopySection	WIN32 SDK Headers26					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1630				CopySection	WIN32 SDK Headers27					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1631				CopySection	WIN32 SDK Headers28					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1632				CopySection	WIN32 SDK Headers29					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1633				CopySection	WIN32 SDK Headers30					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1634				CopySection	WIN32 SDK Headers31					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1635				CopySection	WIN32 SDK Headers32					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1636				CopySection	WIN32 SDK Headers33					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1637				CopySection	WIN32 SDK Headers34					%D\Include		us		C:\Program Files\Microsoft Visual Studio\VC98\Include\
+1641				Group	1642 1643 1644 1645 1646 1647 1648 1649 1650 1651 1652 1653					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1642				CopySection	WIN32 SDK Libs1					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1643				CopySection	WIN32 SDK Libs2					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1644				CopySection	WIN32 SDK Libs3					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1645				CopySection	WIN32 SDK Libs4					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1646				CopySection	WIN32 SDK Libs5					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1647				CopySection	WIN32 SDK Libs6					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1648				CopySection	WIN32 SDK Libs7					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1649				CopySection	WIN32 SDK Libs8					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1650				CopySection	WIN32 SDK Libs9					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1651				CopySection	WIN32 SDK Libs10					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1652				CopySection	WIN32 SDK Libs11					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1653				CopySection	WIN32 SDK Libs12					%D\Lib		us		C:\Program Files\Microsoft Visual Studio\VC98\Lib\
+1661				Group	1662 1663							nyi		
+1662				InstallSysFile	"VB Runtime,msvbvm50_dll"		vital			%M		nyi		
+1663				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""1664"""							nyi		
+1664		msvbvm60.dll		CustomAction	"COMMON98.DLL,RegisterFile,""VB Runtime,msvbvm50_dll,2"""					%1662		nyi		
+1671				Group	1672 1673 1674 1676 1681 1682 1683					%D		nyi		
+1672				InstallSysFile	"HTML Help,itircl_dll"							nyi		
+1673				InstallSysFile	"HTML Help,itss_dll"							nyi		
+1674				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""1675"""					%D		nyi		
+1675				CopyFile	"HTML Help,hh_exe"					%W		nyi		
+1676				Group	1677 1679							nyi		
+1677				Depend	1672 ? 1678							nyi		
+1678		itircl.dll		SelfReg	"HTML Help,itircl_dll,,"					%1672		nyi		
+1679				Depend	1673 ? 1680							nyi		
+1680		itss.dll		SelfReg	"HTML Help,itss_dll,,"					%1673		nyi		
+1681				Group	1684 1687 1690 1693 1696 1699 1702 1705 1708 1711 1714 1717 1720 1723 1726					%D		nyi		
+1682				Group	1729 1732 1735 1738 1741 1744 1747 1750 1753 1756 1759 1762 1765					%D		nyi		
+1683				Group	1685 1769					%D		nyi		
+1684				CustomAction	"COMMON98.DLL,LangCheckCAH,ARA"							nyi		
+1685				Depend	1684 ? 1686 : 1688							nyi		
+1686				InstallSysFile	"HTML Help, hhctrl_ocx_ara"					%M		nyi		
+1687				CustomAction	"COMMON98.DLL,LangCheckCAH,BAS"							nyi		
+1688				Depend	1687 ? 1689 : 1691							nyi		
+1689				InstallSysFile	"HTML Help, hhctrl_ocx_bas"					%M		nyi		
+1690				CustomAction	"COMMON98.DLL,LangCheckCAH,CAT"							nyi		
+1691				Depend	1690 ? 1692 : 1694							nyi		
+1692				InstallSysFile	"HTML Help, hhctrl_ocx_cat"					%M		nyi		
+1693				CustomAction	"COMMON98.DLL,LangCheckCAH,CHS"							nyi		
+1694				Depend	1693 ? 1695 : 1697							nyi		
+1695				InstallSysFile	"HTML Help, hhctrl_ocx_chs"					%M		nyi		
+1696				CustomAction	"COMMON98.DLL,LangCheckCAH,CHT"							nyi		
+1697				Depend	1696 ? 1698 : 1700							nyi		
+1698				InstallSysFile	"HTML Help, hhctrl_ocx_cht"					%M		nyi		
+1699				CustomAction	"COMMON98.DLL,LangCheckCAH,CSY"							nyi		
+1700				Depend	1699 ? 1701 : 1703							nyi		
+1701				InstallSysFile	"HTML Help, hhctrl_ocx_csy"					%M		nyi		
+1702				CustomAction	"COMMON98.DLL,LangCheckCAH,DAN"							nyi		
+1703				Depend	1702 ? 1704 : 1706							nyi		
+1704				InstallSysFile	"HTML Help, hhctrl_ocx_dan"					%M		nyi		
+1705				CustomAction	"COMMON98.DLL,LangCheckCAH,DEU"							nyi		
+1706				Depend	1705 ? 1707 : 1709							nyi		
+1707				InstallSysFile	"HTML Help, hhctrl_ocx_deu"					%M		nyi		
+1708				CustomAction	"COMMON98.DLL,LangCheckCAH,ELL"							nyi		
+1709				Depend	1708 ? 1710 : 1712							nyi		
+1710				InstallSysFile	"HTML Help, hhctrl_ocx_ell"					%M		nyi		
+1711				CustomAction	"COMMON98.DLL,LangCheckCAH,ENU"							nyi		
+1712				Depend	1711 ? 1713 : 1715							nyi		
+1713				InstallSysFile	"HTML Help, hhctrl_ocx_enu"					%M		nyi		
+1714				CustomAction	"COMMON98.DLL,LangCheckCAH,ESP"							nyi		
+1715				Depend	1714 ? 1716 : 1718							nyi		
+1716				InstallSysFile	"HTML Help, hhctrl_ocx_esp"					%M		nyi		
+1717				CustomAction	"COMMON98.DLL,LangCheckCAH,FIN"							nyi		
+1718				Depend	1717 ? 1719 : 1721							nyi		
+1719				InstallSysFile	"HTML Help, hhctrl_ocx_fin"					%M		nyi		
+1720				CustomAction	"COMMON98.DLL,LangCheckCAH,FRA"							nyi		
+1721				Depend	1720 ? 1722 : 1724							nyi		
+1722				InstallSysFile	"HTML Help, hhctrl_ocx_fra"					%M		nyi		
+1723				CustomAction	"COMMON98.DLL,LangCheckCAH,HEB"							nyi		
+1724				Depend	1723 ? 1725 : 1727							nyi		
+1725				InstallSysFile	"HTML Help, hhctrl_ocx_heb"					%M		nyi		
+1726				CustomAction	"COMMON98.DLL,LangCheckCAH,HUN"							nyi		
+1727				Depend	1726 ? 1728 : 1730							nyi		
+1728				InstallSysFile	"HTML Help, hhctrl_ocx_hun"					%M		nyi		
+1729				CustomAction	"COMMON98.DLL,LangCheckCAH,ITA"							nyi		
+1730				Depend	1729 ? 1731 : 1733							nyi		
+1731				InstallSysFile	"HTML Help, hhctrl_ocx_ita"					%M		nyi		
+1732				CustomAction	"COMMON98.DLL,LangCheckCAH,JPN"							nyi		
+1733				Depend	1732 ? 1734 : 1736							nyi		
+1734				InstallSysFile	"HTML Help, hhctrl_ocx_jpn"					%M		nyi		
+1735				CustomAction	"COMMON98.DLL,LangCheckCAH,KOR"							nyi		
+1736				Depend	1735 ? 1737 : 1739							nyi		
+1737				InstallSysFile	"HTML Help, hhctrl_ocx_kor"					%M		nyi		
+1738				CustomAction	"COMMON98.DLL,LangCheckCAH,NLD"							nyi		
+1739				Depend	1738 ? 1740 : 1742							nyi		
+1740				InstallSysFile	"HTML Help, hhctrl_ocx_nld"					%M		nyi		
+1741				CustomAction	"COMMON98.DLL,LangCheckCAH,NOR"							nyi		
+1742				Depend	1741 ? 1743 : 1745							nyi		
+1743				InstallSysFile	"HTML Help, hhctrl_ocx_nor"					%M		nyi		
+1744				CustomAction	"COMMON98.DLL,LangCheckCAH,PLK"							nyi		
+1745				Depend	1744 ? 1746 : 1748							nyi		
+1746				InstallSysFile	"HTML Help, hhctrl_ocx_plk"					%M		nyi		
+1747				CustomAction	"COMMON98.DLL,LangCheckCAH,PTB"							nyi		
+1748				Depend	1747 ? 1749 : 1751							nyi		
+1749				InstallSysFile	"HTML Help, hhctrl_ocx_ptb"					%M		nyi		
+1750				CustomAction	"COMMON98.DLL,LangCheckCAH,PTG"							nyi		
+1751				Depend	1750 ? 1752 : 1754							nyi		
+1752				InstallSysFile	"HTML Help, hhctrl_ocx_ptg"					%M		nyi		
+1753				CustomAction	"COMMON98.DLL,LangCheckCAH,RUS"							nyi		
+1754				Depend	1753 ? 1755 : 1757							nyi		
+1755				InstallSysFile	"HTML Help, hhctrl_ocx_rus"					%M		nyi		
+1756				CustomAction	"COMMON98.DLL,LangCheckCAH,SKY"							nyi		
+1757				Depend	1756 ? 1758 : 1760							nyi		
+1758				InstallSysFile	"HTML Help, hhctrl_ocx_sky"					%M		nyi		
+1759				CustomAction	"COMMON98.DLL,LangCheckCAH,SLV"							nyi		
+1760				Depend	1759 ? 1761 : 1763							nyi		
+1761				InstallSysFile	"HTML Help, hhctrl_ocx_slv"					%M		nyi		
+1762				CustomAction	"COMMON98.DLL,LangCheckCAH,SVE"							nyi		
+1763				Depend	1762 ? 1764 : 1766							nyi		
+1764				InstallSysFile	"HTML Help, hhctrl_ocx_sve"					%M		nyi		
+1765				CustomAction	"COMMON98.DLL,LangCheckCAH,TRK"							nyi		
+1766				Depend	1765 ? 1767 : 1768							nyi		
+1767				InstallSysFile	"HTML Help, hhctrl_ocx_trk"					%M		nyi		
+1768				InstallSysFile	"HTML Help, hhctrl_ocx_enu"					%M		nyi		
+1769				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""1770"""					%D		nyi		
+1770				CustomAction	"COMMON98.DLL,QuietReg,""%s\hhctrl.ocx"""					%m		nyi		
+1781				Group	1782 1783							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1782				CopyFile	"vc Wrox Tutorial,wrxtutrl_chm"					%294\Tutorial		us		C:\Program Files\Microsoft Visual Studio\VC98\Tutorial\
+1783				InstallShortcut	"%1782\%F1782,Wrox Press C++ Tutorial, , , , , "					%27\Wrox Press C++ Tutorial		us		C:\Documents and Settings\All Users\Start Menu\Programs\Wrox Press C++ Tutorial\
+1791				Group	1792 1793 1794							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1792		bb_vcstd		CustomAction	"bboard.dll,AddBillboard,1125"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1793		bb_msdn		CustomAction	"bboard.dll,AddBillboard,6000"							us		C:\Program Files\Microsoft Visual Studio\VC98\
+1794				CustomAction	"bboard.dll,RemoveFontFiles"					%W		us		C:\WINDOWS\
+1801	yes	Tools	"Tools such as the Spy++, Win32 SDK and OLE Development tools."	CustomDlg	1802 1803 1804 1805 1806 1807					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1802	yes	MFC Trace Utilty	Installs a utility application that customizes the kinds of data debug MFC applications emit to the Output Window in the Development Environment.	Group	2351					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1803	yes	Spy++	Installs a utility application that allows you to monitor the types of messages an application recieves.	Group	2331					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1804	yes	Win32 SDK Tools	"Installs an assortment of Win32SDK tools like the OLE Client Test Application, DDE Spy, Process Viewer, etc."	Group	2261 2211					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1805	yes	OLE/Com Object Viewer	OLE/Com Object Viewer.	Group	2191					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1806	yes	ActiveX Control Test Container	Installs a utility that allows for testing and debugging ActiveX Controls.	Group	2171					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1807	yes	VC Error Lookup	"Installs a lookup utility that displays comments associated with various error return codes, that are located in the Win32 SDK header files."	Group	2151					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+1808				CustomAction	"COMMON98.DLL, NopCAH"									
+1811				Group	1812 1821  1841							us		C:\WINDOWS\system32\
+1812				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""1813"""							us		C:\WINDOWS\system32\
+1813				AddRegData	"""CLASSES"",""Licenses"","""",""Licensing: Copying the keys may be a violation of established copyrights."","""""							us		C:\WINDOWS\system32\
+1821				Group	1822 1823  1824 1831							us		C:\WINDOWS\system32\
+1822				InstallShared	"VB COMDLG32,comdlg32_ocx,comdlg32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1823				InstallShared	"VB COMDLG32,comdlg32_dep,comdlg32.dep,,2723"					%1822		us		C:\WINDOWS\system32\
+1824				Depend	1822?1825 1826 1827 1828 1829 1830							us	Yes	C:\WINDOWS\system32\
+1825		comdlg32.ocx		SelfReg	"VB COMDLG32,comdlg32_ocx,,, "					%1822		us		C:\WINDOWS\system32\
+1826				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMDLG32;comdlgd_oca"					%1822		us		C:\WINDOWS\system32\
+1827				CopyFile	"VB COMDLG32,cmdlg98_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+1828				CopyFile	"VB COMDLG32,cmdlg98_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+1829				CopyFile	"VB COMDLG32,cmdialog_srg"					%1822		us		C:\WINDOWS\system32\
+1830				CustomAction	"COMMON98.DLL,RegFile,1829"					%1829		us		C:\WINDOWS\system32\
+1831				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1832 1833"""					%1822		us		C:\WINDOWS\system32\
+1832				CopyFile	"VB COMDLG32,cmdialog_srg"					%1822		us		C:\WINDOWS\system32\
+1833				CustomAction	"COMMON98.DLL,RegFile,1829"					%1829		us		C:\WINDOWS\system32\
+1841				Group	1842 1843  1844 1851							us		C:\WINDOWS\system32\
+1842				InstallShared	"VB MSFLXGRD,msflxgrd_ocx,msflxgrd.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1843				InstallShared	"VB MSFLXGRD,msflxgrd_dep,msflxgrd.dep,,2723"					%1842		us		C:\WINDOWS\system32\
+1844				Depend	1842?1845 1846 1847 1848 1849 1850							us	Yes	C:\WINDOWS\system32\
+1845		msflxgrd.ocx		SelfReg	"VB MSFLXGRD,msflxgrd_ocx,,, "					%1842		us		C:\WINDOWS\system32\
+1846				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSFLXGRD;msflxgrd_oca"					%1842		us		C:\WINDOWS\system32\
+1847				CopyFile	"VB MSFLXGRD,mshflx98_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+1848				CopyFile	"VB MSFLXGRD,mshflx98_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+1849				CopyFile	"VB MSFLXGRD,vsdbflex_srg_1"					%1842		us		C:\WINDOWS\system32\
+1850				CustomAction	"COMMON98.DLL,RegFile,1849"					%1849		us		C:\WINDOWS\system32\
+1851				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1852 1853"""					%1842		us		C:\WINDOWS\system32\
+1852				CopyFile	"VB MSFLXGRD,vsdbflex_srg_1"					%1842		us		C:\WINDOWS\system32\
+1853				CustomAction	"COMMON98.DLL,RegFile,1849"					%1849		us		C:\WINDOWS\system32\
+1861				Group	1862 1863							us		C:\WINDOWS\system32\
+1862				Group	1871  1911  1931 1951 1971							us		C:\WINDOWS\system32\
+1863				Group	1991 2011    2031 2051 2071							us		C:\WINDOWS\system32\
+1871				Group	1872 1891							us		C:\WINDOWS\system32\
+1872				Group	1873 1874  1875 1888							us		C:\WINDOWS\system32\
+1873				InstallShared	"VB COMCT232,comct232_ocx,comct232.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1874				InstallShared	"VB COMCT232,comct232_dep,comct232.dep,,2723"					%1873		us		C:\WINDOWS\system32\
+1875				Depend	1873?1876 1884 1885 1886 1887 2691 2701							us	Yes	C:\WINDOWS\system32\
+1876				Group	1877 1878 1879 1880 1881 1882 1883							us		C:\WINDOWS\system32\
+1877				CopyFile	"VB COMCT232,comctl2_hlp"					%W\Help		us		C:\WINDOWS\Help\
+1878				CopyFile	"VB COMCT232,comctl2_cnt"					%W\Help		us		C:\WINDOWS\Help\
+1879				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,comctl2.hlp,%s,"					%1877		us		C:\WINDOWS\Help\
+1880				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,comctl2.cnt,%s,"					%1878		us		C:\WINDOWS\Help\
+1881				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCT232;comctl2_ftg"							us		C:\WINDOWS\system32\
+1882				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCT232;comctl2_fts"							us		C:\WINDOWS\system32\
+1883				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCT232;comctl2_gid"							us		C:\WINDOWS\system32\
+1884		comct232.ocx		SelfReg	"VB COMCT232,comct232_ocx,,, "					%1873		us		C:\WINDOWS\system32\
+1885				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCT232;comct232_oca"					%1873		us		C:\WINDOWS\system32\
+1886				CopyFile	"VB COMCT232,comct232_srg"					%1873		us		C:\WINDOWS\system32\
+1887				CustomAction	"COMMON98.DLL,RegFile,1886"					%1886		us		C:\WINDOWS\system32\
+1888				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1889 1890"""					%1873		us		C:\WINDOWS\system32\
+1889				CopyFile	"VB COMCT232,comct232_srg"					%1873		us		C:\WINDOWS\system32\
+1890				CustomAction	"COMMON98.DLL,RegFile,1886"					%1886		us		C:\WINDOWS\system32\
+1891				Group	1892 1893  1894 1901							us		C:\WINDOWS\system32\
+1892				InstallShared	"VB COMCT232,mscomct2_ocx,mscomct2.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1893				InstallShared	"VB COMCT232,mscomct2_dep,MSComCt2.dep,,2723"					%1892		us		C:\WINDOWS\system32\
+1894				Depend	1892?1895 1896 1897 1898 1899 1900							us	Yes	C:\WINDOWS\system32\
+1895		mscomct2.ocx		SelfReg	"VB COMCT232,mscomct2_ocx,,, "					%1892		us		C:\WINDOWS\system32\
+1896				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCT232;mscomct2_oca"					%1892		us		C:\WINDOWS\system32\
+1897				CopyFile	"VB COMCT232,cmctl298_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+1898				CopyFile	"VB COMCT232,cmctl298_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+1899				CopyFile	"VB COMCT232,mscomct2_srg"					%1892		us		C:\WINDOWS\system32\
+1900				CustomAction	"COMMON98.DLL,RegFile,1899"					%1899		us		C:\WINDOWS\system32\
+1901				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1902 1903"""					%1892		us		C:\WINDOWS\system32\
+1902				CopyFile	"VB COMCT232,mscomct2_srg"					%1892		us		C:\WINDOWS\system32\
+1903				CustomAction	"COMMON98.DLL,RegFile,1899"					%1899		us		C:\WINDOWS\system32\
+1911				Group	1912 1913  1914 1921							us		C:\WINDOWS\system32\
+1912				InstallShared	"VB MSCOMM32,mscomm32_ocx,mscomm32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1913				InstallShared	"VB MSCOMM32,mscomm32_dep,mscomm32.dep,,2723"					%1912		us		C:\WINDOWS\system32\
+1914				Depend	1912?1915 1916 1917 1918 1919 1920							us	Yes	C:\WINDOWS\system32\
+1915		mscomm32.ocx		SelfReg	"VB MSCOMM32,mscomm32_ocx,,, "					%1912		us		C:\WINDOWS\system32\
+1916				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSCOMM32;mscomm32_oca"					%1912		us		C:\WINDOWS\system32\
+1917				CopyFile	"VB MSCOMM32,comm98_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+1918				CopyFile	"VB MSCOMM32,comm98_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+1919				CopyFile	"VB MSCOMM32,mscomm_srg"					%1912		us		C:\WINDOWS\system32\
+1920				CustomAction	"COMMON98.DLL,RegFile,1919"					%1919		us		C:\WINDOWS\system32\
+1921				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1922 1923"""					%1912		us		C:\WINDOWS\system32\
+1922				CopyFile	"VB MSCOMM32,mscomm_srg"					%1912		us		C:\WINDOWS\system32\
+1923				CustomAction	"COMMON98.DLL,RegFile,1919"					%1919		us		C:\WINDOWS\system32\
+1931				Group	1932 1933  1934 1941							us		C:\WINDOWS\system32\
+1932				InstallShared	"VB MSINET,msinet_ocx,msinet.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1933				InstallShared	"VB MSINET,msinet_dep,msinet.dep,,2723"					%1932		us		C:\WINDOWS\system32\
+1934				Depend	1932?1935 1936 1937 1938 1939 1940							us	Yes	C:\WINDOWS\system32\
+1935		msinet.ocx		SelfReg	"VB MSINET,msinet_ocx,,, "					%1932		us		C:\WINDOWS\system32\
+1936				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSINET;msinet_oca"					%1932		us		C:\WINDOWS\system32\
+1937				CopyFile	"VB MSINET,inet98_ch2"					%W\Help		us		C:\WINDOWS\Help\
+1938				CopyFile	"VB MSINET,inet98_ch1"					%W\Help		us		C:\WINDOWS\Help\
+1939				CopyFile	"VB MSINET,inetctls_srg"					%1932		us		C:\WINDOWS\system32\
+1940				CustomAction	"COMMON98.DLL,RegFile,1939"					%1939		us		C:\WINDOWS\system32\
+1941				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1942 1943"""					%1932		us		C:\WINDOWS\system32\
+1942				CopyFile	"VB MSINET,inetctls_srg"					%1932		us		C:\WINDOWS\system32\
+1943				CustomAction	"COMMON98.DLL,RegFile,1939"					%1939		us		C:\WINDOWS\system32\
+1951				Group	1952 1953  1954 1961							us		C:\WINDOWS\system32\
+1952				InstallShared	"VB MSMAPI32,msmapi32_ocx,msmapi32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1953				InstallShared	"VB MSMAPI32,msmapi32_dep,msmapi32.dep,,2723"					%1952		us		C:\WINDOWS\system32\
+1954				Depend	1952?1955 1956 1957 1958 1959 1960							us	Yes	C:\WINDOWS\system32\
+1955		msmapi32.ocx		SelfReg	"VB MSMAPI32,msmapi32_ocx,,, "					%1952		us		C:\WINDOWS\system32\
+1956				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSMAPI32;msmapi32_oca"					%1952		us		C:\WINDOWS\system32\
+1957				CopyFile	"VB MSMAPI32,mapi98_ch2"					%W\Help		us		C:\WINDOWS\Help\
+1958				CopyFile	"VB MSMAPI32,mapi98_ch1"					%W\Help		us		C:\WINDOWS\Help\
+1959				CopyFile	"VB MSMAPI32,msmapi_srg"					%1952		us		C:\WINDOWS\system32\
+1960				CustomAction	"COMMON98.DLL,RegFile,1959"					%1959		us		C:\WINDOWS\system32\
+1961				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1962 1963"""					%1952		us		C:\WINDOWS\system32\
+1962				CopyFile	"VB MSMAPI32,msmapi_srg"					%1952		us		C:\WINDOWS\system32\
+1963				CustomAction	"COMMON98.DLL,RegFile,1959"					%1959		us		C:\WINDOWS\system32\
+1971				Group	1972 1973  1974 1981							us		C:\WINDOWS\system32\
+1972				InstallShared	"VB MSMASK32,msmask32_ocx,msmask32.ocx,,2723"					%M		se		
+1973				InstallShared	"VB MSMASK32,msmask32_dep,msmask32.dep,,2723"					%1972		us		C:\WINDOWS\system32\
+1974				Depend	1972?1975 1976 1977 1978 1979 1980							us	No	C:\WINDOWS\system32\
+1975		msmask32.ocx		SelfReg	"VB MSMASK32,msmask32_ocx,,, "					%1972		nyi		
+1976				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSMASK32;msmask32_oca"					%1972		nyi		
+1977				CopyFile	"VB MSMASK32,masked98_ch2"					%W\Help		nyi		
+1978				CopyFile	"VB MSMASK32,masked98_ch1"					%W\Help		nyi		
+1979				CopyFile	"VB MSMASK32,msmask_srg"					%1972		nyi		
+1980				CustomAction	"COMMON98.DLL,RegFile,1979"					%1979		nyi		
+1981				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""1982 1983"""					%1972		us		C:\WINDOWS\system32\
+1982				CopyFile	"VB MSMASK32,msmask_srg"					%1972		us		C:\WINDOWS\system32\
+1983				CustomAction	"COMMON98.DLL,RegFile,1979"					%1979		us		C:\WINDOWS\system32\
+1991				Group	1992 1993  1994 2001							us		C:\WINDOWS\system32\
+1992				InstallShared	"VB MCI32,mci32_ocx,mci32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+1993				InstallShared	"VB MCI32,mci32_dep,mci32.dep,,2723"					%1992		us		C:\WINDOWS\system32\
+1994				Depend	1992?1995 1996 1997 1998 1999 2000							us	Yes	C:\WINDOWS\system32\
+1995		mci32.ocx		SelfReg	"VB MCI32,mci32_ocx,,, "					%1992		us		C:\WINDOWS\system32\
+1996				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MCI32;mci32_oca"					%1992		us		C:\WINDOWS\system32\
+1997				CopyFile	"VB MCI32,mmedia98_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+1998				CopyFile	"VB MCI32,mmedia98_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+1999				CopyFile	"VB MCI32,mci_srg"					%1992		us		C:\WINDOWS\system32\
+2000				CustomAction	"COMMON98.DLL,RegFile,1999"					%1999		us		C:\WINDOWS\system32\
+2001				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2002 2003"""					%1992		us		C:\WINDOWS\system32\
+2002				CopyFile	"VB MCI32,mci_srg"					%1992		us		C:\WINDOWS\system32\
+2003				CustomAction	"COMMON98.DLL,RegFile,1999"					%1999		us		C:\WINDOWS\system32\
+2011				Group	2012 2013  2014 2021							us		C:\WINDOWS\system32\
+2012				InstallShared	"VB PICCLP32,picclp32_ocx,picclp32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2013				InstallShared	"VB PICCLP32,picclp32_dep,picclp32.dep,,2723"					%2012		us		C:\WINDOWS\system32\
+2014				Depend	2012?2015 2016 2017 2018 2019 2020							us	Yes	C:\WINDOWS\system32\
+2015		picclp32.ocx		SelfReg	"VB PICCLP32,picclp32_ocx,,, "					%2012		us		C:\WINDOWS\system32\
+2016				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB PICCLP32;picclp32_oca"					%2012		us		C:\WINDOWS\system32\
+2017				CopyFile	"VB PICCLP32,picclp98_ch2"					%W\Help		us		C:\WINDOWS\Help\
+2018				CopyFile	"VB PICCLP32,picclp98_ch1"					%W\Help		us		C:\WINDOWS\Help\
+2019				CopyFile	"VB PICCLP32,picclip_srg"					%2012		us		C:\WINDOWS\system32\
+2020				CustomAction	"COMMON98.DLL,RegFile,2019"					%2019		us		C:\WINDOWS\system32\
+2021				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2022 2023"""					%2012		us		C:\WINDOWS\system32\
+2022				CopyFile	"VB PICCLP32,picclip_srg"					%2012		us		C:\WINDOWS\system32\
+2023				CustomAction	"COMMON98.DLL,RegFile,2019"					%2019		us		C:\WINDOWS\system32\
+2031				Group	2032 2033  2034 2041							us		C:\WINDOWS\system32\
+2032				InstallShared	"VB SYSINFO,sysinfo_ocx,sysinfo.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2033				InstallShared	"VB SYSINFO,sysinfo_dep,sysinfo.dep,,2723"					%2032		us		C:\WINDOWS\system32\
+2034				Depend	2032?2035 2036 2037 2038 2039 2040							us	Yes	C:\WINDOWS\system32\
+2035		sysinfo.ocx		SelfReg	"VB SYSINFO,sysinfo_ocx,,, "					%2032		us		C:\WINDOWS\system32\
+2036				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB SYSINFO;sysinfo_oca"					%2032		us		C:\WINDOWS\system32\
+2037				CopyFile	"VB SYSINFO,sysinf98_ch2"					%W\Help		us		C:\WINDOWS\Help\
+2038				CopyFile	"VB SYSINFO,sysinf98_ch1"					%W\Help		us		C:\WINDOWS\Help\
+2039				CopyFile	"VB SYSINFO,sysinfo_srg"					%2032		us		C:\WINDOWS\system32\
+2040				CustomAction	"COMMON98.DLL,RegFile,2039"					%2039		us		C:\WINDOWS\system32\
+2041				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2042 2043"""					%2032		us		C:\WINDOWS\system32\
+2042				CopyFile	"VB SYSINFO,sysinfo_srg"					%2032		us		C:\WINDOWS\system32\
+2043				CustomAction	"COMMON98.DLL,RegFile,2039"					%2039		us		C:\WINDOWS\system32\
+2051				Group	2052 2053  2054 2061							us		C:\WINDOWS\system32\
+2052				InstallShared	"VB TABCTL32,tabctl32_ocx,tabctl32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2053				InstallShared	"VB TABCTL32,tabctl32_dep,tabctl32.dep,,2723"					%2052		us		C:\WINDOWS\system32\
+2054				Depend	2052?2055 2056 2057 2058 2059 2060							us	Yes	C:\WINDOWS\system32\
+2055		tabctl32.ocx		SelfReg	"VB TABCTL32,tabctl32_ocx,,, "					%2052		us		C:\WINDOWS\system32\
+2056				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB TABCTL32;tabctl32_oca"					%2052		us		C:\WINDOWS\system32\
+2057				CopyFile	"VB TABCTL32,mstab98_chb"					%W\Help		us		C:\WINDOWS\Help\
+2058				CopyFile	"VB TABCTL32,mstab98_cha"					%W\Help		us		C:\WINDOWS\Help\
+2059				CopyFile	"VB TABCTL32,sstab_srg"					%2052		us		C:\WINDOWS\system32\
+2060				CustomAction	"COMMON98.DLL,RegFile,2059"					%2059		us		C:\WINDOWS\system32\
+2061				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2062 2063"""					%2052		us		C:\WINDOWS\system32\
+2062				CopyFile	"VB TABCTL32,sstab_srg"					%2052		us		C:\WINDOWS\system32\
+2063				CustomAction	"COMMON98.DLL,RegFile,2059"					%2059		us		C:\WINDOWS\system32\
+2071				Group	2072 2073  2074 2081							us		C:\WINDOWS\system32\
+2072				InstallShared	"VB MSWINSCK,mswinsck_ocx,mswinsck.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2073				InstallShared	"VB MSWINSCK,mswinsck_dep,mswinsck.dep,,2723"					%2072		us		C:\WINDOWS\system32\
+2074				Depend	2072?2075 2076 2077 2078 2079 2080							us	Yes	C:\WINDOWS\system32\
+2075		mswinsck.ocx		SelfReg	"VB MSWINSCK,mswinsck_ocx,,, "					%2072		us		C:\WINDOWS\system32\
+2076				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB MSWINSCK;mswinsck_oca"					%2072		us		C:\WINDOWS\system32\
+2077				CopyFile	"VB MSWINSCK,mswnsk98_ch2"					%W\Help		us		C:\WINDOWS\Help\
+2078				CopyFile	"VB MSWINSCK,mswnsk98_ch1"					%W\Help		us		C:\WINDOWS\Help\
+2079				CopyFile	"VB MSWINSCK,winsock_srg"					%2072		us		C:\WINDOWS\system32\
+2080				CustomAction	"COMMON98.DLL,RegFile,2079"					%2079		us		C:\WINDOWS\system32\
+2081				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2082 2083"""					%2072		us		C:\WINDOWS\system32\
+2082				CopyFile	"VB MSWINSCK,winsock_srg"					%2072		us		C:\WINDOWS\system32\
+2083				CustomAction	"COMMON98.DLL,RegFile,2079"					%2079		us		C:\WINDOWS\system32\
+2091				Group	2092 2101 2111							us		C:\WINDOWS\system32\
+2092				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2093"""							us		C:\WINDOWS\system32\
+2093				AddRegData	"""CLASSES"",""Licenses"","""",""Licensing: Copying the keys may be a violation of established copyrights."","""""							us		C:\WINDOWS\system32\
+2101				Group	2102 2103							nyi		
+2102				InstallSysFile	"VB MSSTKPRP,msstkprp_dll"					%M		nyi		
+2103				Depend	2102?2104							nyi		
+2104		msstkprp.dll		SelfReg	"VB MSSTKPRP,msstkprp_dll,,, "					%2102		nyi		
+2111				Group	2112 2131							us		C:\WINDOWS\system32\
+2112				Group	2113 2114  2115 2128							us		C:\WINDOWS\system32\
+2113				InstallShared	"VB COMCTL32,comctl32_ocx,comctl32.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2114				InstallShared	"VB COMCTL32,comctl32_dep,comctl32.dep,,2723"					%2113		us		C:\WINDOWS\system32\
+2115				Depend	2113?2116 2124 2125 2126 2127 2691 2701							us	Yes	C:\WINDOWS\system32\
+2116				Group	2117 2118 2119 2120 2121 2122 2123							us		C:\WINDOWS\system32\
+2117				CopyFile	"VB COMCTL32,comctl1_hlp_1"					%W\Help		us		C:\WINDOWS\Help\
+2118				CopyFile	"VB COMCTL32,comctl1_cnt_1"					%W\Help		us		C:\WINDOWS\Help\
+2119				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,comctl1.hlp,%s,"					%2117		us		C:\WINDOWS\Help\
+2120				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,comctl1.cnt,%s,"					%2118		us		C:\WINDOWS\Help\
+2121				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCTL32;comctl1_ftg"							us		C:\WINDOWS\system32\
+2122				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCTL32;comctl1_fts"							us		C:\WINDOWS\system32\
+2123				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCTL32;comctl1_gid"							us		C:\WINDOWS\system32\
+2124		comctl32.ocx		CustomAction	"COMMON98.DLL,RegisterFile,""VB COMCTL32,comctl32_ocx,3"""					%2113		us		C:\WINDOWS\system32\
+2125				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCTL32;comctl32_oca"					%2113		us		C:\WINDOWS\system32\
+2126				CopyFile	"VB COMCTL32,comctl32_srg"					%2113		us		C:\WINDOWS\system32\
+2127				CustomAction	"COMMON98.DLL,RegFile,2126"					%2126		us		C:\WINDOWS\system32\
+2128				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2129 2130"""					%2113		us		C:\WINDOWS\system32\
+2129				CopyFile	"VB COMCTL32,comctl32_srg"					%2113		us		C:\WINDOWS\system32\
+2130				CustomAction	"COMMON98.DLL,RegFile,2126"					%2126		us		C:\WINDOWS\system32\
+2131				Group	2132 2133  2134 2141							us		C:\WINDOWS\system32\
+2132				InstallShared	"VB COMCTL32,mscomctl_ocx,mscomctl.ocx,,2723"					%M		us		C:\WINDOWS\system32\
+2133				InstallShared	"VB COMCTL32,mscomctl_dep,MSComCtl.dep,,2723"					%2132		us		C:\WINDOWS\system32\
+2134				Depend	2132?2135 2136 2137 2138 2139 2140							us	Yes	C:\WINDOWS\system32\
+2135		mscomctl.ocx		CustomAction	"COMMON98.DLL,RegisterFile,""VB COMCTL32,mscomctl_ocx,3"""					%2132		us		C:\WINDOWS\system32\
+2136				CustomAction	"COMMON98.DLL, RemoveAuxFile, VB COMCTL32;mscomctl_oca"					%2132		us		C:\WINDOWS\system32\
+2137				CopyFile	"VB COMCTL32,cmctl198_chi_1"					%W\Help		us		C:\WINDOWS\Help\
+2138				CopyFile	"VB COMCTL32,cmctl198_chm_1"					%W\Help		us		C:\WINDOWS\Help\
+2139				CopyFile	"VB COMCTL32,mscomctl_srg"					%2132		us		C:\WINDOWS\system32\
+2140				CustomAction	"COMMON98.DLL,RegFile,2139"					%2139		us		C:\WINDOWS\system32\
+2141				CustomAction	"COMMON98.DLL, NeverRemoveGroup, ""2142 2143"""					%2132		us		C:\WINDOWS\system32\
+2142				CopyFile	"VB COMCTL32,mscomctl_srg"					%2132		us		C:\WINDOWS\system32\
+2143				CustomAction	"COMMON98.DLL,RegFile,2139"					%2139		us		C:\WINDOWS\system32\
+2151	yes	Error Lookup		Group	2152 2153 2154 2155 2158 2159  2157					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2152				InstallShared	"Error Look Section,errlook_exe,errlook.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2153				InstallShared	"Error Look Section,errlook_hlp,errlook.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2154				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""errlook.hlp"", ""%s"", """" "					%2153		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2155				Depend	2152 ? 2156							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2156				InstallShortcut	"%2152\%F2152,Error Lookup, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2157				CustomAction	"COMMON98.DLL,RemoveAuxFile,Error Look Section;errlook_gid"					%2153		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2158				CustomAction	"COMMON98.DLL,AddTool,0;0;;Error Loo&kup;1;$ (TargetDir);Error Loo&kup;0;%s\errlook.exe;0;"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2159				Depend	2152 ? 2160							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2160				CustomAction	"COMMON98.DLL,RemoveTool,errlook.exe"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2171	yes	ActiveX Control Test Container	Installs a utility that allows for testing and debugging ActiveX Controls	Group	2172 2173 2174 2176 2184 2185  2178 2179 2175 2181 2182					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2172				InstallShared	"vc Test Container,tstcon32_exe,tstcon32.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2173				InstallShared	"vc Test Container,tstcon32_hlp,tstcon32.hlp,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2174				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""tstcon32.hlp"", ""%s"", """" "					%2173		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2175				CustomAction	"COMMON98.DLL,RemoveAuxFile,vc Test Container;tstcon32_gid"					%2173		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2176				Depend	2172 ? 2177							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2177				InstallShortcut	"%2172\%F2172,ActiveX Control Test Container, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2178				InstallShared	"vc Test Container,tcprops_dll,tcprops.dll,,2723"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2179				Depend	2178 ? 2180							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2180		tcprops.dll		SelfReg	"vc Test Container,tcprops_dll,,,"					%2178		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2181				InstallShared	"vc Test Container,tstcon32_cnt,tstcon32.cnt,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2182				Depend	2181 ? 2183							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2183				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""tstcon32.cnt"", ""%s"", """" "					%2181		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2184				CustomAction	"COMMON98.DLL,AddTool,0;0;;Activ&eX Control Test Container;1;$ (TargetDir);Activ&eX Control Test Container;0;%s\tstcon32.exe;0;"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2185				Depend	2172 ? 2186							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2186				CustomAction	"COMMON98.DLL,RemoveTool,tstcon32.exe"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2191	yes	OLE View	OLE common object viewer	Group	2192 2193 2201 2194 2195					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2192				InstallShared	"vc OleView Section,oleview_exe,oleview.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2193				InstallShortcut	"%2192\%F2192,OLE View, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2194				CustomAction	"COMMON98.DLL,AddTool,0;0;;OLE/COM Object &Viewer;1;%s;OLE/COM Object &Viewer;0;%s\oleview.exe;0;"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2195				Depend	2192 ? 2196							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2196				CustomAction	"COMMON98.DLL,RemoveTool,oleview.exe"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2201				Group	2202 2203					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2202				InstallShared	"iviewer Cpy File Section,iviewers_dll,iviewers.dll,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2203				Depend	2202 ? 2204							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2204		iviewers.dll		SelfReg	"iviewer Cpy File Section,iviewers_dll,,,"					%2202		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2211				Group	2212 2213 2214 2215 2223 2225 2227 2229 2222 2216 2241 2217 2218 2219 2220 2221					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2212				InstallShared	"Win32-SDK-Tools2,irotview_exe,irotview.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2213				InstallShared	"Win32 SDKTools Shared Section, dfview_exe, dfview.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2214				InstallShared	"Win32 SDKTools Shared Section, dobjview_exe, dobjview.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2215				InstallShared	"Win32 SDKTools Shared Section, oletools_hlp, oletools.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2216				CustomAction	"COMMON98.DLL,RemoveAuxFile,Win32 SDKTools Shared Section;oletools_gid"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2217				InstallShared	"Win32 SDKTools Shared Section,undname_exe, undname.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2218				InstallShared	"Win32-SDK-Tools2,bind_exe,bind.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2219				InstallShared	"Win32-SDK-Tools2,fontedit_exe,Fontedit.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2220				InstallShared	"Win32-SDK-Tools2,fontedit_hlp,Fontedit.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2221				CustomAction	"COMMON98.DLL,RemoveAuxFile,Win32-SDK-Tools2;fontedit_gid"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2222				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""oletools.hlp"", ""%s"""					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2223				Depend	2212 ? 2224							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2224				InstallShortcut	"%2212\%F2212,ROT Viewer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2225				Depend	2213 ? 2226							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2226				InstallShortcut	"%2213\%F2213,DocFile Viewer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2227				Depend	2214 ? 2228							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2228				InstallShortcut	"%2214\%F2214,DataObject Viewer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2229				Depend	2215 ? 2230							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2230				InstallShortcut	"%2215\%F2215,OLE Tools, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2241				Group	2242 2243 2244 2245 2246 2247 2248 2249 2250 2251 2252 2253 2255					%D		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2242				InstallShared	"Win32 SDKTool General, gutils_dll, gutils.dll,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2243				InstallShared	"Win32 SDKTool General, windiff_exe, windiff.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2244				InstallShortcut	"%2243\%F2243,Windiff, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2245				InstallShared	"Win32 SDKTool General, windiff_hlp, windiff.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2246				CustomAction	"COMMON98.DLL,RemoveAuxFile,Win32 SDKTool General;windiff_gid"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2247				InstallShared	"Win32 SDKTool General,uuidgen_exe,uuidgen.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2248				InstallShared	"Win32 SDKTool General,depends_exe,depends.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2249				InstallShortcut	"%2248\%F2248,Depends, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2250				InstallShared	"Win32 SDKTool General,depends_hlp,depends.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2251				InstallShared	"Win32 SDKTool General,depends_cnt,depends.cnt,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2252				CustomAction	"COMMON98.DLL,RemoveAuxFile,Win32 SDKTool General;depends_gid"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2253				Depend	2248 ? 2254							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2254				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""depends.hlp"", ""%s"""					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2255				Depend	2243 ? 2256							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2256				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""windiff.hlp"", ""%s"""					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2261				Depend	28 ? 2262:2287							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+2262				Group	2273 2263 2264 2265 2266 2267 2268 2269 2270 2271 2272 2275 2277 2279 2281 2283 2285 2274 2311					%6\Tools		nyi		
+2263				InstallShared	"WIN32 SDK Tools Win95,aviedit_exe,aviedit.exe,,2723"					%D\Win95		nyi		
+2264				InstallShared	"WIN32 SDK Tools Win95,cl32test_exe_1,cl32test.exe_W95,,2723"					%D\Win95		nyi		
+2265				InstallShared	"WIN32 SDK Tools Win95,ddespy_exe_1,ddespy.exe_W95,,2723"					%D\Win95		nyi		
+2266				InstallShared	"WIN32 SDK Tools Win95,heapwalk_exe,heapwalk.exe,,2723"					%D\Win95		nyi		
+2267				InstallShared	"WIN32 SDK Tools Win95,sr32test_exe_1,sr32test.exe_W95,,2723"					%D\Win95		nyi		
+2268				InstallShared	"WIN32 SDK Tools Win95,stress_dll,stress.dll,,2723"					%D\Win95		nyi		
+2269				InstallShared	"WIN32 SDK Tools Win95,stress_exe,stress.exe,,2723"					%D\Win95		nyi		
+2270				InstallShared	"WIN32 SDK Tools Win95,stress_hlp,stress.hlp,,2723"					%D\Win95		nyi		
+2271				InstallShared	"WIN32 SDK Tools Win95,stresshk_dll,stresshk.dll,,2723"					%D\Win95		nyi		
+2272				InstallShared	"WIN32 SDK Tools Win95,stresslg_dll,stresslg.dll,,2723"					%D\Win95		nyi		
+2273				AddRegData	"""LOCAL"",""Software\Microsoft\Windows\Help"",""stress_hlp"",""%s"","""""					%D\Win95		nyi		
+2274				CustomAction	"COMMON98.DLL,RemoveAuxFile,WIN32 SDK Tools Win95;stress_gid"					%D\Win95		nyi		
+2275				Depend	2263 ? 2276							nyi		
+2276				InstallShortcut	"%2263\%F2263,AVI Editor, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2277				Depend	2264 ? 2278							nyi		
+2278				InstallShortcut	"%2264\%F2264,OLE Client Test, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2279				Depend	2265 ? 2280							nyi		
+2280				InstallShortcut	"%2265\%F2265,DDE Spy, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2281				Depend	2266 ? 2282							nyi		
+2282				InstallShortcut	"%2266\%F2266,Heap Walk Utility, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2283				Depend	2267 ? 2284							nyi		
+2284				InstallShortcut	"%2267\%F2267,OLE Server Test, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2285				Depend	2269 ? 2286							nyi		
+2286				InstallShortcut	"%2269\%F2269,Stress Utility, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2287				Group	2288 2292 2293 2294 2295 2297 2321 2299 2311					%6\Tools\WinNT		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2288				Depend	294 ? 2289 2290							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2289				CustomAction	"COMMON98.DLL,AskSetEnv"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2290				Depend	2289 ? 2291							us	No	C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2291				CustomAction	"COMMON98.DLL,AddToReg,HKCU;Environment;path;%s"					%6\Tools\WinNT		nyi		
+2292				InstallShared	"WIN32 SDK Tools NT,cl32test_exe,cl32test.exe_NT,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2293				InstallShared	"WIN32 SDK Tools NT,ddespy_exe,ddespy.exe_NT,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2294				InstallShared	"WIN32 SDK Tools NT,sr32test_exe,sr32test.exe_NT,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2295				Depend	2292 ? 2296							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2296				InstallShortcut	"%2292\%F2292,OLE Client Test, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2297				Depend	2293 ? 2298							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2298				InstallShortcut	"%2293\%F2293,DDE Spy, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2299				Depend	2294 ? 2300							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2300				InstallShortcut	"%2294\%F2294,OLE Server Test, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2311				Group	2315 2316 2312							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2312				Depend	28 ? 2313 2314							us	No	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2313		pview95.exe		InstallShared	"WIN32 SDK Win General Tools,pview95_exe,pview95.exe,,2723"					%6\Tools\Win95		nyi		
+2314				InstallShortcut	"%2313\%F2313,Process Viewer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		nyi		
+2315		zoomin.exe		InstallShared	"WIN32 SDK Win General Tools,zoomin_exe,zoomin.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2316				InstallShortcut	"%2315\%F2315,Zoomin, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2321				Group	2322 2323 2324					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2322				InstallShared	"WIN32 SDK NT General Tools,pstat_exe,pstat.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2323				InstallShared	"WIN32 SDK NT General Tools,pview_exe,pview.exe,,2723"					%D		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\WinNT\
+2324				InstallShortcut	"%2323\%F2323,Process Viewer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2331	yes	Spy++	Installs a utility application that allows you to monitor the types of messages an application receives.	Group	2332 2333 2334 2335 2336 2337 2339 2342 2343  2341					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2332				InstallShared	"VC - Spy, spyxx_cnt,spyxx.cnt,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2333				InstallShared	"VC - Spy, spyxx_hlp,spyxx.hlp,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2334				InstallShared	"VC - Spy, spyhk50_dll,spyhk55.dll,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2335				InstallShared	"VC - Spy, spyxx_exe,spyxx.exe,,2723"					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2336				InstallShortcut	"%2335\%F2335, spyshort<Spy++>, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2337				Depend	2332 ? 2338							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2338				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""spyxx.cnt"", ""%s"", """" "					%2332		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2339				Depend	2333 ? 2340							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2340				AddRegData	"""LOCAL"", ""Software\Microsoft\Windows\Help"", ""spyxx.hlp"", ""%s"", """" "					%2333		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2341				CustomAction	"COMMON98.DLL,RemoveAuxFile,VC - Spy;spyxx_gid"					%2333		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2342				CustomAction	"COMMON98.DLL,AddTool,0;0;;S&py++;1;%s;S&py++;0;%s\spyxx.exe;0;"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2343				Depend	2335 ? 2344							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2344				CustomAction	"COMMON98.DLL,RemoveTool,spyxx.exe"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2351	yes	MFC Trace Utility	Installs a utility application that customizes the kinds of data debug MFC applications emit to the Output Window in the Development Environment	Group	2352 2353 2355 2356					%6\Tools		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2352				InstallShared	"vc Tracer Section,tracer_exe,tracer.exe,,2723"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2353				Depend	2352 ? 2354							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2354				InstallShortcut	"%2352\%F2352,Tracer, , , , , "					%27\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools		us		C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Visual C++ 6.0\Microsoft Visual C++ 6.0 Tools\
+2355				CustomAction	"COMMON98.DLL,AddTool,0;0;;MFC &Tracer;1;%s;MFC &Tracer;0;%s\tracer.exe;0;"					%d		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2356				Depend	2352 ? 2357							us	Yes	C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2357				CustomAction	"COMMON98.DLL,RemoveTool,tracer.exe"							us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
+2361				Group	2362					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2362				Group	2363					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2363				Depend	28 ? 2364 2366:2365 2368							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+2364		atl.dll		InstallShared	"ATL,atl_dll_1,atl.dll,,2723 "					%m		nyi		
+2365		atl.dll		InstallShared	"ATL,atl_dll_2,atl.dll,,2723 "					%m		se		
+2366				Depend	2364 ? 2367							nyi		
+2367		atl.dll		SelfReg	"ATL,""atl_dll_1"","""","""","""""					%2364		nyi		
+2368				Depend	2365 ? 2369							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+2369		atl.dll		SelfReg	"ATL,""atl_dll_2"","""","""","""""					%2365		nyi		
+2371	yes			Group	2374 2375 2377 2378 2379							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2372	yes	Data Access	Data Access Components	OptionDlg	2376 2373 2389							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2373	yes	Microsoft ODBC Drivers	Drivers to data sources via ODBC	OptionDlg	2374 2375 2382 2383 2384 2385 2386 2387 2388							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2374	yes	Microsoft SQL Server ODBC Driver	ODBC driver for Microsoft SQL Server databases	Group	2551							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2375	yes	Microsoft Oracle ODBC Driver	Microsoft's ODBC driver for Oracle databases	Group	2541							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2376	yes	"ADO, RDS, and OLE DB Providers"	"ADO (ActiveX Data Objects), RDS (Remote Data Services), and OLE DB data providers."	OptionDlg	2377 2378 2379 2380 2381		vital					us		C:\Program Files\Microsoft Visual Studio\VC98\
+2377	yes	ADO and RDS	ActiveX Data Objects (ADO) and Remote Data Service (RDS) for easy access to data from Visual Basic and the Web	Group	2571 2631		vital					us		C:\Program Files\Microsoft Visual Studio\VC98\
+2378	yes	Microsoft OLE DB SQL Server Provider	OLE DB Provider for Microsoft SQL Server databases	Group	2621							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2379	yes	Microsoft OLE DB Oracle Provider	Microsoft OLE DB provider for Oracle databases	Group	2601							nyi		
+2380	yes	Microsoft OLE DB Simple Provider (OSP)	Runtime for OSP - build OLE DB providers for simple and tabular data	Group	2591							nyi		
+2381	yes	Microsoft OLE DB JET Provider	Microsoft OLE DB JET Provider	Group	2561							nyi		
+2382	yes	Microsoft Access ODBC Driver	Microsoft Access ODBC Driver.	Group	2531							nyi		
+2383		Microsoft dBase ODBC Driver	Microsoft ODBC Driver for dBase databases	Group	2511							nyi		
+2384		Microsoft Excel ODBC Driver	Microsoft ODBC Driver for Excel data sources	Group	2491							nyi		
+2385		Microsoft FoxPro ODBC Driver	Microsoft ODBC Driver for FoxPro databases	Group	2481							nyi		
+2386	yes	Microsoft Visual FoxPro ODBC Driver	ODBC driver for Microsoft Visual FoxPro databases	Group	2461							nyi		
+2387		Microsoft Paradox ODBC Driver	Microsoft's ODBC driver for Paradox databases	Group	2441							nyi		
+2388		Microsoft Text ODBC Driver	Microsoft's ODBC driver for Text data sources	Group	2421							nyi		
+2389		Jet IISAM Drivers	Drivers to data sources via Microsoft Jet	OptionDlg	2390 2391 2392 2393 2394 2395							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2390		Jet IISAM Excel Driver	Microsoft Jet IISAM driver for Excel data sources	Group	2501							nyi		
+2391		Jet IISAM Exchange Driver	"Jet IISAM Exchange Driver, requires that Microsoft Outlook or Exchange already be installed for successful registration to occur."	Group	2411							nyi		
+2392		Jet IISAM Lotus 1-2-3 Driver	Microsoft Jet IISAM driver for Lotus 1-2-3 data sources	Group	2401							nyi		
+2393		Jet IISAM Paradox Driver	Microsoft Jet IISAM driver for Paradox databases	Group	2451							nyi		
+2394		Jet IISAM Text Driver	Microsoft Jet IISAM driver for Text data sources	Group	2431							nyi		
+2395		Jet IISAM XBase Driver	Microsoft Jet IISAM driver for XBase databases	Group	2521							nyi		
+2396				CustomAction	"COMMON98.DLL, NopCAH"									
+2401				Group	2402 2403					%M		nyi		
+2402				InstallSysFile	"DAG Jet IISAM Lotus, msltus35_dll"					%M		nyi		
+2403				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2404"""							nyi		
+2404		msltus35.dll		SelfReg	"DAG Jet IISAM Lotus, msltus35_dll"					%2402		nyi		
+2411				Group	2412 2413					%M		nyi		
+2412				InstallSysFile	"DAG Jet IISAM Exchange,msexch35_dll"					%M		nyi		
+2413		msexch35.dll		CustomAction	"COMMON98.DLL,SyncEXECalloutCAH,""%m\regsvr32 /s """"%s\msexch35.dll"""""""					%2412		nyi		
+2421			Microsoft Text Driver	Group	2431 2422 2423					%M		nyi		
+2422				InstallSysFile	"dag Text ODBC Driver,odtext32_dll_1"					%M		nyi		
+2423				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA Text"					%M		nyi		
+2431				Group	2432 2433					%M		nyi		
+2432				InstallSysFile	"DAG Jet IISAM Text, mstext35_dll"					%M		nyi		
+2433				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2434"""							nyi		
+2434		mstext35.dll		SelfReg	"DAG Jet IISAM Text, mstext35_dll"					%2432		nyi		
+2441			Microsoft Paradox Driver	Group	2451 2442 2443					%M		nyi		
+2442				InstallSysFile	"dag Paradox ODBC Driver,odpdx32_dll_1"					%M		nyi		
+2443				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA Paradox"					%M		nyi		
+2451				Group	2452 2453					%M		nyi		
+2452				InstallSysFile	"DAG Jet IISAM Paradox, mspdox35_dll"					%M		nyi		
+2453				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2454"""							nyi		
+2454		mspdox35.dll		SelfReg	"DAG Jet IISAM Paradox, mspdox35_dll"					%2452		nyi		
+2461			Microsoft Visual FoxPro Driver	Group	2462 2467 2468 2469 2470 2471 2472					%M		nyi		
+2462				Group	2463 2464 2465					%M		nyi		
+2463				InstallSysFile	"DA Visual Foxpro, vfpodbc_dll"					%M		nyi		
+2464				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA Visual FoxPro:Y"							nyi		
+2465				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2466"""							nyi		
+2466				CustomAction	"odbcstf.dll,AcmeConfigDataSource,odbckey.inf:ADD:Microsoft Visual FoxPro Driver:DSN=Visual FoxPro Database|SourceDB=|SourceType=DBC||"					%2463		nyi		
+2467				InstallSysFile	"DA Visual Foxpro, vfpodbc_txt"					%M		nyi		
+2468				InstallSysFile	"DA Visual Foxpro, drvvfp_hlp_1"					%M		nyi		
+2469				InstallSysFile	"DA Visual Foxpro, drvvfp_cnt_1"					%M		nyi		
+2470				CustomAction	"COMMON98.DLL, RemoveAuxFile, DA Visual Foxpro;drvvfp_gid"							nyi		
+2471				CustomAction	"COMMON98.DLL, RemoveAuxFile, DA Visual Foxpro;drvvfp_ftg"							nyi		
+2472				CustomAction	"COMMON98.DLL, RemoveAuxFile, DA Visual Foxpro;drvvfp_fts"							nyi		
+2481			Microsoft FoxPro Driver	Group	2521 2482 2483					%M		nyi		
+2482				InstallSysFile	"dag FoxPro ODBC Driver,odfox32_dll_1"					%M		nyi		
+2483				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA FoxPro"					%M		nyi		
+2491			Microsoft Excel Driver	Group	2501 2492 2493					%M		nyi		
+2492				InstallSysFile	"dag Excel ODBC Driver,odexl32_dll_1"					%M		nyi		
+2493				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:da Excel"					%M		nyi		
+2501				Group	2502 2503					%M		nyi		
+2502				InstallSysFile	"DAG Jet IISAM Excel,msexcl35_dll"					%M		nyi		
+2503				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2504"""							nyi		
+2504		msexcl35.dll		SelfReg	"DAG Jet IISAM Excel, msexcl35_dll"					%2502		nyi		
+2511			Microsoft dBase Driver	Group	2521 2512 2513					%M		nyi		
+2512				InstallSysFile	"dag dBase ODBC Driver,oddbse32_dll_1"					%M		nyi		
+2513				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA dBase"					%M		nyi		
+2521				Group	2522 2523					%M		nyi		
+2522				InstallSysFile	"DAG Jet IISAM XBase, msxbse35_dll"					%M		nyi		
+2523				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2524"""							nyi		
+2524		msxbse35.dll		SelfReg	"DAG Jet IISAM XBase, msxbse35_dll"					%2522		nyi		
+2531			Microsoft Access Driver	CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:DA Access"					%M		nyi		
+2541				Group	2611 2542 2543 2545 2546 2547					%M		us		C:\WINDOWS\system32\
+2542				InstallSysFile	"dag ODBC Oracle Driver,msorcl20_dll"					%M		nyi		
+2543				Depend	2542 ? 2544							us	No	C:\WINDOWS\system32\
+2544		msorcl32.dll		SelfReg	"dag ODBC Oracle Driver,msorcl20_dll"					%M		nyi		
+2545				InstallSysFile	"dag ODBC Oracle Driver,msorcl32_hlp"					%M		us		C:\WINDOWS\system32\
+2546				InstallSysFile	"dag ODBC Oracle Driver,msorcl32_cnt"					%M		us		C:\WINDOWS\system32\
+2547				InstallSysFile	"dag ODBC Oracle Driver,msorcl32_txt"					%M		us		C:\WINDOWS\system32\
+2551				Group	2552					%M		us		C:\WINDOWS\system32\
+2552			Microsoft SQL Server Driver	Group	2553 2554 2555 2556 2557 2558					%M		us		C:\WINDOWS\system32\
+2553				InstallSysFile	"dag ODBC SQL Driver,sqlsrv32_dll"					%M		nyi		
+2554				CustomAction	"odbcstf.dll,AcmeInstallDriver,odbckey.inf:SQL Server Driver"					%M		us		C:\WINDOWS\system32\
+2555				InstallSysFile	"dag ODBC SQL Driver,odbcbcp_dll"					%M		nyi		
+2556				InstallSysFile	"dag ODBC SQL Driver,windbver_exe"					%M		us		C:\WINDOWS\system32\
+2557				InstallSysFile	"dag ODBC SQL Driver,sqlsodbc_hlp"					%M		us		C:\WINDOWS\system32\
+2558				InstallSysFile	"dag ODBC SQL Driver,sqlsrdme_txt"					%M		us		C:\WINDOWS\system32\
+2561				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2562 2563 2564 2565 2566"""					%8\system\ole db		nyi		
+2562				CopyFile	"dag Jolt, msjtor35_dll"					%2561		nyi		
+2563				CopyFile	"dag Jolt, msjt4jlt_dll"					%M		nyi		
+2564				CopyFile	"dag Jolt, joltread_txt"					%2561		nyi		
+2565		msjt4jlt.dll		SelfReg	"dag Jolt, msjt4jlt_dll"					%2563		nyi		
+2566		msjtor35.dll		SelfReg	"dag Jolt, msjtor35_dll"					%2562		nyi		
+2571				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2572 2573 2574 2575 2576 2577 2578 2579 2580 2581 2582 2583 2584 2585 2586"""					%8\system\ado		us		C:\Program Files\Common Files\system\ado\
+2572				CopyFile	"dag ADO,msader15_dll"					%2571		se		
+2573				CopyFile	"dag ADO,msado15_dll"					%2571		se		
+2574				CopyFile	"dag ADO,msador15_dll"					%2571		se		
+2575				CopyFile	"dag ADO,msadrh15_dll"					%2571		se		
+2576				CopyFile	"dag ADO,adofre15_reg"					%2571		us		C:\Program Files\Common Files\system\ado\
+2577				CopyFile	"dag ADO,adoapt15_reg"					%2571		us		C:\Program Files\Common Files\system\ado\
+2578				CopyFile	"dag ADO,readme_txt_13"					%2571		us		C:\Program Files\Common Files\system\ado\
+2579				CopyFile	"dag ADO,adojavas_inc"					%2571		us		C:\Program Files\Common Files\system\ado\
+2580				CopyFile	"dag ADO,adovbs_inc"					%2571		us		C:\Program Files\Common Files\system\ado\
+2581				CopyFile	"dag ADO,makapt15_bat"					%2571		us		C:\Program Files\Common Files\system\ado\
+2582				CopyFile	"dag ADO,makfre_bat"					%2571		us		C:\Program Files\Common Files\system\ado\
+2583				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\DataAccess,Version,2.0.0"					%2571		us		C:\Program Files\Common Files\system\ado\
+2584		msador15.dll		SelfReg	"dag ADO,msador15_dll,,,"					%2574		us		C:\Program Files\Common Files\system\ado\
+2585		msadrh15.dll		SelfReg	"dag ADO,msadrh15_dll,,,"					%2575		us		C:\Program Files\Common Files\system\ado\
+2586		msado15.dll		SelfReg	"dag ADO,msado15_dll,,,"					%2573		us		C:\Program Files\Common Files\system\ado\
+2591				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2592 2593 2594 2595"""					%8\system\ole db		nyi		
+2592				CopyFile	"dag OLEDB Simple Provider,msdaosp_dll"					%2591		nyi		
+2593		msdaosp.dll		SelfReg	"dag OLEDB Simple Provider,msdaosp_dll"					%2592		nyi		
+2594				CopyFile	"dag OLEDB Simple Provider,simpdata_tlb"					%M		nyi		
+2595				CustomAction	"COMMON98.DLL,RegisterTypeLibrary,""dag OLEDB Simple Provider;simpdata_tlb"""					%2594		nyi		
+2601				Group	2611 2602					%8\system\ole db		nyi		
+2602				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2603 2604 2605"""					%2601		nyi		
+2603				CopyFile	"dag OLEDB Oracle Provider,msdaora_dll"					%2601		nyi		
+2604		msdaora.dll		SelfReg	"dag OLEDB Oracle Provider,msdaora_dll"					%2603		nyi		
+2605				CopyFile	"dag OLEDB Oracle Provider,oraoledb_txt"					%2601		nyi		
+2611				Group	2612					%M		nyi		
+2612				InstallSysFile	"dag MTS,mtxoci_dll"					%M		nyi		
+2621				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2622 2623 2624 2625 2626 2627 2628 2629"""					%8\system\ole db		us		C:\Program Files\Common Files\system\ole db\
+2622				CopyFile	"dag OLEDB SQL Server Provider,sqloledb_dll"					%2621		se		
+2623		SQLOLEDB.DLL		SelfReg	"dag OLEDB SQL Server Provider,sqloledb_dll"					%2622		us		C:\Program Files\Common Files\system\ole db\
+2624				CopyFile	"dag OLEDB SQL Server Provider,dbmsshrn_dll"					%M		us		C:\WINDOWS\system32\
+2625				CopyFile	"dag OLEDB SQL Server Provider,sqlsoldb_hlp"					%2621		us		C:\Program Files\Common Files\system\ole db\
+2626				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag OLEDB SQL Server Provider;sqlsoldb_gid"							us		C:\Program Files\Common Files\system\ole db\
+2627				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag OLEDB SQL Server Provider;sqlsoldb_ftg"							us		C:\Program Files\Common Files\system\ole db\
+2628				CustomAction	"COMMON98.DLL, RemoveAuxFile, dag OLEDB SQL Server Provider;sqlsoldb_fts"							us		C:\Program Files\Common Files\system\ole db\
+2629				CopyFile	"dag OLEDB SQL Server Provider,sqloledb_txt"					%2621		us		C:\Program Files\Common Files\system\ole db\
+2631				Group	2632 2640 2663					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2632				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2633 2634 2635 2636 2637 2638 2639"""					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2633				CopyFile	"dag ADC Server,adcjavas_inc"					%2632		us		C:\Program Files\Common Files\system\msadc\
+2634				CopyFile	"dag ADC Server,adcvbs_inc_1"					%2632		us		C:\Program Files\Common Files\system\msadc\
+2635				CopyFile	"dag ADC Server,msadcf_dll"					%2632		se		
+2636		msadcf.dll		SelfReg	"dag ADC Server,msadcf_dll"					%2635		us		C:\Program Files\Common Files\system\msadc\
+2637				CopyFile	"dag ADC Server,msadcs_dll"					%2632		se		
+2638				CopyFile	"dag ADC Server,msadds_dll"					%2632		se		
+2639		msadds.dll		SelfReg	"dag ADC Server,msadds_dll"					%2638		us		C:\Program Files\Common Files\system\msadc\
+2640				Group	2641 2642					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2641				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2643 2644 2645 2646 2647 2648 2649 2650 2651"""					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2642				CustomAction	"COMMON98.DLL,NeverRemoveGroup,""2652 2653 2654 2655 2656 2657 2658 2659 2660 2661 2662"""					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2643				CopyFile	"dag ADC Client,msadce_dll"					%2640		se		
+2644		msadce.dll		SelfReg	"dag ADC Client,msadce_dll"					%2643		us		C:\Program Files\Common Files\system\msadc\
+2645				CopyFile	"dag ADC Client,msadcer_dll"					%2640		se		
+2646				CopyFile	"dag ADC Client,msadco_dll"					%2640		se		
+2647		msadco.dll		SelfReg	"dag ADC Client,msadco_dll"					%2646		us		C:\Program Files\Common Files\system\msadc\
+2648				CopyFile	"dag ADC Client,msadcor_dll"					%2640		se		
+2649				CopyFile	"dag ADC Client,msdatsrc_tlb"					%M		se		
+2650				CopyFile	"dag ADC Client,handler_reg"					%2640		us		C:\Program Files\Common Files\system\msadc\
+2651				CustomAction	"COMMON98.DLL,RegFile,2650"					%2650		us		C:\Program Files\Common Files\system\msadc\
+2652				CopyFile	"dag ADC Client,msdfmap_dll"					%2640		se		
+2653		msdfmap.dll		CustomAction	"COMMON98.DLL,RegSvrCAH,""""""%s\msdfmap.dll"""""""					%2652		us		C:\Program Files\Common Files\system\msadc\
+2654				CopyFile	"dag ADC Client,msdfmap_ini"					%W		us		C:\WINDOWS\
+2655				CopyFile	"dag ADC Client,msaddsr_dll"					%2640		se		
+2656				CopyFile	"dag ADC Client,msdaprst_dll"					%2640		se		
+2657		msdaprst.dll		SelfReg	"dag ADC Client,msdaprst_dll"					%2656		us		C:\Program Files\Common Files\system\msadc\
+2658				CopyFile	"dag ADC Client,msjtes_dll"					%M		se		
+2659		msjtes40.dll		SelfReg	"dag ADC Client,msjtes_dll"					%2658		us		C:\WINDOWS\system32\
+2660				CopyFile	"dag ADC Client,msadcfr_dll"					%2640		se		
+2661				CopyFile	"dag ADC Client,mdac20_cab"					%2640		us		C:\Program Files\Common Files\system\msadc\
+2662				CopyFile	"dag ADC Client,mdac20_a_cab"					%2640		us		C:\Program Files\Common Files\system\msadc\
+2663				Group	2664 2665					%8\system\msadc		us		C:\Program Files\Common Files\system\msadc\
+2664				CopyFile	"dag ADC 11,mdac11_cab"					%2663		us		C:\Program Files\Common Files\system\msadc\
+2665				CopyFile	"dag ADC 11,readme_txt_11"					%2663\doc11		us		C:\Program Files\Common Files\system\msadc\doc11\
+2671				Group	2672 2673 2675					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2672				InstallShared	"Shell Help, vshelp_dll, vshelp.dll,,2723"					%H\VS98		us		C:\Program Files\Common Files\Microsoft Shared\VS98\
+2673				Depend	2672 ? 2674							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2674		vshelp.dll		SelfReg	"Shell Help,vshelp_dll,,,,"					%2672		us		C:\Program Files\Common Files\Microsoft Shared\VS98\
+2675				Group	2676					%2672\resources\1033		us		C:\Program Files\Common Files\Microsoft Shared\VS98\resources\1033\
+2676		vshelpui.dll		InstallShared	"Loc Shell Help,vshelpui_dll_enu,vshelpui.dll(enu),,2723"					%d		us		C:\Program Files\Common Files\Microsoft Shared\VS98\resources\1033\
+2681				Group	2682 2683					%W\Help		us		C:\WINDOWS\Help\
+2682				InstallShared	"VB Docs for VC Tag,vbcmn98_chi_1,vbcmn98.chi,,2723"					%D		us		C:\WINDOWS\Help\
+2683				Depend	2682?2684							us	Yes	C:\WINDOWS\Help\
+2684				CopySection	VB Docs for VC Sec					%D		us		C:\WINDOWS\Help\
+2691				InstallSysFile	"HLP95EN,hlp95en_dll_1"					%M		us		C:\WINDOWS\system32\
+2701				Group	2702 2710							us		C:\WINDOWS\system32\
+2702				Group	2703 2704 2705 2706 2707 2708 2709							us		C:\WINDOWS\system32\
+2703				CopyFile	"VBCTLHLP,vbcmn96_hlp"					%W\Help		us		C:\WINDOWS\Help\
+2704				CopyFile	"VBCTLHLP,vbcmn96_cnt"					%W\Help		us		C:\WINDOWS\Help\
+2705				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,vbcmn96.hlp,%s,"					%2703		us		C:\WINDOWS\Help\
+2706				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,vbcmn96.cnt,%s,"					%2704		us		C:\WINDOWS\Help\
+2707				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vbcmn96_ftg"							us		C:\WINDOWS\system32\
+2708				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vbcmn96_fts"							us		C:\WINDOWS\system32\
+2709				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vbcmn96_gid"							us		C:\WINDOWS\system32\
+2710				Group	2711 2712 2713 2714 2715							us		C:\WINDOWS\system32\
+2711				CopyFile	"VBCTLHLP,vb5def_hlp"					%W\Help		us		C:\WINDOWS\Help\
+2712				AddRegData	"HKEY_LOCAL_MACHINE,Software\Microsoft\Windows\Help,vb5def.hlp,%s,"					%2711		us		C:\WINDOWS\Help\
+2713				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vb5def_ftg"							us		C:\WINDOWS\system32\
+2714				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vb5def_fts"							us		C:\WINDOWS\system32\
+2715				CustomAction	"COMMON98.DLL, RemoveAuxFile, VBCTLHLP;vb5def_gid"							us		C:\WINDOWS\system32\
+2721				Group	2761 2751 2722 2728 2723 2724 2725 2726 2727 2741					%294\Setup\1033		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2722				CopySection	Common Setup					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2723		vc98lrn_dll		CopyFile	"SetupProdCah,vc98lrn_dll"					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2724				WriteTableFile	setup.stf					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2725		selfreg.dll		InstallShared	"SetupProdCah,selfreg_dll,selfreg.dll,,2723 "					%m		us		C:\WINDOWS\system32\
+2726				AddRegData	"LOCAL,Software\Microsoft\Windows\CurrentVersion\Uninstall\Visual C++ 6.0 Standard Edition ,DisplayName,Microsoft Visual C++ 6.0 Standard Edition ,REG_SZ"							us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2727				AddRegData	"LOCAL,Software\Microsoft\Windows\CurrentVersion\Uninstall\Visual C++ 6.0 Standard Edition ,UninstallString,""""""%s\Setup.exe"""""",REG_SZ"					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2728				Group	2729					%2722		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2729				Depend	2722 ? 2730 2731 2732							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2730		acmsetup.fts		CustomAction	"COMMON98.DLL, RemoveAuxFile, Remove ACME Help Files;acmsetup_fts"							us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2731		acmsetup.ftg		CustomAction	"COMMON98.DLL, RemoveAuxFile, Remove ACME Help Files;acmsetup_ftg"							us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2732		acmsetup.gid		CustomAction	"COMMON98.DLL, RemoveAuxFile, Remove ACME Help Files;acmsetup_gid"							us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2741				Group	2742 2743					%2721		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2742				CopySection	dag ODBC CAH					%2721		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2743				CopyFile	"dag ODBC Conf Exe,odbcconf_exe"					%M		se		
+2751				Group	2752							us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2752				CopySection	Setup					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\Setup\1033\
+2761				Group	2762 2764					%294		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2762				CopySection	ReadMe					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2763				CustomAction	"COMMON98.DLL, NopCAH"									
+2764				CopySection	Redist text					%d		us		C:\Program Files\Microsoft Visual Studio\VC98\
+2771				Group	2774 2772							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2772				Depend	2672 ? 2773							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2773				CopyBindExe	"Shell Help,vshelp_dll,"					%2672		us		C:\Program Files\Common Files\Microsoft Shared\VS98\
+2774				Group	2775 2790 2807 2834 2849 2864 2907 2928							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2775				Group	2776 2778 2780 2782 2784 2786 2788							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2776				Depend	463 ? 2777							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2777				CopyBindExe	"VC - Native Debugger,dm_dll"					%463		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2778				Depend	464 ? 2779							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2779				CopyBindExe	"VC - Native Debugger,eecxx_dll"					%464		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2780				Depend	465 ? 2781							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2781				CopyBindExe	"VC - Native Debugger,em_dll"					%465		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2782				Depend	466 ? 2783							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2783				CopyBindExe	"VC - Native Debugger,msvcmon_exe"					%466		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2784				Depend	467 ? 2785							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2785				CopyBindExe	"VC - Native Debugger,tlloc_dll"					%467		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2786				Depend	468 ? 2787							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2787				CopyBindExe	"VC - Native Debugger,tln0t_dll"					%468		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2788				Depend	469 ? 2789							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2789				CopyBindExe	"VC - Native Debugger, shcv_dll"					%469		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2790				Group	2791 2793 2795 2797 2799 2801 2803 2805							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2791				Depend	503 ? 2792							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2792				CopyBindExe	"vc Core IDE, msdevs_exe"					%503		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2793				Depend	504 ? 2794							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2794				CopyBindExe	"vc Core IDE, autolayt_dll"					%504		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2795				Depend	505 ? 2796							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2796				CopyBindExe	"vc Core IDE, devedit_pkg"					%505		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2797				Depend	506 ? 2798							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2798				CopyBindExe	"vc Core IDE, devprj_pkg"					%506		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2799				Depend	507 ? 2800							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2800				CopyBindExe	"vc Core IDE, devshl_dll"					%507		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2801				Depend	510 ? 2802							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2802				CopyBindExe	"vc Core IDE, mfcclwz_dll"					%510		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2803				Depend	511 ? 2804							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2804				CopyBindExe	"vc Core IDE,feacp_dll"					%511		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2805				Depend	513 ? 2806							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2806				CopyBindExe	"vc Core IDE, vcspawn_exe"					%513		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2807				Group	2808 2810 2812 2814 2816 2818 2820 2822 2824 2826 2828 2830 2832							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2808				Depend	573 ? 2809							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2809				CopyBindExe	"vc IDE Packages, devaut1_pkg"					%573		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2810				Depend	574 ? 2811							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2811				CopyBindExe	"vc IDE Packages, devbied_pkg"					%574		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2812				Depend	575 ? 2813							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2813				CopyBindExe	"vc IDE Packages, devbld_pkg"					%575		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2814				Depend	576 ? 2815							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2815				CopyBindExe	"vc IDE Packages, devclvw_pkg"					%576		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2816				Depend	577 ? 2817							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2817				CopyBindExe	"vc IDE Packages, devcpp_pkg"					%577		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2818				Depend	578 ? 2819							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2819				CopyBindExe	"vc IDE Packages, devdbg_pkg"					%578		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2820				Depend	579 ? 2821							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2821				CopyBindExe	"vc IDE Packages, devgal_pkg"					%579		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2822				Depend	580 ?2823							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2823				CopyBindExe	"vc IDE Packages, devhtmx_pkg"					%580		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2824				Depend	581 ? 2825							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2825				CopyBindExe	"vc IDE Packages, devncb_pkg"					%581		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2826				Depend	582 ? 2827							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2827				CopyBindExe	"vc IDE Packages, devodl_pkg"					%582		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2828				Depend	583 ? 2829							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2829				CopyBindExe	"vc IDE Packages, devres_pkg"					%583		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2830				Depend	584 ? 2831							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2831				CopyBindExe	"vc IDE Packages, devtool_pkg"					%584		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2832				Depend	594 ? 2833							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2833				CopyBindExe	"VC IDE Packages2,devhelp_pkg"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2834				Group	2835 2841 2837 2839  2843 2845 2847							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2835				Depend	585 ? 2836							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2836				CopyBindExe	"vc IDE Packages, devxpgl_dll"					%585		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2837				Depend	589 ? 2838							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2838				CopyBindExe	"vc IDE Packages, mfcapwz_dll"					%589		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2839				Depend	473 ? 2840							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2840				CopyBindExe	"vc NT DBG Setup, setupdbg_exe"					%473		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2841				Depend	752 ? 2842							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2842				CopyBindExe	"VC SQL debugger Self Reg, nsodbc_dll"					%752		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2843				Depend	852 ? 2844							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2844				CopyBindExe	"VC - Resource Compiler,rc_exe"					%852		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2845				Depend	852 ? 2846							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2846				CopyBindExe	"VC - Resource Compiler,rcdll_dll"					%852		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2847				Depend	852 ? 2848							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2848				CopyBindExe	"VC - Resource Compiler,rcxdti_dll"					%852		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2849				Group	2850 2852 2854 2856 2858 2860 2862							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2850				Depend	493 ? 2851							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2851				CopyBindExe	"vc IDE and Tools, msdis100_dll"					%493		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2852				Depend	412 ? 2853							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2853				CopyBindExe	"vc Only Common IDE and Tools,msobj10_dll"					%412		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2854				Depend	412 ? 2855							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2855				CopyBindExe	"vc Only Common IDE and Tools,msenc10_dll"					%412		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2856				Depend	494 ? 2857							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2857				CopyBindExe	"vc IDE and Tools,mspdb50_dll"					%494		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\
+2858				Depend	483 ? 2859							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2859				CopyBindExe	"VC - ATL Wiz, atlobj_dll"					%483		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2860				Depend	551 ? 2861							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2861				CopyBindExe	"vc IDE Wizards, appwzenu_dll"					%551		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2862				Depend	72 ? 2863							us	No	C:\Program Files\Microsoft Visual Studio\VC98\
+2863				CopyBindExe	"vc MFC Os Retail, mfc42_dll"					%72		nyi		
+2864				Group	2865 2867 2869 2871 2873 2875 2877 2879 2881 2883 2885 2887 2889 2891 2893 2895 2897 2899 2901 2903 2905							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2865				Depend	702 ? 2866							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2866				CopyBindExe	"vc IDE Gallery, cawutil_dll"					%702		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2867				Depend	703 ? 2868							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2868				CopyBindExe	"vc IDE Gallery, clipasst_dll"					%703		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2869				Depend	704 ? 2870							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2870				CopyBindExe	"vc IDE Gallery, ctip_dll"					%704		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2871				Depend	705 ? 2872							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2872				CopyBindExe	"vc IDE Gallery, dlgbar_dll"					%705		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2873				Depend	706 ? 2874							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2874				CopyBindExe	"vc IDE Gallery, docreg_dll"					%706		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2875				Depend	707 ? 2876							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2876				CopyBindExe	"vc IDE Gallery, guidgen_dll"					%707		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2877				Depend	708 ? 2878							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2878				CopyBindExe	"vc IDE Gallery, idle_dll"					%708		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2879				Depend	709 ? 2880							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2880				CopyBindExe	"vc IDE Gallery, mapicomp_dll"					%709		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2881				Depend	710 ? 2882							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2882				CopyBindExe	"vc IDE Gallery, media_dll"					%710		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2883				Depend	711 ? 2884							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2884				CopyBindExe	"vc IDE Gallery, occ_dll"					%711		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2885				Depend	712 ? 2886							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2886				CopyBindExe	"vc IDE Gallery, owndraw_dll"					%712		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2887				Depend	713 ? 2888							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2888				CopyBindExe	"vc IDE Gallery, palette_dll"					%713		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2889				Depend	714 ? 2890							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2890				CopyBindExe	"vc IDE Gallery, popup_dll"					%714		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2891				Depend	715 ? 2892							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2892				CopyBindExe	"vc IDE Gallery, progdlg_dll"					%715		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2893				Depend	716 ? 2894							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2894				CopyBindExe	"vc IDE Gallery, propsht_dll"					%716		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2895				Depend	717 ? 2896							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2896				CopyBindExe	"vc IDE Gallery, sockets_dll"					%717		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2897				Depend	718 ? 2898							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2898				CopyBindExe	"vc IDE Gallery, splash_dll"					%718		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2899				Depend	719 ? 2900							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2900				CopyBindExe	"vc IDE Gallery, splitter_dll"					%719		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2901				Depend	720 ? 2902							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2902				CopyBindExe	"vc IDE Gallery, statbar_dll"					%720		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2903				Depend	721 ? 2904							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2904				CopyBindExe	"vc IDE Gallery, sysinfo_dll"					%721		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2905				Depend	722 ? 2906							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2906				CopyBindExe	"vc IDE Gallery, tooltips_dll"					%722		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2907				Group	2908 2910  2912 2914 2916 2918 2920 2922 2924 2926							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2908				Depend	482 ? 2909							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2909				CopyBindExe	"VC - ATL Wiz, atlwiz_awx"					%482		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2910				Depend	572 ? 2911							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2911				CopyBindExe	"vc IDE Packages, addinwz_awx"					%572		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2912				Depend	588 ? 2913							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2913				CopyBindExe	"vc IDE Packages,inetawz_awx"					%588		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2914				Depend	589 ? 2915							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2915				CopyBindExe	"vc IDE Packages,mfctlwz_awx"					%589		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2916				Depend	594 ? 2917							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2917				CopyBindExe	"VC IDE Packages2,dllwz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2918				Depend	594 ? 2919							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2919				CopyBindExe	"VC IDE Packages2,exewz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2920				Depend	594 ? 2921							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2921				CopyBindExe	"VC IDE Packages2,genwz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2922				Depend	594 ? 2923							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2923				CopyBindExe	"VC IDE Packages2,libwz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2924				Depend	594 ? 2925							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2925				CopyBindExe	"VC IDE Packages2,makwz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2926				Depend	594 ? 2927							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2927				CopyBindExe	"VC IDE Packages2,conwz_awx"					%594		us		C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\IDE\
+2928				Group	2929 2931 2933 2935 2937 2939 2941 2943 2945 2947 2949 2951 2953 2955 2957 2959 2961  2963							us		C:\Program Files\Microsoft Visual Studio\VC98\
+2929				Depend	812 ? 2930							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2930				CopyBindExe	"VC - Utilities,bscmake_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2931				Depend	812 ? 2932							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2932				CopyBindExe	"VC - Utilities,cvpack_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2933				Depend	812 ? 2934							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2934				CopyBindExe	"VC - Utilities,cvtres_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2935				Depend	812 ? 2936							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2936				CopyBindExe	"VC - Utilities,dumpbin_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2937				Depend	812 ? 2938							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2938				CopyBindExe	"VC - Utilities,editbin_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2939				Depend	812 ? 2940							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2940				CopyBindExe	"VC - Utilities,lib_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2941				Depend	812 ? 2942							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2942				CopyBindExe	"VC - Utilities,link_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2943				Depend	812 ? 2944							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2944				CopyBindExe	"VC - Utilities,nmake_exe"					%812		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2945				Depend	822 ? 2946							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2946				CopyBindExe	"VC - Compiler Back End Lrn,c2_dll_1"					%822		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2947				Depend	822 ? 2948							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2948				CopyBindExe	"VC - Compiler Back End Lrn,cl_exe_1"					%822		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2949				Depend	823 ? 2950							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2950				CopyBindExe	"VC - Compiler Front End,c1_dll"					%823		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2951				Depend	823 ? 2952							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2952				CopyBindExe	"VC - Compiler Front End,c1xx_dll"					%823		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2953				Depend	792 ? 2954							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2954				CopyBindExe	"win32sdk build tools,mc_exe"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2955				Depend	792 ? 2956							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2956				CopyBindExe	"win32sdk build tools,midl_exe"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2957				Depend	792 ? 2958							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2958				CopyBindExe	"win32sdk build tools,mktyplib_exe"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2959				Depend	792 ? 2960							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2960				CopyBindExe	"win32sdk build tools,mapsym_exe"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2961				Depend	792 ? 2962							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2962				CopyBindExe	"win32sdk build tools,rebase_exe"					%792		us		C:\Program Files\Microsoft Visual Studio\VC98\Bin\
+2963				Depend	802 ? 2964							us	Yes	C:\Program Files\Microsoft Visual Studio\VC98\
+2964				CopyBindExe	"win32sdk general build tools,guidgen_exe"					%802		us		C:\Program Files\Microsoft Visual Studio\Common\Tools\
