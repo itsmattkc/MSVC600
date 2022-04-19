@@ -164,6 +164,8 @@ void* __cdecl realloc(void* p, size_t n)
 
 void __cdecl free(void* p)
 {
+	if (p == NULL)
+		return;
 #ifndef _ATL_NO_MP_HEAP
 	if (_Module.m_phHeaps == NULL)
 #endif

@@ -650,11 +650,20 @@ void CString::FormatV(LPCTSTR lpszFormat, va_list argList)
 				break;
 
 			case 'f':
-				va_arg(argList, DOUBLE_ARG);
-				nItemLen = 128; // width isn't truncated
-				// 312 == strlen("-1+(309 zeroes).")
-				// 309 zeroes == max precision of a double
-				nItemLen = max(nItemLen, 312+nPrecision);
+				{
+					double f;
+					LPTSTR pszTemp;
+
+					// 312 == strlen("-1+(309 zeroes).")
+					// 309 zeroes == max precision of a double
+					// 6 == adjustment in case precision is not specified,
+					//   which means that the precision defaults to 6
+					pszTemp = (LPTSTR)_alloca(max(nWidth, 312+nPrecision+6));
+
+					f = va_arg(argList, double);
+					_stprintf( pszTemp, _T( "%*.*f" ), nWidth, nPrecision+6, f );
+					nItemLen = _tcslen(pszTemp);
+				}
 				break;
 
 			case 'p':

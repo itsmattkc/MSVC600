@@ -77,12 +77,12 @@ class CSchemaRowset :
 {
 public:
 // Operations
-	HRESULT Open(const CSession& session, const GUID& guidSchema)
+	HRESULT Open(const CSession& session, const GUID& guidSchema, bool bBind = true )
 	{
 		HRESULT hr;
 
 		hr = GetRowset(session, guidSchema, &m_spRowset);
-		if (SUCCEEDED(hr))
+		if (SUCCEEDED(hr) && bBind)
 			hr = Bind();
 
 		return hr;
@@ -99,7 +99,7 @@ public:
 	HRESULT Open(const CSession& session, LPCTSTR lpszParam1 = NULL, LPCTSTR lpszParam2 = NULL,
 			LPCTSTR lpszParam3 = NULL, LPCTSTR lpszParam4 = NULL,
 			LPCTSTR lpszParam5 = NULL, LPCTSTR lpszParam6 = NULL,
-			LPCTSTR lpszParam7 = NULL)
+			LPCTSTR lpszParam7 = NULL, bool bBind = true )
 	{
 		USES_CONVERSION;
 		CComVariant* pVariant;
@@ -155,7 +155,7 @@ public:
 			pVariant->bstrVal = ::SysAllocString(T2COLE(lpszParam7));
 		}
 
-		return CSchemaRowset<T, nRestrictions>::Open(session, *pguid);
+		return CSchemaRowset<T, nRestrictions>::Open(session, *pguid, bBind);
 	}
 };
 

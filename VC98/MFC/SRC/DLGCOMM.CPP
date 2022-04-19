@@ -42,13 +42,12 @@ _AfxCommDlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	_AFX_THREAD_STATE* pThreadState = _afxThreadState.GetData();
-	if (pThreadState->m_pAlternateWndInit != NULL)
+	if (pThreadState->m_pAlternateWndInit != NULL && CWnd::FromHandlePermanent(hWnd) == NULL)
 	{
 		ASSERT_KINDOF(CFileDialog,pThreadState->m_pAlternateWndInit);
 		pThreadState->m_pAlternateWndInit->SubclassWindow(hWnd);
 		pThreadState->m_pAlternateWndInit = NULL;
 	}
-	ASSERT(pThreadState->m_pAlternateWndInit == NULL);
 
 	if (message == WM_INITDIALOG)
 	{

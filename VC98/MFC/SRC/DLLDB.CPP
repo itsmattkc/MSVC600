@@ -137,3 +137,18 @@ static void _AfxForceVectorDelete()
 void (*_afxForceVectorDelete_mfcd)() = &_AfxForceVectorDelete;
 
 /////////////////////////////////////////////////////////////////////////////
+
+#include <delayimp.h>
+
+extern "C"
+{
+FARPROC
+WINAPI
+Downlevel_DelayLoadFailureHook(
+    UINT unReason,
+    PDelayLoadInfo pDelayInfo
+    );
+
+PfnDliHook __pfnDliFailureHook = Downlevel_DelayLoadFailureHook;
+
+}

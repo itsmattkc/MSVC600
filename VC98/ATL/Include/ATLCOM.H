@@ -490,7 +490,7 @@ ATLINLINE ATLAPI AtlIPersistPropertyBag_Load(LPPROPERTYBAG pPropBag, LPERRORLOG 
 			continue;
 
 		CComVariant var;
-
+		var.vt = pMap[i].vt;
 		// If raw entry skip it - we don't handle it for property bags just yet
 		if (pMap[i].dwSizeData != 0)
 		{
@@ -3258,7 +3258,7 @@ public:
 				}
 				if (j < 0)
 				{
-					hRes = m_pInfo->GetIDsOfNames(rgszNames + i, 1, &rgdispid[i]);
+					hRes = m_pInfo->GetIDsOfNames(rgszNames, cNames, rgdispid);
 					if (FAILED(hRes))
 						break;
 				}
@@ -3336,6 +3336,10 @@ inline HRESULT CComTypeInfoHolder::GetTI(LCID lcid)
 			}
 			pTypeLib->Release();
 		}
+	}
+	else
+	{
+		hRes = S_OK;
 	}
 	LeaveCriticalSection(&_Module.m_csTypeInfoHolder);
 	_Module.AddTermFunc(Cleanup, (DWORD)this);
@@ -3558,7 +3562,7 @@ ATLINLINE ATLAPI AtlGetObjectSourceInterface(IUnknown* punkObj, GUID* plibid, II
 			} pfn;
 			pfn.pfn = dw;
 			pVtable = &pFunc;
-			pFunc = &m_mov;
+			pFunc = &ldah_at;
 			thunk.ldah_at = (0x279f0000 | HIWORD(pFunc)) + (LOWORD(pFunc)>>15);
 			thunk.ldah_a0 = (0x261f0000 | HIWORD(pThis)) + (LOWORD(pThis)>>15);
 			thunk.lda_at = 0x239c0000 | LOWORD(pFunc);
@@ -4313,11 +4317,18 @@ STDMETHODIMP CComEnumImpl<Base, piid, T, Copy>::Next(ULONG celt, T* rgelt,
 template <class Base, const IID* piid, class T, class Copy>
 STDMETHODIMP CComEnumImpl<Base, piid, T, Copy>::Skip(ULONG celt)
 {
-	m_iter += celt;
-	if (m_iter <= m_end)
-		return S_OK;
-	m_iter = m_end;
-	return S_FALSE;
+    m_iter += celt;
+    if (m_iter >= m_end)
+	{
+        m_iter = m_end;
+        return S_FALSE;
+    }
+    if (m_iter < m_begin)
+	{	
+        m_iter = m_begin;
+        return S_FALSE;
+    }
+    return S_OK;
 }
 
 template <class Base, const IID* piid, class T, class Copy>

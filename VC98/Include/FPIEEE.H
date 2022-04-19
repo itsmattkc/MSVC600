@@ -1,7 +1,7 @@
 /***
 *fpieee.h - Definitions for floating point IEEE exception handling
 *
-*       Copyright (c) 1991-1997, Microsoft Corporation. All rights reserved.
+*       Copyright (c) 1991-2000, Microsoft Corporation. All rights reserved.
 *
 *Purpose:
 *       This file contains constant and type definitions for handling
@@ -141,9 +141,66 @@ typedef enum {
     _FpCodeYn,
     _FpCodeLogb,
     _FpCodeNextafter,
-    _FpCodeNegate
-
-} _FP_OPERATION_CODE;
+    _FpCodeNegate, 
+    _FpCodeFmin,         //XMMI
+    _FpCodeFmax,         //XMMI
+    _FpCodeConvertTrunc, //XMMI
+    _XMMIAddps,          //XMMI
+    _XMMIAddss,
+    _XMMISubps,
+    _XMMISubss,
+    _XMMIMulps,
+    _XMMIMulss,
+    _XMMIDivps,
+    _XMMIDivss,
+    _XMMISqrtps,
+    _XMMISqrtss,
+    _XMMIMaxps,
+    _XMMIMaxss,
+    _XMMIMinps,
+    _XMMIMinss,
+    _XMMICmpps,
+    _XMMICmpss,
+    _XMMIComiss,
+    _XMMIUComiss,
+    _XMMICvtpi2ps,
+    _XMMICvtsi2ss,
+    _XMMICvtps2pi,
+    _XMMICvtss2si,
+    _XMMICvttps2pi,
+    _XMMICvttss2si,
+    _XMMI2Addpd,         //XMMI2 
+    _XMMI2Addsd,
+    _XMMI2Subpd,
+    _XMMI2Subsd,
+    _XMMI2Mulpd,
+    _XMMI2Mulsd,
+    _XMMI2Divpd,
+    _XMMI2Divsd,
+    _XMMI2Sqrtpd,
+    _XMMI2Sqrtsd,
+    _XMMI2Maxpd,
+    _XMMI2Maxsd,
+    _XMMI2Minpd,
+    _XMMI2Minsd,
+    _XMMI2Cmppd,
+    _XMMI2Cmpsd,
+    _XMMI2Comisd,
+    _XMMI2UComisd,
+    _XMMI2Cvtpd2pi,   //66 2D
+    _XMMI2Cvtsd2si,   //F2
+    _XMMI2Cvttpd2pi,  //66 2C
+    _XMMI2Cvttsd2si,  //F2
+    _XMMI2Cvtps2pd,   //0F 5A
+    _XMMI2Cvtss2sd,   //F3
+    _XMMI2Cvtpd2ps,   //66
+    _XMMI2Cvtsd2ss,   //F2
+    _XMMI2Cvtdq2ps,   //0F 5B
+    _XMMI2Cvttps2dq,  //F3
+    _XMMI2Cvtps2dq,   //66
+    _XMMI2Cvttpd2dq,  //66 0F E6
+    _XMMI2Cvtpd2dq    //F2 
+    } _FP_OPERATION_CODE;
 
 #endif  /* #ifndef __assembler */
 
@@ -177,6 +234,7 @@ typedef short           _I16;
 typedef int             _I32;
 typedef unsigned short  _U16;
 typedef unsigned int    _U32;
+typedef __int64         _Q64;
 
 
 typedef struct {
@@ -199,6 +257,9 @@ typedef struct {
     unsigned short W[5];
 } _BCD80;
 
+typedef struct {
+    _Q64 W[2];
+} _FPQ64;
 
 typedef struct {
     union {
@@ -215,6 +276,8 @@ typedef struct {
         _BCD80       Bcd80Value;
         char         *StringValue;
         int          CompareValue;
+        _Q64         Q64Value;
+        _FPQ64       Fpq64Value;
     } Value;
 
     unsigned int OperandValid : 1;
@@ -242,7 +305,7 @@ typedef struct {
     _FPIEEE_VALUE Operand1;
     _FPIEEE_VALUE Operand2;
     _FPIEEE_VALUE Result;
-} _FPIEEE_RECORD;
+} _FPIEEE_RECORD, *_PFPIEEE_RECORD;
 
 
 struct _EXCEPTION_POINTERS;
@@ -251,7 +314,7 @@ struct _EXCEPTION_POINTERS;
  * Floating point IEEE exception filter routine
  */
 
-_CRTIMP int __cdecl _fpieee_flt(
+int __cdecl _fpieee_flt(
         unsigned long,
         struct _EXCEPTION_POINTERS *,
         int (__cdecl *)(_FPIEEE_RECORD *)

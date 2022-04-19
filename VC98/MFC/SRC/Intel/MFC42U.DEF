@@ -6227,8 +6227,7 @@ EXPORTS
  ?UnregisterAll@COleObjectFactory@@SGHXZ @ 6461 NONAME
  ?UnregisterShellFileTypes@CDocManager@@QAEXXZ @ 6462 NONAME
  ?UnregisterShellFileTypes@CWinApp@@IAEXXZ @ 6463 NONAME
-
-; MFC 6.0 (Beta 2 Release)
+; MFC 6.0 (Final Release)
 ;
  ??0AFX_CLASSINIT_COMPAT@@QAE@PAUCRuntimeClass@@@Z @ 6464 NONAME
  ??0AFX_EVENT@@QAE@H@Z @ 6465 NONAME
@@ -6689,3 +6688,6 @@ EXPORTS
  ?TrimRight@CString@@QAEXG@Z @ 6920 NONAME
  ?TrimRight@CString@@QAEXPBG@Z @ 6921 NONAME
  ?WindowProc@CReBar@@MAEJIIJ@Z @ 6922 NONAME
+; MFC 6.0 (SP3)
+;
+ ?GetMenuStringW@CMenu@@QBEHIAAVCString@@I@Z @ 6923 NONAME

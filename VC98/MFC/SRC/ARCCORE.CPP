@@ -267,7 +267,7 @@ CArchive& AFXAPI operator>>(CArchive& ar, CString& string)
 			lpsz[nNewLen] = '\0';    // must be NUL terminated
 			string.Init();   // don't delete the old data
 			string = lpsz;   // convert with operator=(LPWCSTR)
-			delete[] (BYTE*)pOldData;
+			CString::FreeData(pOldData);
 		}
 	}
 	return ar;

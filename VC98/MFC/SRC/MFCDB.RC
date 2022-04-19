@@ -27,7 +27,7 @@
 // Version Info for MFCD42D.DLL
 VS_VERSION_INFO     VERSIONINFO
   FILEVERSION       6,0,_MFC_BUILD,_MFC_RBLD
-  PRODUCTVERSION    6,0,0,0
+  PRODUCTVERSION    6,0,5,0
   FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
 #ifndef RELEASE
   FILEFLAGS         VS_FF_DEBUG|VS_FF_PRERELEASE
@@ -50,7 +50,7 @@ BEGIN
 			VALUE "LegalTrademarks", "\0"
 			VALUE "OriginalFilename","MFCD42D.DLL\0"
 			VALUE "ProductName",     "Microsoft (R) Visual C++\0"
-			VALUE "ProductVersion",  "6.0.000\0"
+			VALUE "ProductVersion",  "6.0.500\0"
 		END
 	END
 	BLOCK "VarFileInfo"
@@ -65,7 +65,7 @@ END
 // Version Info for MFCD42.DLL
 VS_VERSION_INFO     VERSIONINFO
   FILEVERSION       6,0,_MFC_BUILD, _MFC_RBLD
-  PRODUCTVERSION    6,0,0,0
+  PRODUCTVERSION    6,0,5,0
   FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
 #ifndef RELEASE
   FILEFLAGS         VS_FF_PRERELEASE
@@ -88,7 +88,7 @@ BEGIN
 			VALUE "LegalTrademarks", "\0"
 			VALUE "OriginalFilename","MFCD42.DLL\0"
 			VALUE "ProductName",     "Microsoft (R) Visual C++\0"
-			VALUE "ProductVersion",  "6.0.000\0"
+			VALUE "ProductVersion",  "6.0.500\0"
 		END
 	END
 	BLOCK "VarFileInfo"

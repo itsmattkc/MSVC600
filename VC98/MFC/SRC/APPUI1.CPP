@@ -203,16 +203,12 @@ HWND PASCAL CWnd::GetSafeOwner_(HWND hParent, HWND* pWndTop)
 CView* PASCAL CCmdTarget::GetRoutingView_()
 {
 	CView* pView = AfxGetThreadState()->m_pRoutingView;
-	if (pView != NULL)
-		ASSERT_VALID(pView);
 	return pView;
 }
 
 CFrameWnd* PASCAL CCmdTarget::GetRoutingFrame_()
 {
 	CFrameWnd* pFrame = AfxGetThreadState()->m_pRoutingFrame;
-	if (pFrame != NULL)
-		ASSERT_VALID(pFrame);
 	return pFrame;
 }
 

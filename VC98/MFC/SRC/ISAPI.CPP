@@ -68,6 +68,7 @@ static HTTPStatusInfo statusStrings[] = {
 	{ HTTP_STATUS_AUTH_REQUIRED,    _T("Unauthorized") },
 	{ HTTP_STATUS_FORBIDDEN,        _T("Forbidden") },
 	{ HTTP_STATUS_NOT_FOUND,        _T("Not Found") },
+	{ HTTP_STATUS_REQUEST_TOO_LARGE,_T("Request entity was too large") },
 	{ HTTP_STATUS_SERVER_ERROR,     _T("Internal Server Error") },
 	{ HTTP_STATUS_NOT_IMPLEMENTED,  _T("Not Implemented") },
 	{ HTTP_STATUS_BAD_GATEWAY,      _T("Bad Gateway") },
@@ -219,6 +220,7 @@ CHttpAsyncContext::CHttpAsyncContext(HANDLE hFile, LPVOID pvHeader,
 	{
 		m_pvHeader = new BYTE[dwHeaderLen+1];
 		memcpy(m_pvHeader, pvHeader, dwHeaderLen);
+		reinterpret_cast<BYTE*>(m_pvHeader)[dwHeaderLen] = '\0';
 		m_dwHeaderLen = dwHeaderLen;
 	}
 
@@ -231,6 +233,7 @@ CHttpAsyncContext::CHttpAsyncContext(HANDLE hFile, LPVOID pvHeader,
 	{
 		m_pvTail = new BYTE[dwTailLen+1];
 		memcpy(m_pvTail, pvTail, dwTailLen);
+		reinterpret_cast<BYTE*>(m_pvTail)[dwTailLen] = '\0';
 		m_dwTailLen = dwTailLen;
 	}
 }
@@ -344,14 +347,14 @@ LPTSTR CHttpServer::GetQuery(CHttpServerContext* pCtxt, LPTSTR lpszQuery)
 
 	if (pCtxt->m_pECB->cbAvailable < pCtxt->m_pECB->cbTotalBytes)
 	{
-		LPCTSTR pstrTarget = lpszQuery + pCtxt->m_pECB->cbAvailable;
+		LPTSTR pstrTarget = lpszQuery + pCtxt->m_pECB->cbAvailable;
 		DWORD cbRemaining = pCtxt->m_pECB->cbTotalBytes - pCtxt->m_pECB->cbAvailable;
 		DWORD cbRead;
 
 		while (cbRemaining > 0)
 		{
 			cbRead = cbRemaining;
-			if (!pCtxt->ReadClient((LPVOID) pstrTarget, &cbRead))
+			if (!pCtxt->ReadClient(pstrTarget, &cbRead))
 			{
 				ISAPITRACE("Error: only %d of %d bytes read!\n",
 					pCtxt->m_pECB->cbTotalBytes - cbRemaining,
@@ -365,6 +368,8 @@ LPTSTR CHttpServer::GetQuery(CHttpServerContext* pCtxt, LPTSTR lpszQuery)
 			pstrTarget += cbRead;
 			cbRemaining -= cbRead;
 		}
+
+		*pstrTarget = '\0';
 	}
 
 	pCtxt->m_dwBytesReceived = pCtxt->m_pECB->cbTotalBytes;
@@ -426,8 +431,27 @@ DWORD CHttpServer::HttpExtensionProc(EXTENSION_CONTROL_BLOCK *pECB)
 	}
 	else if (lstrcmpi(pECB->lpszMethod, szPost) == 0)
 	{
+		if(pECB->cbTotalBytes == 0xffffffff)
+		{
+			dwRet = HSE_STATUS_ERROR ;
+			pECB->dwHttpStatusCode = HTTP_STATUS_REQUEST_TOO_LARGE ;
+			goto CleanUp;
+		}
+		
+		if(pECB->cbTotalBytes < pECB->cbAvailable)
+		{
+			dwRet = HSE_STATUS_ERROR ;
+			pECB->dwHttpStatusCode = HTTP_STATUS_BAD_REQUEST;
+			goto CleanUp;
+		}
+		
 		pszCommand = pECB->lpszQueryString;
 		pszPostBuffer = new TCHAR[pECB->cbTotalBytes + 1];
+		if( pszPostBuffer == NULL )
+		{
+			dwRet = HSE_STATUS_ERROR;
+			goto CleanUp;
+		}
 		pszQuery =  GetQuery(&ctxtCall, pszPostBuffer);
 		if (pszQuery == NULL)
 		{
@@ -640,7 +664,6 @@ BOOL CHttpServer::OnParseError(CHttpServerContext* pCtxt, int nMethodRet)
 	{
 		TCHAR szBuffer[132];
 		TCHAR szTitle[256];
-		TCHAR szFormat[256];
 		LPCTSTR pszObject = NULL;
 
 		switch (pCtxt->m_pECB->dwHttpStatusCode)
@@ -684,28 +707,31 @@ BOOL CHttpServer::OnParseError(CHttpServerContext* pCtxt, int nMethodRet)
 		hRes = AfxGetResourceHandle();
 
 #ifdef _AFXDLL
-		if (AfxLoadString(nResource, szBuffer, sizeof(szBuffer)/sizeof(szBuffer[0])) > 0)
+		if (AfxLoadString(nResource, szBuffer, _countof(szBuffer)) > 0)
 #else
-
-		if (::LoadString(hRes, nResource, szBuffer,
-			sizeof(szBuffer)/sizeof(szBuffer[0])) > 0)
+		if (::LoadString(hRes, nResource, szBuffer, _countof(szBuffer)) > 0)
 #endif
 		{
 			pCtxt->Reset();
 			CHttpServer::StartContent(pCtxt);
 
-			if (::LoadString(hRes, AFX_IDS_HTTP_TITLE,
-				szTitle, sizeof(szTitle)/sizeof(szTitle[0])) > 0)
+			if (::LoadString(hRes, AFX_IDS_HTTP_TITLE, szTitle, _countof(szTitle)) > 0)
 			{
-				TCHAR szTitleCopy[64];
-				wsprintf(szTitleCopy, szTitle, pCtxt->m_pECB->dwHttpStatusCode);
+				TCHAR szTitleCopy[512];
+				_sntprintf(szTitleCopy, 512, szTitle, pCtxt->m_pECB->dwHttpStatusCode);
+				szTitleCopy[511] = 0;
 				*pCtxt << szTitleCopy;
 			}
 
 			if (pszObject != NULL)
 			{
-				wsprintf(szFormat, szBuffer, pszObject);
-				*pCtxt << szFormat;
+				TCHAR* pstrFormat = new TCHAR[lstrlen(szBuffer) + lstrlen(pszObject) + 1];
+				if (pstrFormat != NULL)
+				{
+					wsprintf(pstrFormat, szBuffer, pszObject);
+					*pCtxt << pstrFormat;
+					delete [] pstrFormat;
+				}
 			}
 			else
 				*pCtxt << szBuffer;
@@ -1118,6 +1144,7 @@ int CHttpServer::CallMemberFunc(CHttpServerContext* pCtxt,
 			return callNoStackSpace;
 		}
 
+
 		if (pDefaultParams != NULL)
 #ifndef _SHADOW_DOUBLES
 			nRet = PushDefaultStackArgs(pStack, pCtxt, pbParams, pszParams,
@@ -1392,9 +1419,9 @@ int CHttpServer::PushDefaultStackArgs(BYTE* pStack,
 	int nPushedExplicit = 0;
 	int nRetVal = callOK;
 	LPTSTR pszLineEnd;
+	BYTE*   ppszValues;     // pointers to coerced actual values
 
 	// keep a list of flags to know what's pushed and what's not
-
 	pFlags = new BYTE[pDefParams->nParams];
 	memset(pFlags, 0, pDefParams->nParams);
 
@@ -1414,7 +1441,8 @@ int CHttpServer::PushDefaultStackArgs(BYTE* pStack,
 	pStack += sizeof(_STACK_PTR);
 
 	// copy the default argument list to the usable argument list
-	memcpy(pDefParams->ppszValues, pDefParams->ppszDefaults,
+	ppszValues = new BYTE[pDefParams->nParams * sizeof(double)];
+	memcpy(ppszValues, pDefParams->ppszDefaults,
 		sizeof(double) * pDefParams->nParams);
 
 	// push the arguments, if explicitly supplied
@@ -1482,11 +1510,11 @@ int CHttpServer::PushDefaultStackArgs(BYTE* pStack,
 				{
 #ifndef _SHADOW_DOUBLES
 					StoreStackParameter(
-						&(pDefParams->ppszValues[nIndex*sizeof(double)]),
+						&(ppszValues[nIndex*sizeof(double)]),
 						pbParams[nIndex], pszValue);
 #else
 					StoreStackParameter(
-						&(pDefParams->ppszValues[nIndex*sizeof(double)]),
+						&(ppszValues[nIndex*sizeof(double)]),
 						pbParams[nIndex], pszValue, 0, FALSE);
 #endif
 
@@ -1559,11 +1587,11 @@ int CHttpServer::PushDefaultStackArgs(BYTE* pStack,
 #ifndef _SHADOW_DOUBLES
 			pStack = StoreRawStackParameter(pStack,
 				pbParams[nIndex],
-				&(pDefParams->ppszValues[nIndex*sizeof(double)]));
+				&(ppszValues[nIndex*sizeof(double)]));
 #else
 			pStack = StoreRawStackParameter(pStack,
 				pbParams[nIndex],
-				&(pDefParams->ppszValues[nIndex*sizeof(double)]), 0);
+				&(ppszValues[nIndex*sizeof(double)]), 0);
 #endif
 		}
 	}
@@ -1571,6 +1599,8 @@ int CHttpServer::PushDefaultStackArgs(BYTE* pStack,
 CleanUp:
 	if (pFlags != NULL)
 		delete [] pFlags;
+	if (ppszValues != NULL)
+		delete [] ppszValues;
 	return nRetVal;
 }
 
@@ -2030,7 +2060,7 @@ CHtmlStream& CHtmlStream::operator<<(long int dw)
 
 CHtmlStream& CHtmlStream::operator<<(float f)
 {
-	TCHAR sz[64];
+	TCHAR sz[512];
 	int nLen = _stprintf(sz, szFloatFormat, f);
 	Write(sz, nLen);
 	return *this;
@@ -2038,7 +2068,7 @@ CHtmlStream& CHtmlStream::operator<<(float f)
 
 CHtmlStream& CHtmlStream::operator<<(double d)
 {
-	TCHAR sz[64];
+	TCHAR sz[512];
 	int nLen = _stprintf(sz, szFloatFormat, d);
 	Write(sz, nLen);
 	return *this;

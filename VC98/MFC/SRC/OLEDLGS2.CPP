@@ -113,7 +113,7 @@ int COleBusyDialog::DoModal()
 	// run the dialog
 	AfxHookWindowCreate(this);
 	int iResult = ::OleUIBusy(&m_bz);
-	AfxUnhookWindowCreate();   // just in case
+        AfxUnhookWindowCreate();   // just in case
 	Detach();   // just in case
 
 	// enable top level window

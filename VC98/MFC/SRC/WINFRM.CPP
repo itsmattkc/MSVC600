@@ -134,6 +134,10 @@ CFrameWnd::CFrameWnd()
 CFrameWnd::~CFrameWnd()
 {
 	RemoveFrameWnd();
+
+	if( AfxGetThreadState()->m_pRoutingFrame == this )
+		AfxGetThreadState()->m_pRoutingFrame = NULL;
+
 	if (m_phWndDisable != NULL)
 		delete[] (void*)m_phWndDisable;
 }

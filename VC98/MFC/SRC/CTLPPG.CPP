@@ -498,15 +498,16 @@ STDMETHODIMP COlePropertyPage::XPropertyPage::SetPageSite(
 {
 	METHOD_PROLOGUE_EX(COlePropertyPage, PropertyPage)
 	ASSERT_VALID(pThis);
-	ASSERT_POINTER(pPageSite, IPropertyPageSite);
+	ASSERT_NULL_OR_POINTER(pPageSite, IPropertyPageSite);
 
 	RELEASE(pThis->m_pPageSite);            // release the old one
 
 	pThis->m_pPageSite = pPageSite;
 	if (pPageSite != NULL)
+	{
 		pThis->m_pPageSite->AddRef();       // Bump the reference count
-
-	pThis->OnSetPageSite();
+		pThis->OnSetPageSite();
+	}
 	return S_OK;
 }
 

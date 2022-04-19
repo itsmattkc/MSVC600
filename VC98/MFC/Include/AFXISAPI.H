@@ -82,6 +82,10 @@
 #define AFX_INLINE __forceinline
 #endif
 
+#ifndef _countof
+#define _countof(array) (sizeof(array)/sizeof(array[0]))
+#endif
+
 /////////////////////////////////////////////////////////////////////////////
 // Internet Server API Library
 
@@ -219,6 +223,7 @@ public:
 #define HTTP_STATUS_AUTH_REQUIRED   401     // unauthorized
 #define HTTP_STATUS_FORBIDDEN       403     // forbidden
 #define HTTP_STATUS_NOT_FOUND       404     // not found
+#define HTTP_STATUS_REQUEST_TOO_LARGE  413  // Request entity was too large
 #define HTTP_STATUS_SERVER_ERROR    500     // internal server error
 #define HTTP_STATUS_NOT_IMPLEMENTED 501     // not implemented
 #define HTTP_STATUS_BAD_GATEWAY     502     // bad gateway

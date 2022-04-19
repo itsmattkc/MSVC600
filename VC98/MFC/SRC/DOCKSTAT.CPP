@@ -472,7 +472,9 @@ void CFrameWnd::SetDockState(const CDockState& state)
 			pInfo->m_pBar = GetControlBar(pInfo->m_nBarID);
 			ASSERT(pInfo->m_pBar != NULL); //toolbar id's probably changed
 		}
-		pInfo->m_pBar->m_nMRUWidth = pInfo->m_nMRUWidth;
+		
+		if(pInfo->m_pBar != NULL)
+			pInfo->m_pBar->m_nMRUWidth = pInfo->m_nMRUWidth;
 	}
 
 	// the second pass will actually dock all of the control bars and
@@ -491,15 +493,18 @@ void CFrameWnd::SetDockState(const CDockState& state)
 		CControlBarInfo* pInfo = (CControlBarInfo*)state.m_arrBarInfo[i];
 		ASSERT(pInfo != NULL);
 		ASSERT(pInfo->m_pBar != NULL);
-		if (pInfo->m_bFloating)
+		if(pInfo->m_pBar != NULL)
 		{
-			CFrameWnd* pFrameWnd = pInfo->m_pBar->GetParentFrame();
-			CDockBar* pDockBar = (CDockBar*)pInfo->m_pBar;
-			ASSERT_KINDOF(CDockBar, pDockBar);
-			if (pDockBar->GetDockedVisibleCount() > 0)
+			if (pInfo->m_bFloating)
 			{
-				pFrameWnd->RecalcLayout();
-				pFrameWnd->ShowWindow(SW_SHOWNA);
+				CFrameWnd* pFrameWnd = pInfo->m_pBar->GetParentFrame();
+				CDockBar* pDockBar = (CDockBar*)pInfo->m_pBar;
+				ASSERT_KINDOF(CDockBar, pDockBar);
+				if (pDockBar->GetDockedVisibleCount() > 0)
+				{
+					pFrameWnd->RecalcLayout();
+					pFrameWnd->ShowWindow(SW_SHOWNA);
+				}
 			}
 		}
 	}

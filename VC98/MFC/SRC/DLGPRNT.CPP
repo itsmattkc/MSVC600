@@ -195,13 +195,11 @@ CPrintDialog::CPrintDialog(BOOL bPrintSetupOnly,
 	memset(&m_pdActual, 0, sizeof(m_pdActual));
 
 	m_pd.lStructSize = sizeof(m_pdActual);
-	m_pd.Flags = dwFlags;
+	m_pd.Flags = (dwFlags | PD_ENABLEPRINTHOOK | PD_ENABLESETUPHOOK);
 	if (!afxData.bWin4 && AfxHelpEnabled())
-	{
-		m_pd.Flags |= PD_SHOWHELP | PD_ENABLEPRINTHOOK | PD_ENABLESETUPHOOK;
-		m_pd.lpfnPrintHook = (COMMDLGPROC)_AfxCommDlgProc;
-		m_pd.lpfnSetupHook = (COMMDLGPROC)_AfxCommDlgProc;
-	}
+		m_pd.Flags |= PD_SHOWHELP;
+	m_pd.lpfnPrintHook = (COMMDLGPROC)_AfxCommDlgProc;
+	m_pd.lpfnSetupHook = (COMMDLGPROC)_AfxCommDlgProc;
 
 	if (bPrintSetupOnly)
 	{
@@ -258,6 +256,10 @@ void CPrintDialog::OnPrintSetup()
 int CPrintDialog::DoModal()
 {
 	ASSERT_VALID(this);
+	ASSERT(m_pd.Flags & PD_ENABLEPRINTHOOK);
+	ASSERT(m_pd.Flags & PD_ENABLESETUPHOOK);
+	ASSERT(m_pd.lpfnPrintHook != NULL); // can still be a user hook
+	ASSERT(m_pd.lpfnSetupHook != NULL); // can still be a user hook
 
 	m_pd.hwndOwner = PreModal();
 	int nResult = ::PrintDlg(&m_pd);

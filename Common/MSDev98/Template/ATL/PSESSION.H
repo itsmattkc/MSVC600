@@ -103,7 +103,12 @@ public:
 		*pcRowsAffected = 1;
 		return S_OK;
 	}
-
+	DBSTATUS GetDBStatus(CSimpleRow*, ATLCOLUMNINFO* pInfo)
+	{
+		if (pInfo->iOrdinal == 1 || pInfo->iOrdinal == 2)
+			return DBSTATUS_S_ISNULL;
+		return DBSTATUS_S_OK;
+	}
 };
 
 
@@ -129,6 +134,23 @@ public:
 		dbid.uName.pwszName = T2OLE(szDir);
 		dbid.eKind = DBKIND_NAME;
 		return InitFromRowset < _RowsetArrayType > (m_rgRowData, &dbid, NULL, m_spUnkSite, pcRowsAffected);
+	}
+	DBSTATUS GetDBStatus(CSimpleRow*, ATLCOLUMNINFO* pInfo)
+	{
+		switch(pInfo->iOrdinal)
+		{
+		case 1:
+		case 2:
+		case 19:
+		case 20:
+		case 22:
+		case 23:
+		case 25:
+		case 26:
+			return DBSTATUS_S_ISNULL;
+		default:
+			return DBSTATUS_S_OK;
+		}
 	}
 };
 

@@ -278,33 +278,40 @@ void AFXAPI AfxInitThread()
 extern CThreadSlotData* _afxThreadData;
 void AFXAPI AfxTermThread(HINSTANCE hInstTerm)
 {
+	try
+	{
 #ifdef _DEBUG
-	// check for missing AfxLockTempMap calls
-	if (AfxGetModuleThreadState()->m_nTempMapLock != 0)
-	{
-		TRACE1("Warning: Temp map lock count non-zero (%ld).\n",
-			AfxGetModuleThreadState()->m_nTempMapLock);
-	}
-#endif
-	AfxLockTempMaps();
-	AfxUnlockTempMaps(-1);
-
-	// cleanup thread local tooltip window
-	if (hInstTerm == NULL)
-	{
-		_AFX_THREAD_STATE* pThreadState = _afxThreadState.GetDataNA();
-		if ((pThreadState != NULL) &&
-			(pThreadState->m_pToolTip != NULL))
+		// check for missing AfxLockTempMap calls
+		if (AfxGetModuleThreadState()->m_nTempMapLock != 0)
 		{
-			pThreadState->m_pToolTip->DestroyWindow();
-			delete pThreadState->m_pToolTip;
-			pThreadState->m_pToolTip=NULL;
+			TRACE1("Warning: Temp map lock count non-zero (%ld).\n",
+				AfxGetModuleThreadState()->m_nTempMapLock);
 		}
-	}
+#endif
+		AfxLockTempMaps();
+		AfxUnlockTempMaps(-1);
 
-	// cleanup the rest of the thread local data
-	if (_afxThreadData != NULL)
-		_afxThreadData->DeleteValues(hInstTerm, FALSE);
+		// cleanup thread local tooltip window
+		if (hInstTerm == NULL)
+		{
+			_AFX_THREAD_STATE* pThreadState = _afxThreadState.GetDataNA();
+			if ((pThreadState != NULL) &&
+				(pThreadState->m_pToolTip != NULL))
+			{
+				pThreadState->m_pToolTip->DestroyWindow();
+				delete pThreadState->m_pToolTip;
+				pThreadState->m_pToolTip=NULL;
+			}
+		}
+
+		// cleanup the rest of the thread local data
+		if (_afxThreadData != NULL)
+			_afxThreadData->DeleteValues(hInstTerm, FALSE);
+	}
+	catch( CException* e )
+	{
+		e->Delete();
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////

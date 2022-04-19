@@ -1525,6 +1525,7 @@ void CDaoDatabase::CreateRelation(CDaoRelationInfo& relinfo)
 			// Append the field to relation fields collection and release
 			DAO_CHECK(pDAOFields->Append(pDAOField));
 			pDAOField->Release();
+			pDAOField = NULL;
 		}
 
 		DAO_CHECK(m_pDAORelations->Append(pDAORelation));

@@ -362,19 +362,22 @@ BOOL CWnd::CreateDlgIndirect(LPCDLGTEMPLATE lpDialogTemplate,
 	}
 
 	// help with error diagnosis (only if WM_INITDIALOG didn't EndDialog())
-	if (hWnd == NULL && (m_nFlags & WF_CONTINUEMODAL))
+	if (hWnd == NULL)
 	{
 #ifdef _DEBUG
 #ifndef _AFX_NO_OCC_SUPPORT
-		if (afxOccManager == NULL)
+		if (m_nFlags & WF_CONTINUEMODAL)
 		{
-			TRACE0(">>> If this dialog has OLE controls:\n");
-			TRACE0(">>> AfxEnableControlContainer has not been called yet.\n");
-			TRACE0(">>> You should call it in your app's InitInstance function.\n");
-		}
-		else if (dwError != 0)
-		{
-			TRACE1("Warning: Dialog creation failed!  GetLastError returns 0x%8.8X\n", dwError);
+			if (afxOccManager == NULL)
+			{
+				TRACE0(">>> If this dialog has OLE controls:\n");
+				TRACE0(">>> AfxEnableControlContainer has not been called yet.\n");
+				TRACE0(">>> You should call it in your app's InitInstance function.\n");
+			}
+			else if (dwError != 0)
+			{
+				TRACE1("Warning: Dialog creation failed!  GetLastError returns 0x%8.8X\n", dwError);
+			}
 		}
 #endif //!_AFX_NO_OCC_SUPPORT
 #endif //_DEBUG

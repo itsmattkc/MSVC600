@@ -89,8 +89,7 @@ public:
                 bool operator!=(const const_iterator& _X) const
                         {return (!(*this == _X)); }
                 void _Dec()
-                        {_Lockit _Lk;
-                        if (_Color(_Ptr) == _Red
+                        {if (_Color(_Ptr) == _Red
                                 && _Parent(_Parent(_Ptr)) == _Ptr)
                                 _Ptr = _Right(_Ptr);
                         else if (_Left(_Ptr) != _Nil)
@@ -101,8 +100,7 @@ public:
                                         _Ptr = _P;
                                 _Ptr = _P; }}
                 void _Inc()
-                        {_Lockit _Lk;
-                        if (_Right(_Ptr) != _Nil)
+                        {if (_Right(_Ptr) != _Nil)
                                 _Ptr = _Min(_Right(_Ptr));
                         else
                                 {_Nodeptr _P;
@@ -176,10 +174,13 @@ public:
                 {erase(begin(), end());
                 _Freenode(_Head);
                 _Head = 0, _Size = 0;
+                _Nodeptr _Tmp = 0;
                         {_Lockit _Lk;
                         if (--_Nilrefs == 0)
-                                {_Freenode(_Nil);
-                                _Nil = 0; }}}
+                                {_Tmp = _Nil;
+                                _Nil = 0; }}
+                if (_Tmp != 0)
+                        _Freenode(_Tmp); }
         _Myt& operator=(const _Myt& _X)
                 {if (this != &_X)
                         {erase(begin(), end());
@@ -216,12 +217,10 @@ public:
                 {_Nodeptr _X = _Root();
                 _Nodeptr _Y = _Head;
                 bool _Ans = true;
-                { _Lockit Lk;
                         while (_X != _Nil)
                                 {_Y = _X;
                                 _Ans = key_compare(_Kfn()(_V), _Key(_X));
                                 _X = _Ans ? _Left(_X) : _Right(_X); }
-                }
                 if (_Multi)
                         return (_Pairib(_Insert(_X, _Y, _V), true));
                 iterator _P = iterator(_Y);
@@ -241,15 +240,13 @@ public:
                         {if (key_compare(_Kfn()(_V), _Key(_P._Mynode())))
                                 return (_Insert(_Head, _P._Mynode(), _V)); }
                 else if (_P == end())
-                        {_Lockit Lk;
-                        if (key_compare(_Key(_Rmost()), _Kfn()(_V)))
+                        {if (key_compare(_Key(_Rmost()), _Kfn()(_V)))
                                 return (_Insert(_Nil, _Rmost(), _V)); }
                 else
                         {iterator _Pb = _P;
                         if (key_compare(_Key((--_Pb)._Mynode()), _Kfn()(_V))
                                 && key_compare(_Kfn()(_V), _Key(_P._Mynode())))
-                                {_Lockit _Lk;
-                                if (_Right(_Pb._Mynode()) == _Nil)
+                                {if (_Right(_Pb._Mynode()) == _Nil)
                                         return (_Insert(_Nil, _Pb._Mynode(), _V));
                                 else
                                         return (_Insert(_Head, _P._Mynode(), _V)); }}
@@ -264,13 +261,13 @@ public:
                 {_Nodeptr _X;
                 _Nodeptr _Y = (_P++)._Mynode();
                 _Nodeptr _Z = _Y;
-                _Lockit _Lk;
                 if (_Left(_Y) == _Nil)
                         _X = _Right(_Y);
                 else if (_Right(_Y) == _Nil)
                         _X = _Left(_Y);
                 else
                         _Y = _Min(_Right(_Y)), _X = _Right(_Y);
+                { _Lockit _Lk;
                 if (_Y != _Z)
                         {_Parent(_Left(_Z)) = _Y;
                         _Left(_Y) = _Left(_Z);
@@ -357,6 +354,7 @@ public:
                                                 _Rrotate(_Parent(_X));
                                                 break; }}
                         _Color(_X) = _Black; }
+                }
                 _Destval(&_Value(_Y));
                 _Freenode(_Y);
                 --_Size;
@@ -367,8 +365,7 @@ public:
                                 erase(_F++);
                         return (_F); }
                 else
-                        {_Lockit Lk;
-                        _Erase(_Root());
+                        {_Erase(_Root());
                         _Root() = _Nil, _Size = 0;
                         _Lmost() = _Head, _Rmost() = _Head;
                         return (begin()); }}
@@ -424,8 +421,7 @@ protected:
         static _Nodeptr _Nil;
         static size_t _Nilrefs;
         void _Copy(const _Myt& _X)
-                {_Lockit _Lk;
-                _Root() = _Copy(_X._Root(), _Head);
+                {_Root() = _Copy(_X._Root(), _Head);
                 _Size = _X.size();
                 if (_Root() != _Nil)
                         {_Lmost() = _Min(_Root());
@@ -433,8 +429,7 @@ protected:
                 else
                         _Lmost() = _Head, _Rmost() = _Head; }
         _Nodeptr _Copy(_Nodeptr _X, _Nodeptr _P)
-                {_Lockit _Lk;
-                _Nodeptr _R = _X;
+                {_Nodeptr _R = _X;
                 for (; _X != _Nil; _X = _Left(_X))
                         {_Nodeptr _Y = _Buynode(_P, _Color(_X));
                         if (_R == _X)
@@ -446,23 +441,25 @@ protected:
                 _Left(_P) = _Nil;
                 return (_R); }
         void _Erase(_Nodeptr _X)
-                {_Lockit _Lk;
-                for (_Nodeptr _Y = _X; _Y != _Nil; _X = _Y)
+                {for (_Nodeptr _Y = _X; _Y != _Nil; _X = _Y)
                         {_Erase(_Right(_Y));
                         _Y = _Left(_Y);
                         _Destval(&_Value(_X));
                         _Freenode(_X); }}
         void _Init()
+                {_Nodeptr _Tmp = _Buynode(0, _Black);
                 {_Lockit _Lk;
                 if (_Nil == 0)
-                        {_Nil = _Buynode(0, _Black);
+                                {_Nil = _Tmp;
+                                _Tmp = 0;
                         _Left(_Nil) = 0, _Right(_Nil) = 0; }
-                ++_Nilrefs;
+                        ++_Nilrefs; }
+                if (_Tmp != 0)
+                        _Freenode(_Tmp);
                 _Head = _Buynode(_Nil, _Red), _Size = 0;
                 _Lmost() = _Head, _Rmost() = _Head; }
         iterator _Insert(_Nodeptr _X, _Nodeptr _Y, const _Ty& _V)
-                {_Lockit _Lk;
-                _Nodeptr _Z = _Buynode(_Y, _Red);
+                {_Nodeptr _Z = _Buynode(_Y, _Red);
                 _Left(_Z) = _Nil, _Right(_Z) = _Nil;
                 _Consval(&_Value(_Z), _V);
                 ++_Size;
@@ -511,8 +508,7 @@ protected:
                 _Color(_Root()) = _Black;
                 return (iterator(_Z)); }
         _Nodeptr _Lbound(const _K& _Kv) const
-                {_Lockit _Lk;
-                _Nodeptr _X = _Root();
+                {_Nodeptr _X = _Root();
                 _Nodeptr _Y = _Head;
                 while (_X != _Nil)
                         if (key_compare(_Key(_X), _Kv))
@@ -525,8 +521,7 @@ protected:
         _Nodeptr& _Lmost() const
                 {return (_Left(_Head)); }
         void _Lrotate(_Nodeptr _X)
-                {_Lockit _Lk;
-                _Nodeptr _Y = _Right(_X);
+                {_Nodeptr _Y = _Right(_X);
                 _Right(_X) = _Left(_Y);
                 if (_Left(_Y) != _Nil)
                         _Parent(_Left(_Y)) = _X;
@@ -540,13 +535,11 @@ protected:
                 _Left(_Y) = _X;
                 _Parent(_X) = _Y; }
         static _Nodeptr _Max(_Nodeptr _P)
-                {_Lockit _Lk;
-                while (_Right(_P) != _Nil)
+                {while (_Right(_P) != _Nil)
                         _P = _Right(_P);
                 return (_P); }
         static _Nodeptr _Min(_Nodeptr _P)
-                {_Lockit _Lk;
-                while (_Left(_P) != _Nil)
+                {while (_Left(_P) != _Nil)
                         _P = _Left(_P);
                 return (_P); }
         _Nodeptr& _Rmost()
@@ -558,8 +551,7 @@ protected:
         _Nodeptr& _Root() const
                 {return (_Parent(_Head)); }
         void _Rrotate(_Nodeptr _X)
-                {_Lockit _Lk;
-                _Nodeptr _Y = _Left(_X);
+                {_Nodeptr _Y = _Left(_X);
                 _Left(_X) = _Right(_Y);
                 if (_Right(_Y) != _Nil)
                         _Parent(_Right(_Y)) = _X;
@@ -573,8 +565,7 @@ protected:
                 _Right(_Y) = _X;
                 _Parent(_X) = _Y; }
         _Nodeptr _Ubound(const _K& _Kv) const
-                {_Lockit _Lk;
-                _Nodeptr _X = _Root();
+                {_Nodeptr _X = _Root();
                 _Nodeptr _Y = _Head;
                 while (_X != _Nil)
                         if (key_compare(_Kv, _Key(_X)))

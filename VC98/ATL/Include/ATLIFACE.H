@@ -1,8 +1,8 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
-/* File created by MIDL compiler version 3.03.0110 */
-/* at Sun Mar 01 13:40:26 1998
+/* File created by MIDL compiler version 5.01.0164 */
+/* at Fri Nov 30 13:38:38 2001
  */
 /* Compiler settings for atliface.idl:
     Os (OptLev=s), W1, Zp8, env=Win32, ms_ext, c_ext
@@ -74,13 +74,8 @@ typedef interface IInternalConnection IInternalConnection;
 void __RPC_FAR * __RPC_USER MIDL_user_allocate(size_t);
 void __RPC_USER MIDL_user_free( void __RPC_FAR * ); 
 
-/****************************************
- * Generated header for interface: __MIDL_itf_atliface_0000
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface __MIDL_itf_atliface_0000 */
 /* [local] */ 
-
 
 EXTERN_C const CLSID CLSID_Registrar;
 
@@ -91,13 +86,8 @@ extern RPC_IF_HANDLE __MIDL_itf_atliface_0000_v0_0_s_ifspec;
 #ifndef __IRegistrar_INTERFACE_DEFINED__
 #define __IRegistrar_INTERFACE_DEFINED__
 
-/****************************************
- * Generated header for interface: IRegistrar
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface IRegistrar */
 /* [unique][helpstring][uuid][object] */ 
-
 
 
 EXTERN_C const IID IID_IRegistrar;
@@ -408,13 +398,8 @@ void __RPC_STUB IRegistrar_ResourceUnregister_Stub(
 #ifndef __IDocHostUIHandlerDispatch_INTERFACE_DEFINED__
 #define __IDocHostUIHandlerDispatch_INTERFACE_DEFINED__
 
-/****************************************
- * Generated header for interface: IDocHostUIHandlerDispatch
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface IDocHostUIHandlerDispatch */
 /* [object][unique][helpstring][uuid] */ 
-
 
 typedef 
 enum tagDOCHOSTUIDBLCLKDispatch
@@ -949,13 +934,8 @@ void __RPC_STUB IDocHostUIHandlerDispatch_FilterDataObject_Stub(
 #ifndef __IAxWinHostWindow_INTERFACE_DEFINED__
 #define __IAxWinHostWindow_INTERFACE_DEFINED__
 
-/****************************************
- * Generated header for interface: IAxWinHostWindow
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface IAxWinHostWindow */
 /* [object][unique][helpstring][uuid] */ 
-
 
 
 EXTERN_C const IID IID_IAxWinHostWindow;
@@ -1181,13 +1161,8 @@ void __RPC_STUB IAxWinHostWindow_SetExternalUIHandler_Stub(
 #ifndef __IAxWinAmbientDispatch_INTERFACE_DEFINED__
 #define __IAxWinAmbientDispatch_INTERFACE_DEFINED__
 
-/****************************************
- * Generated header for interface: IAxWinAmbientDispatch
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface IAxWinAmbientDispatch */
 /* [unique][helpstring][uuid][dual][object] */ 
-
 
 
 EXTERN_C const IID IID_IAxWinAmbientDispatch;
@@ -1247,10 +1222,10 @@ EXTERN_C const IID IID_IAxWinAmbientDispatch;
             /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbMsgReflect) = 0;
         
         virtual /* [id][helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ShowGrabHandles( 
-            VARIANT_BOOL __RPC_FAR *pbShowGrabHandles) = 0;
+            /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowGrabHandles) = 0;
         
         virtual /* [id][helpstring][propget] */ HRESULT STDMETHODCALLTYPE get_ShowHatching( 
-            VARIANT_BOOL __RPC_FAR *pbShowHatching) = 0;
+            /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowHatching) = 0;
         
         virtual /* [helpstring][propput] */ HRESULT STDMETHODCALLTYPE put_DocHostFlags( 
             /* [in] */ DWORD dwDocHostFlags) = 0;
@@ -1396,11 +1371,11 @@ EXTERN_C const IID IID_IAxWinAmbientDispatch;
         
         /* [id][helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE __RPC_FAR *get_ShowGrabHandles )( 
             IAxWinAmbientDispatch __RPC_FAR * This,
-            VARIANT_BOOL __RPC_FAR *pbShowGrabHandles);
+            /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowGrabHandles);
         
         /* [id][helpstring][propget] */ HRESULT ( STDMETHODCALLTYPE __RPC_FAR *get_ShowHatching )( 
             IAxWinAmbientDispatch __RPC_FAR * This,
-            VARIANT_BOOL __RPC_FAR *pbShowHatching);
+            /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowHatching);
         
         /* [helpstring][propput] */ HRESULT ( STDMETHODCALLTYPE __RPC_FAR *put_DocHostFlags )( 
             IAxWinAmbientDispatch __RPC_FAR * This,
@@ -1763,7 +1738,7 @@ void __RPC_STUB IAxWinAmbientDispatch_get_MessageReflect_Stub(
 
 /* [id][helpstring][propget] */ HRESULT STDMETHODCALLTYPE IAxWinAmbientDispatch_get_ShowGrabHandles_Proxy( 
     IAxWinAmbientDispatch __RPC_FAR * This,
-    VARIANT_BOOL __RPC_FAR *pbShowGrabHandles);
+    /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowGrabHandles);
 
 
 void __RPC_STUB IAxWinAmbientDispatch_get_ShowGrabHandles_Stub(
@@ -1775,7 +1750,7 @@ void __RPC_STUB IAxWinAmbientDispatch_get_ShowGrabHandles_Stub(
 
 /* [id][helpstring][propget] */ HRESULT STDMETHODCALLTYPE IAxWinAmbientDispatch_get_ShowHatching_Proxy( 
     IAxWinAmbientDispatch __RPC_FAR * This,
-    VARIANT_BOOL __RPC_FAR *pbShowHatching);
+    /* [retval][out] */ VARIANT_BOOL __RPC_FAR *pbShowHatching);
 
 
 void __RPC_STUB IAxWinAmbientDispatch_get_ShowHatching_Stub(
@@ -1912,13 +1887,8 @@ void __RPC_STUB IAxWinAmbientDispatch_get_OptionKeyPath_Stub(
 #ifndef __IInternalConnection_INTERFACE_DEFINED__
 #define __IInternalConnection_INTERFACE_DEFINED__
 
-/****************************************
- * Generated header for interface: IInternalConnection
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface IInternalConnection */
 /* [object][unique][helpstring][uuid] */ 
-
 
 
 EXTERN_C const IID IID_IInternalConnection;
@@ -2020,13 +1990,8 @@ void __RPC_STUB IInternalConnection_ReleaseConnection_Stub(
 #endif 	/* __IInternalConnection_INTERFACE_DEFINED__ */
 
 
-/****************************************
- * Generated header for interface: __MIDL_itf_atliface_0213
- * at Sun Mar 01 13:40:26 1998
- * using MIDL 3.03.0110
- ****************************************/
+/* interface __MIDL_itf_atliface_0213 */
 /* [local] */ 
-
 
 #ifndef _ATL_DLL_IMPL
 namespace ATL

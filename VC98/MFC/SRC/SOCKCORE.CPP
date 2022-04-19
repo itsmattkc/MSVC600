@@ -75,9 +75,10 @@ BOOL AFXAPI AfxSocketInit(WSADATA* lpwsaData)
 
 		// setup for termination of sockets
 		pState->m_pfnSockTerm = &AfxSocketTerm;
-
+	}
 #ifndef _AFXDLL
 		// setup maps and lists specific to socket state
+	{
 		_AFX_SOCK_THREAD_STATE* pState = _afxSockThreadState;
 		if (pState->m_pmapSocketHandle == NULL)
 			pState->m_pmapSocketHandle = new CMapPtrToPtr;
@@ -85,8 +86,8 @@ BOOL AFXAPI AfxSocketInit(WSADATA* lpwsaData)
 			pState->m_pmapDeadSockets = new CMapPtrToPtr;
 		if (pState->m_plistSocketNotifications == NULL)
 			pState->m_plistSocketNotifications = new CPtrList;
-#endif
 	}
+#endif
 
 	return TRUE;
 }

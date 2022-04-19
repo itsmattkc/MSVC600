@@ -73,7 +73,6 @@ namespace ATL
 	DEFINE_OLEDB_TYPE_FUNCTION(DBTIME           ,DBTYPE_DBTIME)
 	DEFINE_OLEDB_TYPE_FUNCTION(DBTIMESTAMP      ,DBTYPE_DBTIMESTAMP)
  	DEFINE_OLEDB_TYPE_FUNCTION(FILETIME			,DBTYPE_FILETIME)
-	DEFINE_OLEDB_TYPE_FUNCTION(DBFILETIME		,DBTYPE_DBFILETIME)
 	DEFINE_OLEDB_TYPE_FUNCTION(PROPVARIANT		,DBTYPE_PROPVARIANT)
 	DEFINE_OLEDB_TYPE_FUNCTION(DB_VARNUMERIC	,DBTYPE_VARNUMERIC)
    
@@ -1705,7 +1704,7 @@ public:
 	T& operator[](int nRow)
 	{
 		ATLASSERT(nRow >= 0);
-		HRESULT hr;
+		HRESULT hr = S_OK;
 		T* m_pCurrent = m_pBase + m_nRowsRead;
 
 		// Retrieve the row if we haven't retrieved it already
@@ -1717,9 +1716,7 @@ public:
 				// Get the row
 				hr = MoveNext();
 				if (hr != S_OK)
-				{
-					*((char*)0) = 0; // Force exception
-				}
+					break;
 			}
 			__except(Except(GetExceptionInformation()))
 			{
@@ -1727,6 +1724,8 @@ public:
 			m_nRowsRead++;
 			m_pCurrent++;
 		}
+		if (hr != S_OK)
+			*((char*)0) = 0; // Force exception
 
 		return *(m_pBase + nRow);
 	}
@@ -3385,7 +3384,7 @@ class CSession
 {
 public:
 	// Create a session on the passed datasource
-	HRESULT Open(const CDataSource& ds)
+	HRESULT Open(const CDataSource& ds, DBPROPSET *pPropSet = NULL, ULONG ulPropSets = 0)
 	{
 		CComPtr<IDBCreateSession> spSession;
 
@@ -3397,8 +3396,23 @@ public:
 			return hr;
 
 		hr = spSession->CreateSession(NULL, IID_IOpenRowset, (IUnknown**)&m_spOpenRowset);
+
+		if( pPropSet != NULL && SUCCEEDED(hr) && m_spOpenRowset != NULL )
+		{
+			// If the user didn't specify the default parameter, use one
+			if (pPropSet != NULL && ulPropSets == 0)
+				ulPropSets = 1;
+
+			CComPtr<ISessionProperties> spSessionProperties;
+			hr = m_spOpenRowset->QueryInterface(__uuidof(ISessionProperties), (void**)&spSessionProperties);
+			if(FAILED(hr))
+				return hr;
+
+			hr = spSessionProperties->SetProperties( ulPropSets, pPropSet );
+		}
 		return hr;
 	}
+
 	// Close the session
 	void Close()
 	{

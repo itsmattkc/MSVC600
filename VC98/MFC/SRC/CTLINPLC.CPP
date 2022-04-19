@@ -541,7 +541,9 @@ BOOL COleControl::OnSetObjectRects(LPCRECT lprcPosRect, LPCRECT lprcClipRect)
 	if (!m_bInPlaceSiteWndless)
 	{
 		CWnd* pWndOuter = GetOuterWindow();
-		pWndOuter->MoveWindow(rectClip);
+		if (pWndOuter != NULL)
+			::MoveWindow(pWndOuter->m_hWnd, rectClip.left, rectClip.top,
+				rectClip.Width(), rectClip.Height(), TRUE);
 		if (pWndOuter != this)
 			MoveWindow(m_ptOffset.x, m_ptOffset.y, rectPos.Width(), rectPos.Height());
 	}

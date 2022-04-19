@@ -1040,10 +1040,31 @@ _AFXWIN_INLINE UINT CMenu::GetMenuState(UINT nID, UINT nFlags) const
 	{ ASSERT(::IsMenu(m_hMenu)); return ::GetMenuState(m_hMenu, nID, nFlags); }
 _AFXWIN_INLINE int CMenu::GetMenuString(UINT nIDItem, LPTSTR lpString, int nMaxCount, UINT nFlags) const
 	{ ASSERT(::IsMenu(m_hMenu)); return ::GetMenuString(m_hMenu, nIDItem, lpString, nMaxCount, nFlags); }
+
+//NOTE: Abnormally large inline function for binary-compatible bug-fix!
+// Should move to out-of-line implementation in future version.
+
 _AFXWIN_INLINE int CMenu::GetMenuString(UINT nIDItem, CString& rString, UINT nFlags) const
-	{ ASSERT(::IsMenu(m_hMenu)); int nResult = ::GetMenuString(m_hMenu, nIDItem,
-		rString.GetBuffer(256), 256, nFlags); rString.ReleaseBuffer();
-		return nResult; }
+	{
+		ASSERT(::IsMenu(m_hMenu));
+		int nStringLen = ::GetMenuString(m_hMenu, nIDItem, NULL, 0, nFlags);
+		if (nStringLen > 0)
+		{
+#ifdef _UNICODE
+			int nLen(nStringLen + 1);
+#else
+			int nLen((nStringLen + 1) << 1);
+#endif
+			LPTSTR pstrString = rString.GetBufferSetLength(nLen);
+			::GetMenuString(m_hMenu, nIDItem, pstrString, nLen, nFlags);
+			rString.ReleaseBuffer();
+		}
+		else
+			rString.Empty();
+
+		return nStringLen;
+	}
+
 _AFXWIN_INLINE BOOL CMenu::GetMenuItemInfo(UINT nIDItem, LPMENUITEMINFO lpMenuItemInfo, BOOL fByPos)
 	{ ASSERT(::IsMenu(m_hMenu)); ASSERT_POINTER(lpMenuItemInfo, MENUITEMINFO);
 		return ::GetMenuItemInfo(m_hMenu, nIDItem, fByPos, lpMenuItemInfo); }

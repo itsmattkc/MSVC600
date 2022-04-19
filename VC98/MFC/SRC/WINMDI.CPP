@@ -337,7 +337,7 @@ CMDIChildWnd* CMDIFrameWnd::MDIGetActive(BOOL* pbMaximized) const
 	// MDI client has been created, get active MDI child
 	HWND hWnd = (HWND)::SendMessage(m_hWndMDIClient, WM_MDIGETACTIVE, 0,
 		(LPARAM)pbMaximized);
-	CMDIChildWnd* pWnd = (CMDIChildWnd*)CWnd::FromHandle(hWnd);
+	CMDIChildWnd* pWnd = (CMDIChildWnd*)CWnd::FromHandlePermanent(hWnd);
 	ASSERT(pWnd == NULL || pWnd->IsKindOf(RUNTIME_CLASS(CMDIChildWnd)));
 
 	// check for special pseudo-inactive state

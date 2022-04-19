@@ -53,6 +53,9 @@ CView::CView()
 
 CView::~CView()
 {
+	if (AfxGetThreadState()->m_pRoutingView == this)
+		AfxGetThreadState()->m_pRoutingView = NULL;
+
 	if (m_pDocument != NULL)
 		m_pDocument->RemoveView(this);
 }

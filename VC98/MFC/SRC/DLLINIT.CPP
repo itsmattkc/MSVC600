@@ -791,4 +791,18 @@ HINSTANCE AFXAPI AfxGetResourceHandleCompat()
 }
 #endif
 
+#include <delayimp.h>
+
+extern "C"
+{
+FARPROC
+WINAPI
+Downlevel_DelayLoadFailureHook(
+    UINT unReason,
+    PDelayLoadInfo pDelayInfo
+    );
+
+PfnDliHook __pfnDliFailureHook = Downlevel_DelayLoadFailureHook;
+
+}
 /////////////////////////////////////////////////////////////////////////////

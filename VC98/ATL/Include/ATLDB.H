@@ -1498,7 +1498,9 @@ public:
 		memset(pPropInfoSet, 0, cSets * sizeof(DBPROPINFOSET));
 
 		ulOutIndex = 0;
-		ulEnd = cPropertySets == 0 ? cSets : cPropertySets;
+		// VC 6.0 ulEnd = cPropertySets == 0 ? cSets : cPropertySets;
+		ulEnd = cSets; // VC 6.0 SP3
+
 		// Fill in the output array
 		for(ulSet=0; ulSet<ulEnd; ulSet++)
 		{
@@ -1508,18 +1510,36 @@ public:
 			{
 				if (pGuid != NULL)
 				{
-					for (ULONG l=0; l<m_cUPropSet; l++)
+					GUID const& guidSet = *pGuid;
+					if( (InlineIsEqualGUID(guidSet, DBPROPSET_DATASOURCEALL) ||
+						InlineIsEqualGUID(guidSet, DBPROPSET_DATASOURCEINFOALL) ||
+						InlineIsEqualGUID(guidSet, DBPROPSET_DBINITALL) ||
+						InlineIsEqualGUID(guidSet, DBPROPSET_SESSIONALL) ||
+						InlineIsEqualGUID(guidSet, DBPROPSET_ROWSETALL)) &&
+						GetPropertySetIndex(&guidSet) == S_OK )
 					{
-						if (InlineIsEqualGUID(*m_pUPropSet[l].pPropSet, *pGuid))
-							ulIndex = l;
+						for(ul=0; ul<m_cPropSetDex; ul++,ulOutIndex++)
+						{
+							pPropInfoSet[ulOutIndex].guidPropertySet    = *(m_pUPropSet[m_rgiPropSetDex[ul]].pPropSet);
+							pPropInfoSet[ulOutIndex].cPropertyInfos     = 0;
+							ulIndex = m_rgiPropSetDex[ul];
+						}
 					}
+					else
+					{
+						for (ULONG l=0; l<m_cUPropSet; l++)
+						{
+							if (InlineIsEqualGUID(*m_pUPropSet[l].pPropSet, *pGuid))
+								ulIndex = l;
+						}
 
-					if (l == m_cUPropSet)
-					{
-						ATLTRACE2(atlTraceDBProvider, 0, "Property Info Set not supported");
-						ulIndex = 0;
+						if (l == m_cUPropSet)
+						{
+							ATLTRACE2(atlTraceDBProvider, 0, "Property Info Set not supported");
+							ulIndex = 0;
+						}
+						pPropInfoSet[ulSet].guidPropertySet = *pGuid;
 					}
-					pPropInfoSet[ulSet].guidPropertySet = *pGuid;
 				}
 				else
 				{
@@ -1871,7 +1891,13 @@ EXIT:
 	//Load a localized description
 	int LoadDescription(ULONG ids, PWSTR pwszBuff, ULONG cchBuff)
 	{
-		return LoadStringW(_Module.GetResourceInstance(), ids, pwszBuff, cchBuff);
+		USES_CONVERSION;
+		TCHAR* pszBuf = (TCHAR*)_alloca(cchBuff * sizeof(TCHAR));
+		if (pszBuf == NULL)
+			return 0;
+		int nTemp = LoadString(_pModule->GetResourceInstance(), ids, pszBuf, cchBuff);
+		wcscpy(pwszBuff, T2W(pszBuf));
+		return nTemp;
 	}
 };
 
@@ -4097,10 +4123,8 @@ public:
 										pPolyObj, pT, pT->GetUnknown());
 		// Ref the created COM object and Auto release it on failure
 		if (FAILED(hr))
-		{
-			delete pPolyObj; // must hand delete as it is not ref'd
 			return hr;
-		}
+
 		hrProps = hr;
 		// Get a pointer to the Rowset instance
 		LONG cRowsAffected;
@@ -5314,7 +5338,7 @@ public:
 		(BYTE)0, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5332,7 +5356,7 @@ public:
 		(BYTE)0, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5350,7 +5374,7 @@ public:
 		(BYTE)0, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5368,7 +5392,7 @@ public:
 		(BYTE)0, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5386,7 +5410,7 @@ public:
 		(BYTE)0xFF, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5404,7 +5428,7 @@ public:
 		(BYTE)0xFF, \
 		{ \
 			EXPANDGUID(GUID_NULL), \
-			(DWORD)0, \
+			(DWORD)2, \
 			(LPOLESTR) name \
 		}, \
 		offsetof(_Class, member) \
@@ -5583,8 +5607,23 @@ public:
 			BOOL bProvOwn = pBindCur->dwMemOwner == DBMEMOWNER_PROVIDEROWNED;
 			bProvOwn;
 			DBSTATUS dbStat = GetDBStatus(pRow, pColCur);
+
+			// If the provider's field is NULL, we can optimize this situation,
+			// set the fields to 0 and continue.
+			if (dbStat == DBSTATUS_S_ISNULL)
+			{
+				if (pBindCur->dwPart & DBPART_STATUS)
+					*((DBSTATUS*)((BYTE*)(pDstData) + pBindCur->obStatus)) = dbStat;
+
+				if (pBindCur->dwPart & DBPART_LENGTH)
+					*((ULONG*)((BYTE*)(pDstData) + pBindCur->obLength)) = 0;
+
+				if (pBindCur->dwPart & DBPART_VALUE)
+					*((BYTE*)(pDstData) + pBindCur->obValue) = NULL;
+				continue;
+			}
 			ULONG cbDst = pBindCur->cbMaxLen;
-			ULONG cbCol = pColCur->ulColumnSize;
+			ULONG cbCol;
 			BYTE* pSrcTemp;
 
 			if (bProvOwn && pColCur->wType == pBindCur->wType)
@@ -6111,6 +6150,7 @@ public:
 	WCHAR m_szType[129];
 	WCHAR m_szDesc[129];
 	GUID  m_guid;
+	ULONG m_ulPropID;
 
 	CTABLESRow()
 	{
@@ -6120,6 +6160,7 @@ public:
 		m_szType[0] = NULL;
 		m_szDesc[0] = NULL;
 		m_guid = GUID_NULL;
+		m_ulPropID = 0;
 	}
 
 BEGIN_PROVIDER_COLUMN_MAP(CTABLESRow)
@@ -6129,6 +6170,7 @@ BEGIN_PROVIDER_COLUMN_MAP(CTABLESRow)
 	PROVIDER_COLUMN_ENTRY("TABLE_TYPE", 4, m_szType)
 	PROVIDER_COLUMN_ENTRY("TABLE_GUID", 5, m_guid)
 	PROVIDER_COLUMN_ENTRY("DESCRIPTION", 6, m_szDesc)
+	PROVIDER_COLUMN_ENTRY("TABLE_PROPID", 7, m_ulPropID)
 END_PROVIDER_COLUMN_MAP()
 
 };
@@ -6206,34 +6248,34 @@ public:
 
 
 BEGIN_PROVIDER_COLUMN_MAP(CCOLUMNSRow)
-	PROVIDER_COLUMN_ENTRY("TableCatalog", 1, m_szTableCatalog)
-	PROVIDER_COLUMN_ENTRY("TableSchema", 2, m_szTableSchema)
-	PROVIDER_COLUMN_ENTRY("TableName", 3, m_szTableName)
-	PROVIDER_COLUMN_ENTRY("ColumnName", 4, m_szColumnName)
-	PROVIDER_COLUMN_ENTRY("Column",5, m_guidColumn)
-	PROVIDER_COLUMN_ENTRY("ColumnPropID",6, m_ulColumnPropID)
-	PROVIDER_COLUMN_ENTRY("OrdinalPosition",7, m_ulOrdinalPosition)
-	PROVIDER_COLUMN_ENTRY("ColumnHasDefault",8, m_bColumnHasDefault)
-	PROVIDER_COLUMN_ENTRY("ColumnDefault",9, m_szColumnDefault)
-	PROVIDER_COLUMN_ENTRY("ColumnFlags",10, m_ulColumnFlags)
-	PROVIDER_COLUMN_ENTRY("IsNullable",11, m_bIsNullable)
-	PROVIDER_COLUMN_ENTRY("DataType",12, m_nDataType)
-	PROVIDER_COLUMN_ENTRY("Type",13, m_guidType)
-	PROVIDER_COLUMN_ENTRY("CharMaxLength",14, m_ulCharMaxLength)
-	PROVIDER_COLUMN_ENTRY("CharOctetLength",15, m_ulCharOctetLength)
-	PROVIDER_COLUMN_ENTRY("NumericPrecision",16, m_nNumericPrecision)
-	PROVIDER_COLUMN_ENTRY("NumericScale",17, m_nNumericScale)
-	PROVIDER_COLUMN_ENTRY("DateTimePrecision",18, m_ulDateTimePrecision)
-	PROVIDER_COLUMN_ENTRY("CharSetCatalog", 19, m_szCharSetCatalog)
-	PROVIDER_COLUMN_ENTRY("CharSetSchema", 20, m_szCharSetSchema)
-	PROVIDER_COLUMN_ENTRY("CharSetName", 21, m_szCharSetName)
-	PROVIDER_COLUMN_ENTRY("CollationCatalog", 22, m_szCollationCatalog)
-	PROVIDER_COLUMN_ENTRY("CollationSchema", 23, m_szCollationSchema)
-	PROVIDER_COLUMN_ENTRY("CollationName", 24, m_szCollationName)
-	PROVIDER_COLUMN_ENTRY("DomainCatalog", 25, m_szDomainCatalog)
-	PROVIDER_COLUMN_ENTRY("DomainSchema", 26, m_szDomainSchema)
-	PROVIDER_COLUMN_ENTRY("DomainName", 27, m_szDomainName)
-	PROVIDER_COLUMN_ENTRY("Description", 28, m_szDescription)
+	PROVIDER_COLUMN_ENTRY("TABLE_CATALOG", 1, m_szTableCatalog)
+	PROVIDER_COLUMN_ENTRY("TABLE_SCHEMA", 2, m_szTableSchema)
+	PROVIDER_COLUMN_ENTRY("TABLE_NAME", 3, m_szTableName)
+	PROVIDER_COLUMN_ENTRY("COLUMN_NAME", 4, m_szColumnName)
+	PROVIDER_COLUMN_ENTRY("COLUMN_GUID",5, m_guidColumn)
+	PROVIDER_COLUMN_ENTRY("COLUMN_PROPID",6, m_ulColumnPropID)
+	PROVIDER_COLUMN_ENTRY("ORDINAL_POSITION",7, m_ulOrdinalPosition)
+	PROVIDER_COLUMN_ENTRY("COLUMN_HASDEFAULT",8, m_bColumnHasDefault)
+	PROVIDER_COLUMN_ENTRY("COLUMN_DEFAULT",9, m_szColumnDefault)
+	PROVIDER_COLUMN_ENTRY("COLUMN_FLAGS",10, m_ulColumnFlags)
+	PROVIDER_COLUMN_ENTRY("IS_NULLABLE",11, m_bIsNullable)
+	PROVIDER_COLUMN_ENTRY("DATA_TYPE",12, m_nDataType)
+	PROVIDER_COLUMN_ENTRY("TYPE_GUID",13, m_guidType)
+	PROVIDER_COLUMN_ENTRY("CHARACTER_MAXIMUM_LENGTH",14, m_ulCharMaxLength)
+	PROVIDER_COLUMN_ENTRY("CHARACTER_OCTET_LENGTH",15, m_ulCharOctetLength)
+	PROVIDER_COLUMN_ENTRY("NUMERIC_PRECISION",16, m_nNumericPrecision)
+	PROVIDER_COLUMN_ENTRY("NUMERIC_SCALE",17, m_nNumericScale)
+	PROVIDER_COLUMN_ENTRY("DATETIME_PRECISION",18, m_ulDateTimePrecision)
+	PROVIDER_COLUMN_ENTRY("CHARACTER_SET_CATALOG", 19, m_szCharSetCatalog)
+	PROVIDER_COLUMN_ENTRY("CHARACTER_SET_SCHEMA", 20, m_szCharSetSchema)
+	PROVIDER_COLUMN_ENTRY("CHARACTER_SET_NAME", 21, m_szCharSetName)
+	PROVIDER_COLUMN_ENTRY("COLLATION_CATALOG", 22, m_szCollationCatalog)
+	PROVIDER_COLUMN_ENTRY("COLLATION_SCHEMA", 23, m_szCollationSchema)
+	PROVIDER_COLUMN_ENTRY("COLLATION_NAME", 24, m_szCollationName)
+	PROVIDER_COLUMN_ENTRY("DOMAIN_CATALOG", 25, m_szDomainCatalog)
+	PROVIDER_COLUMN_ENTRY("DOMAIN_SCHEMA", 26, m_szDomainSchema)
+	PROVIDER_COLUMN_ENTRY("DOMAIN_NAME", 27, m_szDomainName)
+	PROVIDER_COLUMN_ENTRY("DESCRIPTION", 28, m_szDescription)
 END_PROVIDER_COLUMN_MAP()
 };
 
@@ -6312,6 +6354,7 @@ public:
 	WCHAR           m_szVersion[129];
 	VARIANT_BOOL    m_bIsLong;
 	VARIANT_BOOL    m_bBestMatch;
+	VARIANT_BOOL	m_bIsFixedLength;
 
 	CPROVIDER_TYPERow()
 	{
@@ -6335,29 +6378,31 @@ public:
 		m_szVersion[0] = NULL;
 		m_bIsLong = VARIANT_FALSE;
 		m_bBestMatch = VARIANT_FALSE;
+		m_bIsFixedLength = VARIANT_FALSE;
 	}
 // Binding Maps
 BEGIN_PROVIDER_COLUMN_MAP(CPROVIDER_TYPERow)
-	PROVIDER_COLUMN_ENTRY("Name", 1, m_szName)
-	PROVIDER_COLUMN_ENTRY("Type", 2, m_nType)
-	PROVIDER_COLUMN_ENTRY("Size", 3, m_ulSize)
-	PROVIDER_COLUMN_ENTRY("Prefix", 4, m_szPrefix)
-	PROVIDER_COLUMN_ENTRY("Suffix", 5, m_szSuffix)
-	PROVIDER_COLUMN_ENTRY("CreateParams", 6, m_szCreateParams)
-	PROVIDER_COLUMN_ENTRY("IsNullable", 7, m_bIsNullable)
-	PROVIDER_COLUMN_ENTRY("CaseSensitive", 8, m_bCaseSensitive)
-	PROVIDER_COLUMN_ENTRY("Searchable", 9, m_bSearchable)
-	PROVIDER_COLUMN_ENTRY("UnsignedAttribute", 10, ,m_bUnsignedAttribute)
-	PROVIDER_COLUMN_ENTRY("FixedPrecScale", 11, m_bFixedPrecScale)
-	PROVIDER_COLUMN_ENTRY("AutoUniqueValue", 12, m_bAutoUniqueValue)
-	PROVIDER_COLUMN_ENTRY("LocalTypeName", 13, m_szLocalTypeName)
-	PROVIDER_COLUMN_ENTRY("MinScale", 14, m_nMinScale)
-	PROVIDER_COLUMN_ENTRY("MaxScale", 15, m_nMaxScale)
-	PROVIDER_COLUMN_ENTRY("GUID Type", 16, m_guidType)
-	PROVIDER_COLUMN_ENTRY("TypeLib", 17, m_szTypeLib)
-	PROVIDER_COLUMN_ENTRY("Version", 18, m_szVersion)
-	PROVIDER_COLUMN_ENTRY("IsLong", 19, m_bIsLong)
-	PROVIDER_COLUMN_ENTRY("BestMatch", 20, m_bBestMatch)
+	PROVIDER_COLUMN_ENTRY("TYPE_NAME", 1, m_szName)
+	PROVIDER_COLUMN_ENTRY("DATA_TYPE", 2, m_nType)
+	PROVIDER_COLUMN_ENTRY("COLUMN_SIZE", 3, m_ulSize)
+	PROVIDER_COLUMN_ENTRY("LITERAL_PREFIX", 4, m_szPrefix)
+	PROVIDER_COLUMN_ENTRY("LITERAL_SUFFIX", 5, m_szSuffix)
+	PROVIDER_COLUMN_ENTRY("CREATE_PARAMS", 6, m_szCreateParams)
+	PROVIDER_COLUMN_ENTRY("IS_NULLABLE", 7, m_bIsNullable)
+	PROVIDER_COLUMN_ENTRY("CASE_SENSITIVE", 8, m_bCaseSensitive)
+	PROVIDER_COLUMN_ENTRY("SEARCHABLE", 9, m_bSearchable)
+	PROVIDER_COLUMN_ENTRY("UNSIGNED_ATTRIBUTE", 10, ,m_bUnsignedAttribute)
+	PROVIDER_COLUMN_ENTRY("FIXED_PREC_SCALE", 11, m_bFixedPrecScale)
+	PROVIDER_COLUMN_ENTRY("AUTO_UNIQUE_VALUE", 12, m_bAutoUniqueValue)
+	PROVIDER_COLUMN_ENTRY("LOCAL_TYPE_NAME", 13, m_szLocalTypeName)
+	PROVIDER_COLUMN_ENTRY("MINIMUM_SCALE", 14, m_nMinScale)
+	PROVIDER_COLUMN_ENTRY("MAXIMUM_SCALE", 15, m_nMaxScale)
+	PROVIDER_COLUMN_ENTRY("GUID", 16, m_guidType)
+	PROVIDER_COLUMN_ENTRY("TYPELIB", 17, m_szTypeLib)
+	PROVIDER_COLUMN_ENTRY("VERSION", 18, m_szVersion)
+	PROVIDER_COLUMN_ENTRY("IS_LONG", 19, m_bIsLong)
+	PROVIDER_COLUMN_ENTRY("BEST_MATCH", 20, m_bBestMatch)
+	PROVIDER_COLUMN_ENTRY("IS_FIXEDLENGTH", 21, m_bIsFixedLength)
 END_PROVIDER_COLUMN_MAP()
 };
 

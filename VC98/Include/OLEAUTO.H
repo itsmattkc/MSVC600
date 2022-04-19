@@ -1,7 +1,7 @@
 //+---------------------------------------------------------------------------
 //
 //  Microsoft Windows
-//  Copyright 1992 - 1998 Microsoft Corporation.
+//  Copyright (C) Microsoft Corporation, 1992 - 1997.
 //
 //  File:       oleauto.h
 //
@@ -131,16 +131,17 @@ WINOLEAUTAPI VariantChangeTypeEx(VARIANTARG * pvargDest,
                 VARIANTARG * pvarSrc, LCID lcid, USHORT wFlags, VARTYPE vt);
 
 // Flags for VariantChangeType/VariantChangeTypeEx
-#define VARIANT_NOVALUEPROP 0x1
-#define VARIANT_ALPHABOOL   0x2 // For VT_BOOL to VT_BSTR conversions,
-                                // convert to "True"/"False" instead of
-                                // "-1"/"0"
-#define VARIANT_NOUSEROVERRIDE   0x4	// For conversions to/from VT_BSTR,
-					// passes LOCALE_NOUSEROVERRIDE
-					// to core coercion routines
-#define VARIANT_LOCALBOOL   0x8 // For VT_BOOL to VT_BSTR and back,
-                                // convert to local language rather than
-                                // English
+#define VARIANT_NOVALUEPROP      0x01
+#define VARIANT_ALPHABOOL        0x02 // For VT_BOOL to VT_BSTR conversions,
+                                      // convert to "True"/"False" instead of
+                                      // "-1"/"0"
+#define VARIANT_NOUSEROVERRIDE   0x04 // For conversions to/from VT_BSTR,
+				      // passes LOCALE_NOUSEROVERRIDE
+				      // to core coercion routines
+#define VARIANT_CALENDAR_HIJRI   0x08
+#define VARIANT_LOCALBOOL        0x10 // For VT_BOOL to VT_BSTR and back,
+                                      // convert to local language rather than
+                                      // English
 
 /*---------------------------------------------------------------------*/
 /*                Vector <-> Bstr conversion APIs                      */
@@ -149,6 +150,45 @@ WINOLEAUTAPI VariantChangeTypeEx(VARIANTARG * pvargDest,
 WINOLEAUTAPI VectorFromBstr (BSTR bstr, SAFEARRAY ** ppsa);
 WINOLEAUTAPI BstrFromVector (SAFEARRAY *psa, BSTR *pbstr);
 
+/*---------------------------------------------------------------------*/
+/*                     Variant API Flags                               */
+/*---------------------------------------------------------------------*/
+
+/* Any of the coersion functions that converts either from or to a string
+ * takes an additional lcid and dwFlags arguments. The lcid argument allows
+ * locale specific parsing to occur.  The dwFlags allow additional function
+ * specific condition to occur.  All function that accept the dwFlags argument
+ * can include either 0 or LOCALE_NOUSEROVERRIDE flag.
+ */
+
+/* The VarDateFromStr and VarBstrFromDate functions also accept the
+ * VAR_TIMEVALUEONLY and VAR_DATEVALUEONLY flags
+ */
+#define VAR_TIMEVALUEONLY       ((DWORD)0x00000001)    /* return time value */
+#define VAR_DATEVALUEONLY       ((DWORD)0x00000002)    /* return date value */
+
+/* VarDateFromUdate() only */
+#define VAR_VALIDDATE           ((DWORD)0x00000004)
+
+/* Accepted by all date & format APIs */
+#define VAR_CALENDAR_HIJRI      ((DWORD)0x00000008)    /* use Hijri calender */
+
+/* Booleans can optionally be accepted in localized form. Pass VAR_LOCALBOOL
+ * into VarBoolFromStr and VarBstrFromBool to use localized boolean names
+ */
+#define VAR_LOCALBOOL           ((DWORD)0x00000010)
+
+/* When passed into VarFormat and VarFormatFromTokens, prevents substitution
+ * of formats in the case where a string is passed in that can not be
+ * coverted into the desired type. (for ex, 'Format("Hello", "General Number")')
+ */
+#define VAR_FORMAT_NOSUBSTITUTE ((DWORD)0x00000020)
+
+/*
+ * For VarBstrFromDate only - forces years to be 4 digits rather than shortening
+ * to 2-digits when the years is in the date window.
+ */
+#define VAR_FOURDIGITYEARS	((DWORD)0x00000040)
 
 /*---------------------------------------------------------------------*/
 /*                     VARTYPE Coercion API                            */
@@ -159,23 +199,6 @@ WINOLEAUTAPI BstrFromVector (SAFEARRAY *psa, BSTR *pbstr);
  * required, and this makes the routines a bit more generic.
  * They may of course still be passed a BSTR as the strIn param.
  */
-
-/* Any of the coersion functions that converts either from or to a string
- * takes an additional lcid and dwFlags arguments. The lcid argument allows
- * locale specific parsing to occur.  The dwFlags allow additional function
- * specific condition to occur.  All function that accept the dwFlags argument
- * can include either 0 or LOCALE_NOUSEROVERRIDE flag. In addition, the
- * VarDateFromStr and VarBstrFromDate functions also accept the
- * VAR_TIMEVALUEONLY and VAR_DATEVALUEONLY flags
- */
-
-#define VAR_TIMEVALUEONLY   ((DWORD)0x00000001)    /* return time value */
-#define VAR_DATEVALUEONLY   ((DWORD)0x00000002)    /* return date value */
-
-/* Booleans can optionally be accepted in localized form. Pass VAR_LOCALBOOL
- * into VarBoolFromStr and VarBstrFromBool to use localized boolean names
- */
-#define VAR_LOCALBOOL       ((DWORD)0x00000010)
 
 WINOLEAUTAPI VarUI1FromI2(SHORT sIn, BYTE * pbOut);
 WINOLEAUTAPI VarUI1FromI4(LONG lIn, BYTE * pbOut);
@@ -508,7 +531,8 @@ STDAPI VarNot(LPVARIANT pvarIn, LPVARIANT pvarResult);
 
 STDAPI VarRound(LPVARIANT pvarIn, int cDecimals, LPVARIANT pvarResult);
 
-STDAPI VarCmp(LPVARIANT pvarLeft, LPVARIANT pvarRight, LCID lcid);
+// dwFlags passed to CompareString if a string compare
+STDAPI VarCmp(LPVARIANT pvarLeft, LPVARIANT pvarRight, LCID lcid, ULONG dwFlags);
 
 
 // Decimal math
@@ -550,7 +574,7 @@ STDAPI VarCyCmpR8(CY cyLeft, double dblRight);
 // Misc support functions
 //
 STDAPI VarBstrCat(BSTR bstrLeft, BSTR bstrRight, LPBSTR pbstrResult);
-STDAPI VarBstrCmp(BSTR bstrLeft, BSTR bstrRight, LCID lcid);
+STDAPI VarBstrCmp(BSTR bstrLeft, BSTR bstrRight, LCID lcid, ULONG dwFlags); // dwFlags passed to CompareString
 STDAPI VarR8Pow(double dblLeft, double dblRight, double *pdblResult);
 STDAPI VarR4CmpR8(float fltLeft, double dblRight);
 STDAPI VarR8Round(double dblIn, int cDecimals, double *pdblResult);
@@ -577,10 +601,6 @@ STDAPI VarR8Round(double dblIn, int cDecimals, double *pdblResult);
 /*                   New date functions                                */
 /*---------------------------------------------------------------------*/
 
-#define VAR_VALIDDATE       0x0004    /* VarDateFromUdate() only */
-#define VAR_CALENDAR_HIJRI  0x0008    /* use Hijri calender */
-#define VARIANT_CALENDAR_HIJRI VAR_CALENDAR_HIJRI
-
 /* The UDATE structure is used with VarDateFromUdate() and VarUdateFromDate().
  * It represents an "unpacked date".
  */
@@ -590,9 +610,11 @@ typedef struct {
 } UDATE;
 
 /* APIs to "pack" and "unpack" dates.
+ * NOTE: Ex version of VarDateFromUdate obeys 2 digit year setting in
+ * control panel.
  */
 WINOLEAUTAPI VarDateFromUdate(UDATE *pudateIn, ULONG dwFlags, DATE *pdateOut);
-
+WINOLEAUTAPI VarDateFromUdateEx(UDATE *pudateIn, LCID lcid, ULONG dwFlags, DATE *pdateOut);
 WINOLEAUTAPI VarUdateFromDate(DATE dateIn, ULONG dwFlags, UDATE *pudateOut);
 
 /* API to retrieve the secondary(altername) month names
@@ -604,14 +626,6 @@ WINOLEAUTAPI GetAltMonthNames(LCID lcid, LPOLESTR * * prgp);
 /*                 Format                                              */
 /*---------------------------------------------------------------------*/
 
-// NOTE: dwFlags currently only accepts VAR_CALENDAR_HIJRI and
-// VAR_FORMAT_NOSUBSTITUTE
-
-// When passed into VarFormat and VarFormatFromTokens, prevents substitution
-// of formats in the case where a string is passed in that can not be
-// coverted into the desired type. (for ex, 'Format("Hello", "General Number")')
-#define VAR_FORMAT_NOSUBSTITUTE 0x00000010
-
 WINOLEAUTAPI VarFormat(LPVARIANT pvarIn, LPOLESTR pstrFormat, int iFirstDay, int iFirstWeek, ULONG dwFlags, BSTR *pbstrOut);
 WINOLEAUTAPI VarFormatDateTime(LPVARIANT pvarIn, int iNamedFormat, ULONG dwFlags, BSTR *pbstrOut);
 WINOLEAUTAPI VarFormatNumber(LPVARIANT pvarIn, int iNumDig, int iIncLead, int iUseParens, int iGroup, ULONG dwFlags, BSTR *pbstrOut);
@@ -622,8 +636,7 @@ WINOLEAUTAPI VarWeekdayName(int iWeekday, int fAbbrev, int iFirstDay, ULONG dwFl
 WINOLEAUTAPI VarMonthName(int iMonth, int fAbbrev, ULONG dwFlags, BSTR *pbstrOut);
 
 WINOLEAUTAPI VarFormatFromTokens(LPVARIANT pvarIn, LPOLESTR pstrFormat, LPBYTE pbTokCur, ULONG dwFlags, BSTR *pbstrOut, LCID lcid);
-WINOLEAUTAPI_(LPBYTE) VarTokenizeFormatString(LPOLESTR pstrFormat, LPBYTE rgbTok, int cbTok, int iFirstDay, int iFirstWeek, LCID lcid);
-
+WINOLEAUTAPI VarTokenizeFormatString(LPOLESTR pstrFormat, LPBYTE rgbTok, int cbTok, int iFirstDay, int iFirstWeek, LCID lcid, int *pcbActual);
 
 /*---------------------------------------------------------------------*/
 /*                 ITypeLib                                            */

@@ -2429,9 +2429,14 @@ public:
 		m_hHeap = HeapCreate(0, 0, 0);
 
 #ifndef _ATL_NO_MP_HEAP
+		OSVERSIONINFO ver;
 		SYSTEM_INFO si;
+		memset( &ver, 0, sizeof( ver ) );
+		ver.dwOSVersionInfoSize = sizeof( ver );
+		GetVersionEx( &ver );
 		GetSystemInfo(&si);
-		if (si.dwNumberOfProcessors > 1)
+		if( ((ver.dwPlatformId != VER_PLATFORM_WIN32_NT) ||
+			(ver.dwMajorVersion < 5)) && (si.dwNumberOfProcessors > 1) )
 		{
 			DWORD dwHeaps = si.dwNumberOfProcessors * 2;
 			m_dwHeaps = 0xFFFFFFFF;
@@ -4494,8 +4499,8 @@ public:
 		return false;
 	}
 	bool operator!=(const VARIANT& varSrc) const {return !operator==(varSrc);}
-	bool operator<(const VARIANT& varSrc) const {return VarCmp((VARIANT*)this, (VARIANT*)&varSrc, LOCALE_USER_DEFAULT)==VARCMP_LT;}
-	bool operator>(const VARIANT& varSrc) const {return VarCmp((VARIANT*)this, (VARIANT*)&varSrc, LOCALE_USER_DEFAULT)==VARCMP_GT;}
+	bool operator<(const VARIANT& varSrc) const {return VarCmp((VARIANT*)this, (VARIANT*)&varSrc, LOCALE_USER_DEFAULT, 0)==VARCMP_LT;}
+	bool operator>(const VARIANT& varSrc) const {return VarCmp((VARIANT*)this, (VARIANT*)&varSrc, LOCALE_USER_DEFAULT, 0)==VARCMP_GT;}
 
 // Operations
 public:
@@ -4906,7 +4911,7 @@ inline LONG CRegKey::RecurseDeleteKey(LPCTSTR lpszKey)
 inline HRESULT CComModule::RegisterProgID(LPCTSTR lpszCLSID, LPCTSTR lpszProgID, LPCTSTR lpszUserDesc)
 {
 	CRegKey keyProgID;
-	LONG lRes = keyProgID.Create(HKEY_CLASSES_ROOT, lpszProgID, REG_NONE, REG_OPTION_NON_VOLATILE, KEY_READ);
+	LONG lRes = keyProgID.Create(HKEY_CLASSES_ROOT, lpszProgID, REG_NONE, REG_OPTION_NON_VOLATILE, KEY_SET_VALUE);
 	if (lRes == ERROR_SUCCESS)
 	{
 		keyProgID.SetValue(lpszUserDesc);
@@ -4928,10 +4933,20 @@ inline HRESULT WINAPI CComModule::UpdateRegistryFromResourceS(UINT nResID, BOOL 
 	TCHAR szModule[_MAX_PATH];
 	GetModuleFileName(_pModule->GetModuleInstance(), szModule, _MAX_PATH);
 
-   // Convert to short path to work around bug in NT4's CreateProcess
-   TCHAR szModuleShort[_MAX_PATH];
-   GetShortPathName(szModule, szModuleShort, _MAX_PATH);
-   LPOLESTR pszModule = T2OLE(szModuleShort);
+	LPOLESTR pszModule;
+	if ((m_hInst == NULL) || (m_hInst == GetModuleHandle(NULL))) // register as EXE
+	{
+		// Convert to short path to work around bug in NT4's CreateProcess
+		TCHAR szModuleShort[_MAX_PATH];
+		int cbShortName = GetShortPathName(szModule, szModuleShort, _MAX_PATH);
+
+		if (cbShortName == _MAX_PATH)
+			return E_OUTOFMEMORY;
+
+		pszModule = (cbShortName == 0 || cbShortName == ERROR_INVALID_PARAMETER) ? T2OLE(szModule) : T2OLE(szModuleShort);
+	}
+	else
+		pszModule = T2OLE(szModule);
 
 	int nLen = ocslen(pszModule);
 	LPOLESTR pszModuleQuote = (LPOLESTR)alloca((nLen*2+1)*sizeof(OLECHAR));
@@ -4960,10 +4975,20 @@ inline HRESULT WINAPI CComModule::UpdateRegistryFromResourceS(LPCTSTR lpszRes, B
 	TCHAR szModule[_MAX_PATH];
 	GetModuleFileName(_pModule->GetModuleInstance(), szModule, _MAX_PATH);
 
-   // Convert to short path to work around bug in NT4's CreateProcess
-   TCHAR szModuleShort[_MAX_PATH];
-   GetShortPathName(szModule, szModuleShort, _MAX_PATH);
-   LPOLESTR pszModule = T2OLE(szModuleShort);
+	LPOLESTR pszModule;
+	if ((m_hInst == NULL) || (m_hInst == GetModuleHandle(NULL))) // register as EXE
+	{
+		// Convert to short path to work around bug in NT4's CreateProcess
+		TCHAR szModuleShort[_MAX_PATH];
+		int cbShortName = GetShortPathName(szModule, szModuleShort, _MAX_PATH);
+
+		if (cbShortName == _MAX_PATH)
+			return E_OUTOFMEMORY;
+
+		pszModule = (cbShortName == 0 || cbShortName == ERROR_INVALID_PARAMETER) ? T2OLE(szModule) : T2OLE(szModuleShort);
+	}
+	else
+		pszModule = T2OLE(szModule);
 
 	int nLen = ocslen(pszModule);
 	LPOLESTR pszModuleQuote = (LPOLESTR)alloca((nLen*2+1)*sizeof(OLECHAR));
@@ -5027,10 +5052,10 @@ inline HRESULT WINAPI CComModule::RegisterClassHelper(const CLSID& clsid, LPCTST
 	if (hRes == S_OK)
 	{
 		CRegKey key;
-		lRes = key.Open(HKEY_CLASSES_ROOT, _T("CLSID"), KEY_READ);
+		lRes = key.Open(HKEY_CLASSES_ROOT, _T("CLSID"), KEY_READ | KEY_WRITE);
 		if (lRes == ERROR_SUCCESS)
 		{
-			lRes = key.Create(key, lpsz, REG_NONE, REG_OPTION_NON_VOLATILE, KEY_READ);
+			lRes = key.Create(key, lpsz, REG_NONE, REG_OPTION_NON_VOLATILE, KEY_READ | KEY_WRITE);
 			if (lRes == ERROR_SUCCESS)
 			{
 				key.SetValue(szDesc);
@@ -5038,12 +5063,19 @@ inline HRESULT WINAPI CComModule::RegisterClassHelper(const CLSID& clsid, LPCTST
 				key.SetKeyValue(szVIProgID, lpszVerIndProgID);
 
 				if ((m_hInst == NULL) || (m_hInst == GetModuleHandle(NULL))) // register as EXE
-			{
-			   // Convert to short path to work around bug in NT4's CreateProcess
-			   TCHAR szModuleShort[_MAX_PATH];
-			   GetShortPathName(szModule, szModuleShort, _MAX_PATH);
-					key.SetKeyValue(szLS32, szModuleShort);
-			}
+				{
+					// Convert to short path to work around bug in NT4's CreateProcess
+					TCHAR szModuleShort[_MAX_PATH];
+					int cbShortName = GetShortPathName(szModule, szModuleShort, _MAX_PATH);
+					TCHAR* pszModule;
+
+					if (cbShortName == _MAX_PATH)
+						return E_OUTOFMEMORY;
+
+					pszModule = (cbShortName == 0 || cbShortName == ERROR_INVALID_PARAMETER) ? szModule : szModuleShort;
+
+					key.SetKeyValue(szLS32, pszModule);
+				}
 				else
 				{
 					key.SetKeyValue(szIPS32, (dwFlags & AUTPRXFLAG) ? szAUTPRX32 : szModule);
@@ -5075,7 +5107,7 @@ inline HRESULT WINAPI CComModule::UnregisterClassHelper(const CLSID& clsid, LPCT
 	LPOLESTR lpOleStr;
 	StringFromCLSID(clsid, &lpOleStr);
 	LPTSTR lpsz = OLE2T(lpOleStr);
-	if (key.Open(key, _T("CLSID"), KEY_READ) == ERROR_SUCCESS)
+	if (key.Open(key, _T("CLSID"), KEY_READ | KEY_WRITE) == ERROR_SUCCESS)
 		key.RecurseDeleteKey(lpsz);
 	CoTaskMemFree(lpOleStr);
 	return S_OK;
@@ -5121,7 +5153,7 @@ public:
 		if (pExcept->ExceptionCode != EXCEPTION_ACCESS_VIOLATION)
 			return EXCEPTION_CONTINUE_SEARCH;
 		BYTE* pAddress = (LPBYTE) pExcept->ExceptionInformation[1];
-		VirtualAlloc(pAddress, ((BYTE*)m_pTop - (BYTE*)m_pBase), MEM_COMMIT, PAGE_READWRITE);
+		VirtualAlloc(pAddress, sizeof(T), MEM_COMMIT, PAGE_READWRITE);
 		return EXCEPTION_CONTINUE_EXECUTION;
 	}
 	void Seek(int nElement)
@@ -5859,8 +5891,9 @@ ATLINLINE ATLAPI AtlModuleUnregisterServerEx(_ATL_MODULE* pM, BOOL bUnRegTypeLib
 				continue;
 		}
 		pEntry->pfnUpdateRegistry(FALSE); //unregister
-		AtlRegisterClassCategoriesHelper( *pEntry->pclsid,
-			pEntry->pfnGetCategoryMap(), FALSE );
+		if (pM->cbSize == sizeof(_ATL_MODULE) && pEntry->pfnGetCategoryMap != NULL)
+			AtlRegisterClassCategoriesHelper( *pEntry->pclsid,
+				pEntry->pfnGetCategoryMap(), FALSE );
 	}
 	if (bUnRegTypeLib)
 		AtlModuleUnRegisterTypeLib(pM, 0);
@@ -5891,10 +5924,20 @@ ATLINLINE ATLAPI AtlModuleUpdateRegistryFromResourceD(_ATL_MODULE* pM, LPCOLESTR
 		TCHAR szModule[_MAX_PATH];
 		GetModuleFileName(pM->m_hInst, szModule, _MAX_PATH);
 
-	  // Convert to short path to work around bug in NT4's CreateProcess
-	  TCHAR szModuleShort[_MAX_PATH];
-	  GetShortPathName(szModule, szModuleShort, _MAX_PATH);
-	  LPOLESTR pszModule = T2OLE(szModuleShort);
+		LPOLESTR pszModule;
+		if ((pM->m_hInst == NULL) || (pM->m_hInst == GetModuleHandle(NULL))) // register as EXE
+		{
+			// Convert to short path to work around bug in NT4's CreateProcess
+			TCHAR szModuleShort[_MAX_PATH];
+			int cbShortName = GetShortPathName(szModule, szModuleShort, _MAX_PATH);
+
+			if (cbShortName == _MAX_PATH)
+				return E_OUTOFMEMORY;
+
+			pszModule = (cbShortName == 0 || cbShortName == ERROR_INVALID_PARAMETER) ? T2OLE(szModule) : T2OLE(szModuleShort);
+		}
+		else
+			pszModule = T2OLE(szModule);
 
 		int nLen = ocslen(pszModule);
 		LPOLESTR pszModuleQuote = (LPOLESTR)alloca((nLen*2+1)*sizeof(OLECHAR));

@@ -454,11 +454,21 @@ LRESULT CControlBar::WindowProc(UINT nMsg, WPARAM wParam, LPARAM lParam)
 				{
 					TOOLTIPTEXTA* pTTTA = (TOOLTIPTEXTA*)pNMHDR;
 					TOOLTIPTEXTW* pTTTW = (TOOLTIPTEXTW*)pNMHDR;
-					if ((pNMHDR->code == TTN_NEEDTEXTA && (!pTTTA->lpszText || !*pTTTA->lpszText)) ||
-						(pNMHDR->code == TTN_NEEDTEXTW && (!pTTTW->lpszText || !*pTTTW->lpszText)))
+
+					if (pNMHDR->code == TTN_NEEDTEXTA)
 					{
-						// not handled by owner, so let bar itself handle it
-						lResult = CWnd::WindowProc(nMsg, wParam, lParam);
+						if (pTTTA->hinst == 0 && (!pTTTA->lpszText || !*pTTTA->lpszText))
+						{
+							// not handled by owner, so let bar itself handle it
+							lResult = CWnd::WindowProc(nMsg, wParam, lParam);
+						}
+					} else if (pNMHDR->code == TTN_NEEDTEXTW)
+					{
+						if (pTTTW->hinst == 0 && (!pTTTW->lpszText || !*pTTTW->lpszText))
+						{
+							// not handled by owner, so let bar itself handle it
+							lResult = CWnd::WindowProc(nMsg, wParam, lParam);
+						}
 					}
 				}
 			}

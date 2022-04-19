@@ -51,7 +51,7 @@
 // Version Info for MFC42[LANG].DLL
 VS_VERSION_INFO     VERSIONINFO
   FILEVERSION       6,0,_MFC_BUILD,_MFC_RBLD
-  PRODUCTVERSION    6,0,0,0
+  PRODUCTVERSION    6,0,3,0
   FILEFLAGSMASK     VS_FFI_FILEFLAGSMASK
 #ifndef RELEASE
   FILEFLAGS         VS_FF_PRERELEASE
@@ -74,7 +74,7 @@ BEGIN
 			VALUE "LegalCopyright",  "Copyright (C) Microsoft Corp. 1993-1998\0"
 			VALUE "LegalTrademarks", "\0"
 			VALUE "ProductName",     "Microsoft (R) Visual C++\0"
-			VALUE "ProductVersion",  "6.0.000\0"
+			VALUE "ProductVersion",  "6.0.300\0"
 		END
 	END
 	BLOCK "VarFileInfo"

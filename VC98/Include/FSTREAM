@@ -122,7 +122,7 @@ protected:
 						return (_Tr::eof());
 				case codecvt_base::ok:	// can fall through
 					{size_t _N = _D - _Str->begin();
-					return (fwrite(_Str->begin(), _N, 1, _File)
+					return (fwrite(_Str->begin(), 1, _N, _File)
 						== _N ? _C : _Tr::eof()); } 
 				case codecvt_base::noconv:
 					return (_Fputc(_X, _File) ? _C : _Tr::eof());

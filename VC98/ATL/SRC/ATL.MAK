@@ -267,6 +267,8 @@ CLEAN :
 	-@erase "$(INTDIR)\RegObj.obj"
 	-@erase "$(INTDIR)\StdAfx.obj"
 	-@erase "$(INTDIR)\vc60.idb"
+	-@erase "$(INTDIR)\vc60.pdb"
+	-@erase "$(OUTDIR)\Atl.pdb"
 	-@erase "$(OUTDIR)\Atl.dll"
 	-@erase "$(OUTDIR)\Atl.exp"
 	-@erase "$(OUTDIR)\Atl.lib"
@@ -279,7 +281,7 @@ CLEAN :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yu"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
+CPP_PROJ=/nologo /MT /W3 /Zi /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yu"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -321,9 +323,9 @@ BSC32_SBRS= \
 	
 LINK32=link.exe
 !if "$(PROCESSOR_ARCHITECTURE)" == "ALPHA"
-LINK32_FLAGS=delayimp.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:ALPHA /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
+LINK32_FLAGS=delayimp.lib atldload.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:ALPHA /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
 !else
-LINK32_FLAGS=delayimp.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:I386 /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
+LINK32_FLAGS=delayimp.lib  atldload.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /debug /machine:I386 /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
 !endif
 DEF_FILE= \
 	".\atl.def"
@@ -369,6 +371,8 @@ CLEAN :
 	-@erase "$(INTDIR)\RegObj.obj"
 	-@erase "$(INTDIR)\StdAfx.obj"
 	-@erase "$(INTDIR)\vc60.idb"
+	-@erase "$(INTDIR)\vc60.pdb"
+	-@erase "$(OUTDIR)\Atl.pdb"
 	-@erase "$(OUTDIR)\Atl.dll"
 	-@erase "$(OUTDIR)\Atl.exp"
 	-@erase "$(OUTDIR)\Atl.lib"
@@ -381,7 +385,7 @@ CLEAN :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/nologo /MT /W3 /O1 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_UNICODE" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yu"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
+CPP_PROJ=/nologo /MT /W3 /Zi /O1 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_UNICODE" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yu"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -423,9 +427,9 @@ BSC32_SBRS= \
 	
 LINK32=link.exe
 !if "$(PROCESSOR_ARCHITECTURE)" == "ALPHA"
-LINK32_FLAGS=delayimp.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:ALPHA /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
+LINK32_FLAGS=delayimp.lib  atldload.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:ALPHA /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
 !else
-LINK32_FLAGS=delayimp.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /machine:I386 /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
+LINK32_FLAGS=delayimp.lib  atldload.lib /nologo /base:"0x5f3e0000" /version:2.0 /entry:"DllMain" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\Atl.pdb" /debug /opt:nowin98 /machine:I386 /def:".\atl.def" /out:"$(OUTDIR)\Atl.dll" /implib:"$(OUTDIR)\Atl.lib" /delayload:user32.dll /delayload:gdi32.dll /delayload:ole32.dll /delayload:oleaut32.dll /delayload:advapi32.dll /delayload:olepro32.dll 
 !endif
 DEF_FILE= \
 	".\atl.def"
@@ -579,7 +583,7 @@ CPP_SWITCHES=$(CPP_SWITCHES) /ZI
 
 !ELSEIF  "$(CFG)" == "atl - Win32 Release"
 
-CPP_SWITCHES=/nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yc"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
+CPP_SWITCHES=/nologo /MT /W3 /Zi /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yc"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
 
 "$(INTDIR)\StdAfx.obj"	"$(INTDIR)\Atl.pch" : $(SOURCE) "$(INTDIR)"
 	$(CPP) @<<
@@ -589,7 +593,7 @@ CPP_SWITCHES=/nologo /MT /W3 /O1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDL
 
 !ELSEIF  "$(CFG)" == "atl - Win32 Unicode Release"
 
-CPP_SWITCHES=/nologo /MT /W3 /O1 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_UNICODE" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yc"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
+CPP_SWITCHES=/nologo /MT /W3 /Zi /O1 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_UNICODE" /D "_ATL_MIN_CRT" /Fp"$(INTDIR)\Atl.pch" /Yc"stdafx.h" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\\" /FD /c 
 
 "$(INTDIR)\StdAfx.obj"	"$(INTDIR)\Atl.pch" : $(SOURCE) "$(INTDIR)"
 	$(CPP) @<<
