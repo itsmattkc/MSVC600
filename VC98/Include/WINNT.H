@@ -285,20 +285,20 @@ typedef WORD   LANGID;
 #define ERROR_SEVERITY_WARNING       0x80000000
 #define ERROR_SEVERITY_ERROR         0xC0000000
 
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
+//
+// _M_IX86 included so that EM CONTEXT structure compiles with
+// x86 programs. *** TBD should this be for all architectures?
+//
+
+//
+// 16 byte aligned type for 128 bit floats
+//
+
+// *** TBD **** when compiler support is available:
+// typedef __float80 FLOAT128;
+// For we define a 128 bit structure and use force_align pragma to
+// align to 128 bits.
+//
 
 typedef struct _FLOAT128 {
     __int64 LowPart;
@@ -611,12 +611,12 @@ Int64ShrlMod32 (
 
 #elif defined(_M_IA64)
 
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
+//
+// IA64 has native 64-bit operations that are just as fast as their 32-bit
+// counter parts. Therefore, the int64 data type is used directly to form
+// shifts of 0..31 and multiplies of 32-bits times 32-bits to form a 64-bit
+// product.
+//
 
 #define Int32x32To64(a, b) ((LONGLONG)((LONG)(a)) * (LONGLONG)((LONG)(b)))
 #define UInt32x32To64(a, b) ((ULONGLONG)((DWORD)(a)) * (ULONGLONG)((DWORD)(b)))
@@ -2629,270 +2629,270 @@ typedef struct _CONTEXT {
     DWORD ContextFlags;
     DWORD Fill1[3];         // for alignment of following on 16-byte boundary
 
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
-    // Comment
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_DEBUG.
+    //
+    // N.B. CONTEXT_DEBUG is *not* part of CONTEXT_FULL.
+    //
+
+    ULONGLONG DbI0;                         // Instruction debug registers *
+    ULONGLONG DbI1;
+    ULONGLONG DbI2;
+    ULONGLONG DbI3;
+    ULONGLONG DbI4;
+    ULONGLONG DbI5;
+    ULONGLONG DbI6;
+    ULONGLONG DbI7;
+
+    ULONGLONG DbD0;                         // Data debug registers *
+    ULONGLONG DbD1;
+    ULONGLONG DbD2;
+    ULONGLONG DbD3;
+    ULONGLONG DbD4;
+    ULONGLONG DbD5;
+    ULONGLONG DbD6;
+    ULONGLONG DbD7;
+
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_LOWER_FLOATING_POINT.
+    //
+
+    FLOAT128 FltS0;                         // Lower floating point (f2-f5) - saved (preserved)
+    FLOAT128 FltS1;
+    FLOAT128 FltS2;
+    FLOAT128 FltS3;
+    FLOAT128 FltT0;                         // Lower floating point (f6-f15) - temporary (volatile)
+    FLOAT128 FltT1;
+    FLOAT128 FltT2;
+    FLOAT128 FltT3;
+    FLOAT128 FltT4;
+    FLOAT128 FltT5;
+    FLOAT128 FltT6;
+    FLOAT128 FltT7;
+    FLOAT128 FltT8;
+    FLOAT128 FltT9;
+
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_HIGHER_FLOATING_POINT.
+    //
+
+    FLOAT128 FltS4;                         // Higher floating point (f16-f31) - saved (preserved)
+    FLOAT128 FltS5;
+    FLOAT128 FltS6;
+    FLOAT128 FltS7;
+    FLOAT128 FltS8;
+    FLOAT128 FltS9;
+    FLOAT128 FltS10;
+    FLOAT128 FltS11;
+    FLOAT128 FltS12;
+    FLOAT128 FltS13;
+    FLOAT128 FltS14;
+    FLOAT128 FltS15;
+    FLOAT128 FltS16;
+    FLOAT128 FltS17;
+    FLOAT128 FltS18;
+    FLOAT128 FltS19;
+
+    FLOAT128 FltF32;                        // Higher floating point (f32-f127) - temporary (volatile)
+    FLOAT128 FltF33;
+    FLOAT128 FltF34;
+    FLOAT128 FltF35;
+    FLOAT128 FltF36;
+    FLOAT128 FltF37;
+    FLOAT128 FltF38;
+    FLOAT128 FltF39;
+
+    FLOAT128 FltF40;
+    FLOAT128 FltF41;
+    FLOAT128 FltF42;
+    FLOAT128 FltF43;
+    FLOAT128 FltF44;
+    FLOAT128 FltF45;
+    FLOAT128 FltF46;
+    FLOAT128 FltF47;
+    FLOAT128 FltF48;
+    FLOAT128 FltF49;
+
+    FLOAT128 FltF50;
+    FLOAT128 FltF51;
+    FLOAT128 FltF52;
+    FLOAT128 FltF53;
+    FLOAT128 FltF54;
+    FLOAT128 FltF55;
+    FLOAT128 FltF56;
+    FLOAT128 FltF57;
+    FLOAT128 FltF58;
+    FLOAT128 FltF59;
+
+    FLOAT128 FltF60;
+    FLOAT128 FltF61;
+    FLOAT128 FltF62;
+    FLOAT128 FltF63;
+    FLOAT128 FltF64;
+    FLOAT128 FltF65;
+    FLOAT128 FltF66;
+    FLOAT128 FltF67;
+    FLOAT128 FltF68;
+    FLOAT128 FltF69;
+
+    FLOAT128 FltF70;
+    FLOAT128 FltF71;
+    FLOAT128 FltF72;
+    FLOAT128 FltF73;
+    FLOAT128 FltF74;
+    FLOAT128 FltF75;
+    FLOAT128 FltF76;
+    FLOAT128 FltF77;
+    FLOAT128 FltF78;
+    FLOAT128 FltF79;
+
+    FLOAT128 FltF80;
+    FLOAT128 FltF81;
+    FLOAT128 FltF82;
+    FLOAT128 FltF83;
+    FLOAT128 FltF84;
+    FLOAT128 FltF85;
+    FLOAT128 FltF86;
+    FLOAT128 FltF87;
+    FLOAT128 FltF88;
+    FLOAT128 FltF89;
+
+    FLOAT128 FltF90;
+    FLOAT128 FltF91;
+    FLOAT128 FltF92;
+    FLOAT128 FltF93;
+    FLOAT128 FltF94;
+    FLOAT128 FltF95;
+    FLOAT128 FltF96;
+    FLOAT128 FltF97;
+    FLOAT128 FltF98;
+    FLOAT128 FltF99;
+
+    FLOAT128 FltF100;
+    FLOAT128 FltF101;
+    FLOAT128 FltF102;
+    FLOAT128 FltF103;
+    FLOAT128 FltF104;
+    FLOAT128 FltF105;
+    FLOAT128 FltF106;
+    FLOAT128 FltF107;
+    FLOAT128 FltF108;
+    FLOAT128 FltF109;
+
+    FLOAT128 FltF110;
+    FLOAT128 FltF111;
+    FLOAT128 FltF112;
+    FLOAT128 FltF113;
+    FLOAT128 FltF114;
+    FLOAT128 FltF115;
+    FLOAT128 FltF116;
+    FLOAT128 FltF117;
+    FLOAT128 FltF118;
+    FLOAT128 FltF119;
+
+    FLOAT128 FltF120;
+    FLOAT128 FltF121;
+    FLOAT128 FltF122;
+    FLOAT128 FltF123;
+    FLOAT128 FltF124;
+    FLOAT128 FltF125;
+    FLOAT128 FltF126;
+    FLOAT128 FltF127;
+
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_LOWER_FLOATING_POINT | CONTEXT_HIGHER_FLOATING_POINT | CONTEXT_CONTROL.
+    //
+
+    ULONGLONG StFPSR;                       // FP status
+    ULONGLONG StFSR;                        // x86 FP status (a copy of AR28)
+    ULONGLONG StFIR;                        // x86 FP status (a copy of AR29)
+    ULONGLONG StFDR;                        // x86 FP status (a copy of AR30)
+
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_INTEGER.
+    //
+    // N.B. The registers gp, sp, rp are part of the control context
+    //
+
+    ULONGLONG IntGp;                        // global pointer (r1) - temporary (volatile)
+    ULONGLONG IntT0;                        // integer registers (r2-r3) - temporary (volatile)
+    ULONGLONG IntT1;
+    ULONGLONG IntS0;                        // integer registers (r4-r7) - saved (preserved)
+    ULONGLONG IntS1;
+    ULONGLONG IntS2;
+    ULONGLONG IntS3;
+    ULONGLONG IntV0;                        // return value (r8) - temporary (volatile)
+    ULONGLONG IntT2;                        // integer registers (r9-r11) - temporary (volatile)
+    ULONGLONG IntT3;
+    ULONGLONG IntT4;
+    ULONGLONG IntSp;                        // stack pointer (r12) - special
+    ULONGLONG IntTeb;                       // teb (r13) - special
+    ULONGLONG IntT5;                        // integer registers (r14-r31) - temporary (volatile)
+    ULONGLONG IntT6;
+    ULONGLONG IntT7;
+    ULONGLONG IntT8;
+    ULONGLONG IntT9;
+    ULONGLONG IntT10;
+    ULONGLONG IntT11;
+    ULONGLONG IntT12;
+    ULONGLONG IntT13;
+    ULONGLONG IntT14;
+    ULONGLONG IntT15;
+    ULONGLONG IntT16;
+    ULONGLONG IntT17;
+    ULONGLONG IntT18;
+    ULONGLONG IntT19;
+    ULONGLONG IntT20;
+    ULONGLONG IntT21;
+    ULONGLONG IntT22;
+
+    ULONGLONG IntNats;                      // Nat bits for general registers
+                                            // r1-r31 in bit positions 1 to 31.
+    ULONGLONG Preds;                        // predicates - saved (preserved)
+
+    ULONGLONG BrRp;                         // return pointer (b0) - saved (preserved)
+    ULONGLONG BrS0;                         // branch registers (b1-b5) - saved (preserved)
+    ULONGLONG BrS1;
+    ULONGLONG BrS2;
+    ULONGLONG BrS3;
+    ULONGLONG BrS4;
+    ULONGLONG BrT0;                         // branch registers (b6-b7) - temporary (volatile)
+    ULONGLONG BrT1;
+    // iA32 related Interger registers
+    ULONGLONG SegCSD;                       // iA32 CSDescriptor (Ar25)
+    ULONGLONG SegSSD;                       // iA32 SSDescriptor (Ar26)
+
+    //
+    // This section is specified/returned if the ContextFlags word contains
+    // the flag CONTEXT_CONTROL.
+    //
+
+    // Other application registers
+    ULONGLONG ApUNAT;                       // User Nat collection register - saved (preserved)
+    ULONGLONG ApLC;                         // Loop counter register - saved (preserved)
+    ULONGLONG ApEC;                         // Epilog counter register - saved (preserved)
+    ULONGLONG ApCCV;                        // CMPXCHG value register - temporary (volatile)
+    ULONGLONG ApDCR;                        // Default control register (TBD)
+
+    // Register stack info
+    ULONGLONG RsPFS;                        // Previous function state - saved (preserved)
+    ULONGLONG RsBSP;                        // Backing store pointer - saved (preserved)
+    ULONGLONG RsBSPSTORE;                   // BSP Store - saved (preserved)
+    ULONGLONG RsRSC;                        // RSE configuration - temporary (volatile)
+    ULONGLONG RsRNAT;                       // RSE Nat collection register - saved (preserved)
+    // iA32 related control registers
+    ULONGLONG Eflag;                        // Eflag  copy of Ar24
+    ULONGLONG Cflag;                        // Cr0+Cr4 copy of Ar27
+
+    // Trap Status Information
+    ULONGLONG StIPSR;                       // Interruption Processor Status
+    ULONGLONG StIIP;                        // Interruption IP
+    ULONGLONG StIFS;                        // Interruption Function State
 } CONTEXT, *PCONTEXT;
 
 //BUGBUG what happens with remote debugging.
@@ -3107,12 +3107,12 @@ typedef struct _PLABEL_DESCRIPTOR {
 
 
 
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
+VOID
+__jump_unwind (
+    ULONGLONG TargetMsFrame,
+    ULONGLONG TargetBsFrame,
+    ULONGLONG TargetPc
+    );
 
 #endif // _IA64_
 
@@ -5797,52 +5797,52 @@ typedef IMAGE_RELOCATION UNALIGNED *PIMAGE_RELOCATION;
 #define IMAGE_REL_IA64_RESERVED_16      0x0016
 #define IMAGE_REL_IA64_ADDEND           0x001F
 
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
+#define EXT_IMM64(Value, Address, Size, InstPos, ValPos)             \
+    Value |= (((ULONGLONG)((*(Address) >> InstPos) & (((ULONGLONG)1 << Size) - 1))) << ValPos)
+
+#define INS_IMM64(Value, Address, Size, InstPos, ValPos)  \
+    *(PDWORD)Address = (*(PDWORD)Address & ~(((1 << Size) - 1) << InstPos)) | \
+          ((DWORD)((((ULONGLONG)Value >> ValPos) & (((ULONGLONG)1 << Size) - 1))) << InstPos)
+
+#define EMARCH_ENC_I17_IMM7B_INST_WORD_X         3
+#define EMARCH_ENC_I17_IMM7B_SIZE_X              7
+#define EMARCH_ENC_I17_IMM7B_INST_WORD_POS_X     4
+#define EMARCH_ENC_I17_IMM7B_VAL_POS_X           0
+
+#define EMARCH_ENC_I17_IMM9D_INST_WORD_X         3
+#define EMARCH_ENC_I17_IMM9D_SIZE_X              9
+#define EMARCH_ENC_I17_IMM9D_INST_WORD_POS_X     18
+#define EMARCH_ENC_I17_IMM9D_VAL_POS_X           7
+
+#define EMARCH_ENC_I17_IMM5C_INST_WORD_X         3
+#define EMARCH_ENC_I17_IMM5C_SIZE_X              5
+#define EMARCH_ENC_I17_IMM5C_INST_WORD_POS_X     13
+#define EMARCH_ENC_I17_IMM5C_VAL_POS_X           16
+
+#define EMARCH_ENC_I17_IC_INST_WORD_X            3
+#define EMARCH_ENC_I17_IC_SIZE_X                 1
+#define EMARCH_ENC_I17_IC_INST_WORD_POS_X        12
+#define EMARCH_ENC_I17_IC_VAL_POS_X              21
+
+#define EMARCH_ENC_I17_IMM41a_INST_WORD_X        1
+#define EMARCH_ENC_I17_IMM41a_SIZE_X             10
+#define EMARCH_ENC_I17_IMM41a_INST_WORD_POS_X    14
+#define EMARCH_ENC_I17_IMM41a_VAL_POS_X          22
+
+#define EMARCH_ENC_I17_IMM41b_INST_WORD_X        1
+#define EMARCH_ENC_I17_IMM41b_SIZE_X             8
+#define EMARCH_ENC_I17_IMM41b_INST_WORD_POS_X    24
+#define EMARCH_ENC_I17_IMM41b_VAL_POS_X          32
+
+#define EMARCH_ENC_I17_IMM41c_INST_WORD_X        2
+#define EMARCH_ENC_I17_IMM41c_SIZE_X             23
+#define EMARCH_ENC_I17_IMM41c_INST_WORD_POS_X    0
+#define EMARCH_ENC_I17_IMM41c_VAL_POS_X          40
+
+#define EMARCH_ENC_I17_SIGN_INST_WORD_X          3
+#define EMARCH_ENC_I17_SIGN_SIZE_X               1
+#define EMARCH_ENC_I17_SIGN_INST_WORD_POS_X      27
+#define EMARCH_ENC_I17_SIGN_VAL_POS_X            63
 
 //
 // Line number format.
@@ -6062,20 +6062,20 @@ typedef struct _IMAGE_BOUND_FORWARDER_REF {
     WORD    Reserved;
 } IMAGE_BOUND_FORWARDER_REF, *PIMAGE_BOUND_FORWARDER_REF;
 
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
-// Comment
+//
+// Stub structure for IA64 transition stubs
+//
+#define IMAGE_MIX_ISA_LIMIT 2
+
+typedef struct _IMAGE_STUB_DIRECTORY {
+    DWORD   SecondaryImportAddressTable;           // RVA of Secondary IAT
+    WORD    ExpectedISA[IMAGE_MIX_ISA_LIMIT];      // Indicator of available ISA stubs
+    DWORD   StubAddressTable[IMAGE_MIX_ISA_LIMIT]; // RVA of Stub Address Tables
+} IMAGE_STUB_DIRECTORY, *PIMAGE_STUB_DIRECTORY;
+
+#define IA64_STUB_NOT_AVAILABLE     ((PVOID) -1)
+#define IA64_JMPE_MASK              0x00ffffff
+#define IA64_JMPE_MARKER            0x0035000f
 
 //
 // Resource Format.
